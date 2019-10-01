@@ -1,5 +1,10 @@
 const state = {
-    component: 'login',
+    loginComponent: 'login',
+    marketComponent: 'market',
+    sellingComponent: 'sdk',
+    patientComponent: 'pd',
+    managerComponent: 'approval',
+    token: null,
 
 }
 

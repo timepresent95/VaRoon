@@ -15,4 +15,9 @@ const store = new Vuex.Store({
     actions
 })
 
+//새로고침했을 때 로그인 유지
+const {
+    token
+} = localStorage
+store.commit('LOGIN', token)
 export default store

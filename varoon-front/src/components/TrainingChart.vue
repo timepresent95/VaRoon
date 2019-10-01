@@ -1,83 +1,242 @@
 <template>
   <div>
-    <h1>훈련정보</h1>
     <div>
-      <div>
-        주시안
-        <ul class="tabs">
-          <li :key = "tab" v-for="tab in tabs" :class="{active: tab === selectedTab}"
-          @click="onClickTab(tab)">
-            {{tab}}
-          </li>
+      <div class="Setting">
+        <div class="mainEye">주시안 선택</div>
+        <ul>
+          <input type="radio" value="right" v-model="mainEye" />
+          <span>우안</span>
+        </ul>
+        <ul>
+          <input type="radio" value="left" v-model="mainEye" />
+          <span>좌안</span>
         </ul>
       </div>
-      <div>
-        <div>프리즘 치료</div>
-         <vue-range-slider min="0" max="100"></vue-range-slider>
-      </div>
-      <div>
-        <div>양안시 협응 훈련</div>
-        <input type="range">
-
-      </div>
-      <div>
-        <div>약시안 강화 치료</div>
-        <input type="range">
-
+      <div class="trangingChartIn">
+        <div class="traingingBox">
+          <div class="boxId">프리즘 치료</div>
+          <div class="slider">
+            <div class="sliderDescript">수평 프리즘</div>
+            <div class="sliderContain">{{horizontalPrizm[0]}}</div>
+            <div class="sliderContain">
+              <vue-slider
+                :width="380.5"
+                :enable-cross="false"
+                v-model="horizontalPrizm"
+                :disabled="true"
+              ></vue-slider>
+            </div>
+            <div class="sliderContain">{{horizontalPrizm[1]}}</div>
+          </div>
+          <div class="slider">
+            <div class="sliderDescript">수직 프리즘</div>
+            <div class="sliderContain">{{verticalPrizm[0]}}</div>
+            <div class="sliderContain">
+              <vue-slider
+                :width="380.5"
+                :enable-cross="false"
+                v-model="verticalPrizm"
+                :disabled="true"
+              ></vue-slider>
+            </div>
+            <div class="sliderContain">{{verticalPrizm[1]}}</div>
+          </div>
+        </div>
+        <div class="traingingBox">
+          <div class="boxId">양안시 협응 훈련</div>
+          <div class="slider">
+            <div class="sliderDescript">약시안 개체수</div>
+            <div class="sliderContain">{{value[0]}}</div>
+            <div class="sliderContain">
+              <vue-slider :width="380.5" :enable-cross="false" v-model="value" :disabled="true"></vue-slider>
+            </div>
+            <div class="sliderContain">{{value[1]}}</div>
+          </div>
+        </div>
+        <div class="traingingBox">
+          <div class="boxId">약시안 강화 치료</div>
+          <div class="slider">
+            <div class="sliderDescript">흐림 정도</div>
+            <div class="sliderContain">{{value[0]}}</div>
+            <div class="sliderContain">
+              <vue-slider :width="380.5" :enable-cross="false" v-model="value" :disabled="true"></vue-slider>
+            </div>
+            <div class="sliderContain">{{value[1]}}</div>
+          </div>
+          <div class="slider">
+            <div class="sliderDescript">구체화 정도</div>
+            <div class="sliderContain">{{value[0]}}</div>
+            <div class="sliderContain">
+              <vue-slider :width="380.5" :enable-cross="false" v-model="value" :disabled="true"></vue-slider>
+            </div>
+            <div class="sliderContain">{{value[1]}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import VueRangeSlider from 'vue-range-slider'
+import VueSlider from "vue-slider-component";
+import { mapActions } from "vuex";
+import "vue-slider-component/theme/default.css";
 
 export default {
-  components:{
-    VueRangeSlider,
+  components: {
+    VueSlider
   },
-  data(){
-    return{
-      tabs:['오른쪽', '왼쪽'],
-      selectedTab: '오른쪽',
-      sliderValue:50,
+  computed: {
+    mainEye() {
+      return this.trainingChartData.mainEye;
+    },
+    horizontalPrizm() {
+      return [
+        this.trainingChartData.horizontalMin,
+        this.trainingChartData.horizontalMax
+      ];
+    },
+    verticalPrizm() {
+      return [
+        this.trainingChartData.verticalMin,
+        this.trainingChartData.verticalMax
+      ];
+    },
+    //TODO:데이터 수정해야함
+    horizontalPrizm() {
+      return [
+        this.trainingChartData.horizontalMin,
+        this.trainingChartData.horizontalMax
+      ];
+    },
+    //TODO:데이터 수정해야함
+    horizontalPrizm() {
+      return [
+        this.trainingChartData.horizontalMin,
+        this.trainingChartData.horizontalMax
+      ];
+    },
+    //TODO:데이터 수정해야함
+    horizontalPrizm() {
+      return [
+        this.trainingChartData.horizontalMin,
+        this.trainingChartData.horizontalMax
+      ];
     }
+  },
+  data() {
+    return {
+      tabs: ["오른쪽", "왼쪽"],
+      selectedTab: "오른쪽",
+      value: [0, 50],
+      trainingChartData: {
+        blur: 0,
+        horizontalMax: 0,
+        horizontalMin: 0,
+        mainEye: "",
+        objectNumber: 0,
+        verticalMax: 0,
+        verticalMin: 0,
+        vivid: 0
+      }
+    };
   },
   methods: {
+    ...mapActions(["TRAINING_CHART"]),
     onClickTab(tab) {
-      this.selectedTab = tab
+      this.selectedTab = tab;
     }
   },
-}
+  created() {
+    this.TRAINING_CHART().then(data => {
+      this.trainingChartData = data;
+    });
+  }
+};
 </script>
 <style>
-ul.tabs {
-  display: flex;
+/* 이름바꿀것 */
+.Setting {
+  width: 274px;
+  height: 613px;
+  border-radius: 3px;
+  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
+  background-color: #ffffff;
+  float: left;
+  margin-right: 21px;
 }
-.tabs li {
-  display: inline-block;
-  width: 50%;
-  padding: 15px;
-  text-align: center;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc; 
-  background-color: #eee;
-  color: #999;
-}
-.tabs li.active {
-  background-color: #2ac1bc;
-  color: #fff;
-}
-.list li {
-  box-sizing: border-box;
-  display: block;
-  padding: 15px;
-  border-bottom: 1px solid #ccc; 
+.mainEye {
+  width: 87px;
+  height: 20px;
+  font-family: NanumBarunGothicOTF;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.5;
+  letter-spacing: normal;
+  color: #000000;
   position: relative;
+  top: 36px;
+  left: 49.1px;
 }
-.list li:last-child {
-  border-bottom: none;
+.Setting ul {
+  margin-top: 20px;
+  position: relative;
+  top: 60px;
+  left: 49.1px;
+}
+.Setting span {
+  padding-left: 22px;
+}
+.trangingChartIn {
+  float: left;
+  width: 867px;
+  height: 613px;
+  border-radius: 3px;
+  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
+  background-color: #ffffff;
+}
+.traingingBox {
+  width: 867px;
+  height: 204px;
+  border-radius: 3px;
+  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
+  background-color: #ffffff;
+}
+
+.traingingBox .boxId {
+  font-family: NanumBarunGothicOTF;
+  font-size: 20px;
+  position: relative;
+  left: 50px;
+  top: 36.5px;
 }
 .slider {
-  width: 200px;
+  height: 50px;
+  padding-top: 20px;
+}
+.sliderDescript {
+  width: 100px;
+  height: 19px;
+  font-family: NanumBarunGothicUltraLightOTF;
+  font-size: 16px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  float: left;
+  position: relative;
+  left: 50px;
+  top: 40px;
+  margin-right: 31px;
+}
+.sliderContain {
+  float: left;
+  position: relative;
+  left: 50px;
+  top: 40px;
+  margin-right: 31px;
 }
 </style>

@@ -3,12 +3,16 @@
     <img class="loadMap" src="http://placehold.it/321x100" />
     <img class="congratulation" src="http://placehold.it/321x100" />
     회원가입이 완료되었습니다.
-    <router-link to="/" >홈으로 이동</router-link>
+    <button @click.prevent="CHANGE_COMPONENT('login')" >로그인 페이지로 이동</button>
   </div>
 </template>
 <script>
-export default {
+import { mapMutations } from "vuex";
 
+export default {
+  methods: {
+    ...mapMutations(["CHANGE_COMPONENT"]),
+  }
 }
 </script>
 <style>

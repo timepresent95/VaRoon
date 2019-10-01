@@ -1,33 +1,30 @@
 <template>
   <div>
-    <div class="Head">
-      <router-link to="/">BI</router-link>
-    </div>
     <div class="menu-bar">
       <a
         href
         :class="{'bold': changeFontWeigth('login')}"
-        @click.prevent="CHANGE_COMPONENT('login')"
+        @click.prevent="CHANGE_LOGIN_COMPONENT('login')"
       >로그인</a>
       <div>/</div>
       <a
         href
         :class="{'bold': changeFontWeigth('terms')}"
-        @click.prevent="CHANGE_COMPONENT('terms')"
+        @click.prevent="CHANGE_LOGIN_COMPONENT('terms')"
       >회원가입</a>
       <div>/</div>
       <a
         href
         :class="{'bold': changeFontWeigth('findAccount')}"
-        @click.prevent="CHANGE_COMPONENT('findAccount')"
+        @click.prevent="CHANGE_LOGIN_COMPONENT('findAccount')"
       >아이디/비밀번호 찾기</a>
     </div>
     <hr />
-    <Login v-if="component === 'login'" />
-    <Terms v-else-if="component === 'terms'" />
-    <Regist v-else-if="component === 'regist'" />
-    <Welcome v-else-if="component === 'welcome'" />
-    <FindAccount v-else-if="component === 'findAccount'" />
+    <Login v-if="loginComponent === 'login'" />
+    <Terms v-else-if="loginComponent === 'terms'" />
+    <Regist v-else-if="loginComponent === 'regist'" />
+    <Welcome v-else-if="loginComponent === 'welcome'" />
+    <FindAccount v-else-if="loginComponent === 'findAccount'" />
   </div>
 </template>
 <script>
@@ -51,12 +48,12 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["component"])
+    ...mapState(["loginComponent"])
   },
   methods: {
-    ...mapMutations(["CHANGE_COMPONENT"]),
+    ...mapMutations(["CHANGE_LOGIN_COMPONENT"]),
     changeFontWeigth(index) {
-      if (this.component === index) return true;
+      if (this.loginComponent === index) return true;
     }
   }
 };

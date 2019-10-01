@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li>
+      <li @click.prevent="CHANGE_MARKET_COMPONENT('game')">
         <img class="congratulation" src="http://placehold.it/75x75" />
         검색 결과 1
       </li>
@@ -17,8 +17,12 @@
   </div>
 </template>
 <script>
-export default {
+import { mapMutations } from "vuex";
 
+export default {
+  methods: {
+    ...mapMutations(["CHANGE_MARKET_COMPONENT"]),
+  }
 }
 </script>
 <style>

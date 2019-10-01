@@ -21,12 +21,12 @@
         네이버 서비스를 이용하시거나 네이버 서비스 회원으로 가입하실 경우 여러분은 본 약관 및 관련 운영 정책을 확인하거나 동의하게 되므로, 잠시 시간을 내시어 주의 깊게 살펴봐 주시기 바랍니다
       </div>
     </div>
-    <button  class="btn" :class="{'btn-success': !invalidForm}" @click.prevent="CHANGE_COMPONENT('regist')"
+    <button  class="btn" :class="{'btn-success': !invalidForm}" @click.prevent="CHANGE_LOGIN_COMPONENT('regist')"
         :disabled="invalidForm">Log In</button>
   </div>
 </template>
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   data(){
@@ -37,13 +37,12 @@ export default {
     }
   },
   computed: {
-    ...mapState(["component"]),
     invalidForm() {
       return !this.first || !this.second
     }
   },
   methods: {
-    ...mapMutations(["CHANGE_COMPONENT"]),
+    ...mapMutations(["CHANGE_LOGIN_COMPONENT"]),
     checkAll(){
         this.first = !this.checks;
         this.second = !this.checks;

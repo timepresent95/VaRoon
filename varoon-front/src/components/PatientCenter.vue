@@ -1,42 +1,51 @@
 <template>
-  <div>
-    <router-link to="/">
-      <img class="congratulation" src="http://placehold.it/25x25" />
-    </router-link>
-    {{name}}님
-    <button>마이페이지</button>
-    <button>로그아웃</button>
-    <PatientLeft/>
-    <PDChart/>
-    <RangeChart/>
-    <FocusChart/>
-    <TrainingChart/>
+  <div class="patentCenter">
+    <PatientLeft />
+    <div class="patientChart">
+      <PDChart v-if="patientComponent === 'pd'" />
+      <RangeChart v-else-if="patientComponent === 'range'" />
+      <FocusChart v-else-if="patientComponent === 'focus'" />
+      <TrainingChart v-else-if="patientComponent === 'training'" />
+    </div>
   </div>
 </template>
 <script>
-import PatientLeft from './PatientLeft.vue'
-import PDChart from './PDChart.vue'
-import RangeChart from './RangeChart.vue'
-import FocusChart from './FocusChart.vue'
-import TrainingChart from './TrainingChart.vue'
+import PatientLeft from "./PatientLeft.vue";
+import PDChart from "./PDChart.vue";
+import RangeChart from "./RangeChart.vue";
+import FocusChart from "./FocusChart.vue";
+import TrainingChart from "./TrainingChart.vue";
+
+import { mapState, mapMutations } from "vuex";
 
 export default {
-  components:{
+  components: {
     PatientLeft,
     PDChart,
     RangeChart,
     FocusChart,
     TrainingChart
-  
   },
-  data(){
-    return{
-      name:''
-    }
+  data() {
+    return {
+      name: ""
+    };
+  },
+  computed: {
+    ...mapState(["patientComponent"])
+  },
+  methods: {
+    ...mapMutations(["CHANGE_PATIENT_COMPONENT"])
   }
-
-}
+};
 </script>
 <style>
-
+.patentCenter {
+  height: 1080px;
+}
+.patientChart {
+  position: absolute;
+  left: 380px;
+  top: 221px;
+}
 </style>

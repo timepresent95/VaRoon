@@ -1,7 +1,43 @@
-import {} from '../api'
+import {
+    auth,
+    regist,
+    medi,
+    chart
+} from '../api'
 
 const actions = {
-    //  비동기적으로 수행되는 함수들
+    LOGIN({
+        commit
+    }, {
+        id,
+        pw
+    }) {
+        return auth.login(id, pw)
+            .then((data) => {
+                commit('LOGIN', data)
+            })
+    },
+    CHECK_DUPLICATE(_, {
+        id
+    }) {
+        return regist.checkDuplicate(id)
+    },
+    REGIST(_, regist) {
+        return regist.regist(regist)
+    },
+    TRAINING_CHART() {
+        return medi.trainingChart()
+    },
+    PATIENT_REFER() {
+        return chart.refer();
+    },
+    PATIENT_REGIST({
+        dispatch
+    }, id) {
+        return chart.regist(id).then(() =>
+            dispatch('PATIENT_REFER')
+        );
+    }
 }
 
 export default actions

@@ -2,21 +2,22 @@
   <div>
     <div transition="fade">
       <img
+        class="slider"
         :src="images[Math.abs(currentNumber) % images.length]"
         @mouseover="stopRotation"
         @mouseout="startRotation"
       />
-    </div>
-    <div class="dot">
-      <a
-        href=""
-        v-for="number in images.length"
-        :key="number"
-        @click.prevent="currentNumber = number-1"
-      >
-        <img v-if="((currentNumber) % images.length) === number-1" :src="require('../images/heart.jpg')"/>
-        <img v-else :src="require('../images/broken-heart.jpg')"/>
-      </a>
+      <div class="current-bar">
+        <a
+          href
+          v-for="number in images.length"
+          :key="number"
+          @click.prevent="currentNumber = number-1"
+        >
+          <div v-if="((currentNumber) % images.length) === number-1" :class="'current'"></div>
+          <div v-else :class="'notCurrent'"></div>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -28,26 +29,14 @@ export default {
       currentNumber: 0,
       timer: null,
       images: [
-        "http://placehold.it/320x100",
-        "http://placehold.it/320x99",
-        "http://placehold.it/320x98",
-        "http://placehold.it/320x97",
-        "http://placehold.it/320x96",
-        "http://placehold.it/320x95"
-      ],
+        require("../images/main-vr-man-img@2x.png"),
+        "http://placehold.it/1920x722",
+        "http://placehold.it/1920x722"
+      ]
     };
   },
   mounted() {
     this.startRotation();
-  },
-  computed:{
-    dotImages() {
-      const heart = require('../images/heart.jpg')
-      const brokenHeart = require('../images/broken-heart.jpg')
-       return brokenHeart
-    },
-    checkCurrent() {
-    }
   },
   methods: {
     startRotation() {
@@ -58,29 +47,35 @@ export default {
     stopRotation() {
       clearTimeout(this.timer);
       this.timer = null;
-    },
+    }
   }
 };
 </script>
 
 <style>
-img {
-  width: 100%;
+.slider {
+  width: 1920px;
   height: auto;
 }
-.dot {
+.current-bar {
+  top: 639.7px;
   width: 100%;
-  padding-left: 40%;
+  left: 815px;
+  position: absolute;
 }
-.dot a {
-  text-decoration: none;
+.current {
+  width: 84.9px;
+  height: 0;
+  border: solid 3px #4b74ff;
+  margin-left: 10px;
   float: left;
-  color: rgb(80, 80, 80);
-  margin-right: 5px;
-  width: 60px;
 }
-.dot a img{
-  background-color: rgba(0, 0, 0, 1);
+.notCurrent {
+  width: 84.9px;
+  height: 0;
+  border: solid 3px #ffffff;
+  float: left;
+  margin-left: 10px;
 }
 .fade-transition {
   transition: all 0.8s ease;

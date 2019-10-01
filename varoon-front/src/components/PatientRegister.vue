@@ -1,23 +1,24 @@
 <template>
   <Modal>
     <div slot="header">
-      <h2>
-        환자 등록
-        <a href="" class="modal-default-button">&times;</a>
-      </h2>
+      <span style="
+  font-family: NanumBarunGothicOTF;
+  display: inline-block;
+      ">추가할 환자</span>
+      정보를 입력하세요
     </div>
     <div slot="body">
-        <input class="form-control" type="text" autofocus>
+      <input type="text" autofocus placeholder="아이디 (영문 소문자, 숫자 포함 6-13자) " v-model="id" />
+      <div class="line"></div>
     </div>
     <div slot="footer">
-      <button>
-        로그인</button>
+      <button @click.prevent="$emit(`regist`, id)">로그인</button>
     </div>
   </Modal>
 </template>
 
 <script>
-import Modal from './Modal.vue'
+import Modal from "./Modal.vue";
 
 export default {
   components: {
@@ -25,10 +26,10 @@ export default {
   },
   data() {
     return {
-      
-    }
-  },
-}
+      id: ""
+    };
+  }
+};
 </script>
 
 <style>

@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-//이동에 사용할 컴포넌트 import할 것
 import Main from "../components/Main.vue";
 import LoginManager from "../components/LoginManager.vue";
 import Home from '../components/Home.vue';
@@ -11,21 +10,59 @@ import DoctorCenter from '../components/DoctorCenter.vue';
 import Manager from '../components/Manager.vue';
 import MypageManager from '../components/MypageManager.vue';
 
+import store from '../store'
+
 Vue.use(VueRouter);
+
+const requireAuth = (to, from, next) => {
+    const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`; //이전 페이지가 어딘지 기억
+    store.getters.isAuth ? next() : next(loginPath);
+};
+
+const mainHome = (to, from, next) => {
+    store.getters.isAuth ? next() : next('/main')
+}
 
 const router = new VueRouter({
     mode: "history",
 
-    routes: [
-        { path: "/", component: Main },
-        { path: "/loginManager", component: LoginManager },
-        { path: "/home", component: Home },
-        { path: "/MarketManager", component: MarketManager },
-        { path: "/SellerManager", component: SellerManager },
-        { path: "/PatientCenter", component: PatientCenter },
-        { path: "/DoctorCenter", component: DoctorCenter },
-        { path: "/Manager", component: Manager },
-        { path: "/MypageManager", component: MypageManager },
+    routes: [{
+            path: "/main",
+            component: Main
+        },
+        {
+            path: "/loginManager",
+            component: LoginManager
+        },
+        {
+            path: "/",
+            component: Home,
+            beforeEnter: mainHome
+        },
+        {
+            path: "/MarketManager",
+            component: MarketManager
+        },
+        {
+            path: "/SellerManager",
+            component: SellerManager
+        },
+        {
+            path: "/PatientCenter",
+            component: PatientCenter
+        },
+        {
+            path: "/DoctorCenter",
+            component: DoctorCenter
+        },
+        {
+            path: "/Manager",
+            component: Manager
+        },
+        {
+            path: "/MypageManager",
+            component: MypageManager
+        },
     ]
 });
 

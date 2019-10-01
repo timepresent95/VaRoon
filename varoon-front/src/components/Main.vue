@@ -1,112 +1,108 @@
 <template>
   <div>
-    <div class = "header">
-      <div class="header-BI">
-        <a href="" @click="refresh"> BI </a>
-      </div>
-      <div class="menu">
-        <a @click.prevent="movePage('login')" href="">로그인</a>
-        <div>/</div>
-        <a @click.prevent="movePage('terms')" href="" >회원가입</a>
-      </div>
-    </div>
-    <div class = "slider">
+    <div class="slider">
       <MainSlider />
-  </div>
-    <div class="core-value">
-      <div>
-      </div>
-      <div>
-      </div>
-      <div>
+    </div>
+    <div class="main-bottom">
+      <div class="About-VaRoon">About VaRoon</div>
+      <div class="core">
+        <div class="introduce">
+          <div id="num">01</div>
+          <div id="name">정확한 측정</div>
+          <img src="../images/22@2x.png" />
+        </div>
+        <div class="introduce">
+          <div id="num">02</div>
+          <div id="name">가상 프리즘</div>
+          <img src="../images/23@2x.png" />
+        </div>
+        <div class="introduce">
+          <div id="num">03</div>
+          <div id="name">차별 송출</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import MainSlider from './MainSlider'
-import {mapMutations} from 'vuex'
+import MainSlider from "./MainSlider";
 
 export default {
   components: {
-    MainSlider,
-  },
-  methods: {
-    ...mapMutations([
-      'CHANGE_COMPONENT'
-    ]),
-    refresh() {
-      location.reload();
-    },
-    movePage(index) {
-      this.CHANGE_COMPONENT(index);
-      this.$router.push('/loginManager')
-    }
+    MainSlider
   }
-}
+};
 </script>
 <style>
-.header {
-  flex: none;
-  background-color: rgba(0,0,0,.15);
-  height: 50px;
-  padding: 0px;
+.main-bottom {
+  width: 1920px;
+  height: 691px;
+  position: relative;
 }
-.header-BI{
-  text-align: center;
-  font-weight: bolder;
-  height: 50px;
-  width: 50px;
-  background-color: rgba(71, 71, 71, 1);
-  font-size: 24px;
+.About-VaRoon {
+  width: 232px;
+  height: 42px;
+  margin-top: 68.6px;
+  left: 845px;
+  position: relative;
+  font-family: NanumBarunGothicLightOTF;
+  font-size: 36px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: left;
+  display: inline-block;
+  color: #000000;
 }
-.header-BI a{
-  display: block;
-  text-decoration: none;
-  color: rgba(255,255,255,.5);
-  margin: 0px;
-  padding: 0px;
-  line-height: 50px;
-}
-
-.header-BI a:hover,
-.header-BI a:focus {
-  color: rgba(255,255,255,.9);
-}
-.menu  {
-  position: absolute;
-  right: 15px;
-  top: 5px;
-}
-.menu a,
-.menu div{
-  float: left;
-  position: static;
-  color: white;
-  padding: 10px;
-  text-decoration: none;
-  line-height: 25px;
-}
-.slider{
+.core {
+  margin-top: 33.4px;
+  margin-left: 380px;
+  background-color: #fcfcfc;
   height: auto;
-  overflow: hidden;
 }
-.core-value{
-  position: static;
-  width: 100%;
-  padding-left: 10%;
-}
-.core-value div{
+.core .introduce {
+  width: 357px;
+  height: 458px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
+  background-color: #ffffff;
   float: left;
-  display: block;
-  height: 500px;
-  width: 25%;
-  margin-left: 2%;
-  border: 2px solid #000;
-}
-.header-auth a:hover,
-.header-auth a:focus {
-  background-color: rgba(255,255,255, .3);
+  margin-right: 44px;
 }
 
+.introduce #num {
+  margin-top: 46px;
+  margin-left: 163px;
+  width: 32px;
+  height: 32px;
+  font-family: NanumBarunGothicUltraLightOTF;
+  font-size: 28px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4b74ff;
+}
+
+.introduce #name {
+  margin-top: 17px;
+  height: 27px;
+  font-family: NanumBarunGothicUltraLightOTF;
+  font-size: 24px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000000;
+}
+
+.introduce img {
+  margin-top: 39px;
+  width: 357px;
+  height: 297px;
+  object-fit: cover;
+}
 </style>

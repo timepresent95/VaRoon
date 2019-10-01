@@ -1,9 +1,6 @@
 <template>
   <div>
-    <router-link to="/">
-      <img class="congratulation" src="http://placehold.it/25x25" />
-    </router-link>
-    <h1> 환자관리 </h1>
+    <h1>환자관리</h1>
     <div>
       <button>클라이언트 다운로드</button>
     </div>
@@ -13,24 +10,14 @@
       <button>로그아웃</button>
     </div>
     <div>
-      <input
-        type="text"
-        placeholder="검색">
+      <input type="text" placeholder="검색" />
       <ul>
-        <li>
-          번호
-        </li>
-        <li>
-          이름
-        </li>
-        <li>
-          성별
-        </li>
-        <li>
-          나이
-        </li>
+        <li>번호</li>
+        <li>이름</li>
+        <li>성별</li>
+        <li>나이</li>
       </ul>
-      <button>환자등록</button>
+      <button @click.prevent="patientRegist = !patientRegist">환자등록</button>
       <button>환자삭제</button>
     </div>
     <div>
@@ -41,33 +28,48 @@
       기타 특이사항:{{etc}}
       <button>저장</button>
     </div>
-    <Chart/>
-    <PatientRegister/>
+    <Chart />
+    <PatientRegister v-if="patientRegist" @regist="PATIENT_REGIST" />
   </div>
 </template>
 <script>
-import Chart from './Chart.vue'
-import PatientRegister from './PatientRegister'
+import Chart from "./Chart.vue";
+import PatientRegister from "./PatientRegister";
+import { mapActions } from "vuex";
 
 export default {
-  components:{
+  components: {
     Chart,
     PatientRegister
   },
-  data(){
-    return{
-      name: '',
-      patientName:'',
-      sex:'',
-      age:0,
-      angle:[0,0],
-      etc:'',
-      totalPlayTime:0,
-      averagePlayTime:0
+  watch: {
+    patientRegist() {
+      console.log(this.patientRegist);
     }
+  },
+  created() {
+    this.PATIENT_REFER().then(data => {
+      this.chargePatient = data;
+    });
+  },
+  data() {
+    return {
+      chargePatient: [],
+      name: "",
+      patientName: "",
+      sex: "",
+      age: 0,
+      angle: [0, 0],
+      etc: "",
+      totalPlayTime: 0,
+      averagePlayTime: 0,
+      patientRegist: false
+    };
+  },
+  methods: {
+    ...mapActions(["PATIENT_REFER", "PATIENT_REGIST"])
   }
-}
+};
 </script>
 <style>
-
 </style>
