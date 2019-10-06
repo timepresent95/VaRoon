@@ -4,8 +4,10 @@ const state = {
     sellingComponent: 'sdk',
     patientComponent: 'pd',
     managerComponent: 'approval',
+    findComponent: 'newPass',
     token: null,
-
+    name: null,
+    role: null,
 }
 
 export default state

@@ -13,7 +13,7 @@
         <img class="pageImg" id="first" src="../images/home-vrmarket-img@2x.png" />
         <div class="overlay1"></div>
       </router-link>
-      <router-link v-if="true" to="/PatientCenter">
+      <router-link v-if="role === 'ROLE_Patient'" to="/PatientCenter">
         <img class="pageImg" id="second" src="../images/home-mediboard-img@2x.png" />
         <div class="overlay2"></div>
       </router-link>
@@ -25,16 +25,23 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       author: "For User"
     };
   },
+  computed: {
+    ...mapState(["role"])
+  },
   methods: {
     refresh() {
       location.reload();
     }
+  },
+  mounted() {
+    if (this.role == "ROLE_Doctor") this.$router.push("/DoctorCenter");
   }
 };
 </script>

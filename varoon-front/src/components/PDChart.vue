@@ -1,115 +1,159 @@
 <template>
   <div>
     <div class="pdChartIn">
-      <VueApexCharts width="1160" height="613" type="bar" :options="chartOptions" :series="series"></VueApexCharts>
+      <GChart class="leftPDChart" type="BubbleChart" :data="series1" :options="chartOptions" />
+      <GChart class="rightPDChart" type="BubbleChart" :data="series2" :options="chartOptions" />
       <div class="text">
         <div style="margin-bottom: 13px;" class="recentCheck">
-          <span class="category">최근 검사일</span>
-          <span class="categoryResult">{{recentDate}}</span>
+          <div class="category" style="float: left">최근 검사일</div>
+          <div class="categoryResult">{{recentDate}}</div>
         </div>
         <div class="angle">
-          <span class="category">사시각도</span>
-          <span class="categoryResult">L-{{angleL}} / R-{{angleR}}</span>
+          <div class="category" style="float: left">사시각도</div>
+          <div class="categoryResult">L-{{angleL}} / R-{{angleR}}</div>
         </div>
       </div>
     </div>
     <div class="selectBox">
       <div class="startDay">시작일</div>
       <select class="startSelector" v-model="startDay">
-        <option value="2019.09.01">2019.09.01</option>
-        <option value="2019.09.02">2019.09.02</option>
-        <option value="2019.09.03">2019.09.03</option>
-        <option value="2019.09.04">2019.09.04</option>
-        <option value="2019.09.05">2019.09.05</option>
-        <option value="2019.09.06">2019.09.06</option>
-        <option value="2019.09.07">2019.09.07</option>
-        <option value="2019.09.08">2019.09.08</option>
-        <option value="2019.09.09">2019.09.09</option>
-        <option value="2019.09.10">2019.09.10</option>
-        <option value="2019.09.11">2019.09.11</option>
-        <option value="2019.09.12">2019.09.12</option>
+        <option v-for="(data, index) in recentDates" :key="index" :value="data">{{data}}</option>
       </select>
       <div class="endDay">끝 일</div>
       <select class="endSelector" v-model="endDay">
-        <option value="2019.09.01">2019.09.01</option>
-        <option value="2019.09.02">2019.09.02</option>
-        <option value="2019.09.03">2019.09.03</option>
-        <option value="2019.09.04">2019.09.04</option>
-        <option value="2019.09.05">2019.09.05</option>
-        <option value="2019.09.06">2019.09.06</option>
-        <option value="2019.09.07">2019.09.07</option>
-        <option value="2019.09.08">2019.09.08</option>
-        <option value="2019.09.09">2019.09.09</option>
-        <option value="2019.09.10">2019.09.10</option>
-        <option value="2019.09.11">2019.09.11</option>
-        <option value="2019.09.12">2019.09.12</option>
+        <option v-for="(data, index)  in recentDates" :key="index" :value="data">{{data}}</option>
       </select>
     </div>
   </div>
 </template>
 <script>
-import VueApexCharts from "vue-apexcharts";
+/*
+TODO:
+
+  점 색상 점점 연하게 만드는 작업 해야함
+
+  create할때 에러발생시 대처법 만들어야함
+
+*/
+
+import { GChart } from "vue-google-charts";
+
+import { mapActions } from "vuex";
 
 export default {
   components: {
-    VueApexCharts
+    GChart
   },
   watch: {
-    startDay() {},
-    endDay() {}
+    startDay() {
+      this.startIndex = 0;
+      while (this.recentDates[this.startIndex++] !== this.startDay);
+    },
+    endDay() {
+      this.endIndex = 0;
+      while (this.recentDates[this.endIndex++] !== this.endDay);
+    },
+    startIndex() {
+      if (this.startIndex > this.endIndex) {
+        alert("wrong!!");
+        this.startDay = this.recentDates[0];
+      }
+      this.chartDataUpdate();
+    },
+    endIndex() {
+      if (this.startIndex > this.endIndex) {
+        alert("wrong!!");
+        this.endDay = this.recentDates[this.recentDates.length - 1];
+      }
+      this.chartDataUpdate();
+    }
   },
   data() {
     return {
+      rangeDataArr: [],
+      recentDates: [],
+      recentDate: "",
+      leftPDs: [],
+      rightPDs: [],
       name: "ㅇㅇㅇ",
-      recentDate: "19.05.01",
-      angleL: 12,
-      angleR: 13,
-      startDay: "2019.09.01",
-      endDay: "2019.09.12",
-      series: [
-        {
-          name: "angleL",
-          data: [44, 55, 41, 64, 22, 43, 21]
-        },
-        {
-          name: "angleR",
-          data: [53, 32, 33, 52, 13, 44, 32]
-        }
-      ],
+      angleL: [],
+      angleR: [],
+      startDay: "",
+      endDay: "",
+      startIndex: 0,
+      endIndex: 0,
+      series1: [["id", "horizontal", "vartical", "color"], ["", 0, 0, 0, 1]],
+      series2: [["id", "horizontal", "vartical", "color"], ["", 0, 0, 0, 1]],
       chartOptions: {
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            dataLabels: {
-              position: "top"
-            }
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          offsetX: -6,
-          style: {
-            fontSize: "12px",
-            colors: ["#fff"]
-          }
-        },
-        stroke: {
-          show: true,
-          width: 1,
-          colors: ["#fff"]
-        },
-
-        xaxis: {
-          categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007]
+        legend: "none",
+        width: 580,
+        height: 613,
+        colorAxis: { colors: ["black", "white"], legend: { position: "none" } },
+        sizeAxis: { minSize: 1, maxSize: 10 },
+        bubble: {
+          textStyle: { auraColor: "none", color: "#ffffff", fontSize: 0.1 }
         }
       }
     };
+  },
+  methods: {
+    ...mapActions(["PD_CHART"]),
+    chartDataUpdate() {
+      const nameTag = ["checkupDay", "horizontal", "vartical", "recentPlus"];
+      this.series1 = this.leftPDs
+        .slice(this.startIndex, this.endIndex + 1)
+        .map((data, index) => [
+          this.recentDates[this.startIndex + index - 1],
+          data[0],
+          data[1],
+          index
+        ]);
+
+      this.series1.unshift(nameTag);
+      this.series2 = this.rightPDs
+        .slice(this.startIndex, this.endIndex + 1)
+        .map((data, index) => [
+          this.recentDates[this.startIndex + index - 1],
+          data[0],
+          data[1],
+          index
+        ]);
+      this.series2.unshift(nameTag);
+    }
+  },
+  created() {
+    this.PD_CHART().then(data => {
+      this.rangeDataArr = data;
+      this.recentDates = Array.from(data, data => data.date);
+      this.leftPDs = Array.from(Array.from(data, data => data.leftPD), data => [
+        data.horizontal,
+        data.vertical
+      ]);
+      this.rightPDs = Array.from(
+        Array.from(data, data => data.rightPD),
+        data => [data.horizontal, data.vertical]
+      );
+      this.startIndex = 0;
+      this.endIndex = this.recentDates.length - 1;
+      this.startDay = this.recentDates[this.startIndex];
+      this.endDay = this.recentDates[this.endIndex];
+      this.angleL = this.leftPDs[this.endIndex];
+      this.angleR = this.rightPDs[this.endIndex];
+      this.recentDate = this.recentDates[this.endIndex];
+    });
   }
 };
 </script>
 <style>
 .pdChartIn {
   height: 613px;
+}
+.leftPDChart {
+  position: absolute;
+}
+.rightPDChart {
+  position: absolute;
+  left: 600px;
 }
 .pdChartIn .chartVue {
   position: absolute;
@@ -132,11 +176,12 @@ export default {
   text-align: right;
   color: #000000;
   display: inline-block;
+  margin-right: 25px;
 }
-.pdChartIn .categoryResult {
+.text .categoryResult {
   margin-left: 25px;
-  width: 86px;
   height: 16px;
+  width: 300px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 14px;
   font-weight: 200;
@@ -144,7 +189,7 @@ export default {
   font-stretch: normal;
   letter-spacing: normal;
   text-align: left;
-  display: inline-block;
+  display: block;
   color: #000000;
 }
 .selectBox {

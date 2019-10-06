@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="currentTitle">
-      <span style="font-family: NanumBarunGothicOTF;">{{patientName}}</span>
+      <span style="font-family: NanumBarunGothicOTF;">{{name}}</span>
       <span>님의</span>
       <span>{{pageName}}</span>
       <span>차트입니다</span>
@@ -35,7 +35,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["patientComponent"]),
+    ...mapState(["patientComponent", "name"]),
     pageName() {
       if (this.patientComponent === "pd") return "사시각";
       else if (this.patientComponent === "range") return "안근능력";

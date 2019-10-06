@@ -4,11 +4,11 @@
       <div class="Setting">
         <div class="mainEye">주시안 선택</div>
         <ul>
-          <input type="radio" value="right" v-model="mainEye" />
+          <input type="radio" value="right" disabled v-model="trainingChartData.mainEye" />
           <span>우안</span>
         </ul>
         <ul>
-          <input type="radio" value="left" v-model="mainEye" />
+          <input type="radio" value="left" disabled v-model="trainingChartData.mainEye" />
           <span>좌안</span>
         </ul>
       </div>
@@ -77,8 +77,15 @@
   </div>
 </template>
 <script>
+/*
+TODO:
+
+  create할때 에러발생시 대처법 만들어야함
+
+*/
 import VueSlider from "vue-slider-component";
 import { mapActions } from "vuex";
+
 import "vue-slider-component/theme/default.css";
 
 export default {
@@ -86,9 +93,6 @@ export default {
     VueSlider
   },
   computed: {
-    mainEye() {
-      return this.trainingChartData.mainEye;
-    },
     horizontalPrizm() {
       return [
         this.trainingChartData.horizontalMin,
@@ -100,39 +104,37 @@ export default {
         this.trainingChartData.verticalMin,
         this.trainingChartData.verticalMax
       ];
-    },
-    //TODO:데이터 수정해야함
-    horizontalPrizm() {
-      return [
-        this.trainingChartData.horizontalMin,
-        this.trainingChartData.horizontalMax
-      ];
-    },
-    //TODO:데이터 수정해야함
-    horizontalPrizm() {
-      return [
-        this.trainingChartData.horizontalMin,
-        this.trainingChartData.horizontalMax
-      ];
-    },
-    //TODO:데이터 수정해야함
-    horizontalPrizm() {
-      return [
-        this.trainingChartData.horizontalMin,
-        this.trainingChartData.horizontalMax
-      ];
     }
+    //TODO:데이터 수정해야함
+    // horizontalPrizm() {
+    //   return [
+    //     this.trainingChartData.horizontalMin,
+    //     this.trainingChartData.horizontalMax
+    //   ];
+    // },
+    // //TODO:데이터 수정해야함
+    // horizontalPrizm() {
+    //   return [
+    //     this.trainingChartData.horizontalMin,
+    //     this.trainingChartData.horizontalMax
+    //   ];
+    // },
+    // //TODO:데이터 수정해야함
+    // horizontalPrizm() {
+    //   return [
+    //     this.trainingChartData.horizontalMin,
+    //     this.trainingChartData.horizontalMax
+    //   ];
+    // }
   },
   data() {
     return {
-      tabs: ["오른쪽", "왼쪽"],
-      selectedTab: "오른쪽",
       value: [0, 50],
       trainingChartData: {
         blur: 0,
         horizontalMax: 0,
         horizontalMin: 0,
-        mainEye: "",
+        mainEye: "right",
         objectNumber: 0,
         verticalMax: 0,
         verticalMin: 0,
@@ -141,14 +143,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["TRAINING_CHART"]),
-    onClickTab(tab) {
-      this.selectedTab = tab;
-    }
+    ...mapActions(["TRAINING_CHART"])
   },
   created() {
     this.TRAINING_CHART().then(data => {
-      this.trainingChartData = data;
+      this.trainingChartData = { ...data };
     });
   }
 };

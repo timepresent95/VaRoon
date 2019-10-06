@@ -19,9 +19,9 @@ export default {};
 }
 .catchprize {
   padding-top: 44px;
-  left: 1154px;
+  left: 1148px;
   position: absolute;
-  width: 386px;
+  width: 388px;
   height: 46px;
   font-family: NanumBarunGothicOTF;
   font-size: 40px;

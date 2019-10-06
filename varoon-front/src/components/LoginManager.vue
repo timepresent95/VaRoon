@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="menu-bar">
+  <div class="login_manager">
+    <!-- <div class="menu-bar">
       <a
         href
         :class="{'bold': changeFontWeigth('login')}"
@@ -18,7 +18,7 @@
         :class="{'bold': changeFontWeigth('findAccount')}"
         @click.prevent="CHANGE_LOGIN_COMPONENT('findAccount')"
       >아이디/비밀번호 찾기</a>
-    </div>
+    </div>-->
     <hr />
     <Login v-if="loginComponent === 'login'" />
     <Terms v-else-if="loginComponent === 'terms'" />
@@ -85,5 +85,8 @@ export default {
 }
 .menu-bar .bold {
   font-weight: bolder;
+}
+.login_manager {
+  height: 1300px;
 }
 </style>

@@ -2,8 +2,9 @@
   <div>
     <div class="rangeSetting">
       <div class="settingTitle">측정 날짜</div>
-      <ul>
-        <input type="radio" />
+      <ul v-for="(date, index) in recentDate" :key="index">
+        <input type="radio" :value="index" v-model="selectDateIndex" />
+        {{date}}
       </ul>
     </div>
     <div class="rangeChartIn">
@@ -33,15 +34,30 @@
   </div>
 </template>
 <script>
+/*
+TODO:
+
+create할때 에러발생시 문제 해결해야함
+
+*/
 import VueApexCharts from "vue-apexcharts";
+
+import { mapActions } from "vuex";
 
 export default {
   components: {
     VueApexCharts
   },
+  watch: {
+    selectDateIndex() {
+      this.updateChart();
+    }
+  },
   data() {
     return {
-      recentDate: "19.05.01",
+      rangeDataArr: [],
+      recentDate: [],
+      selectDateIndex: "",
       angleL: 12,
       angleR: 13,
       startDay: "2019.09.01",
@@ -53,7 +69,7 @@ export default {
         },
         {
           name: "rangeR",
-          data: [53, 32, 33, 52, 13, 44, 32, 10]
+          data: []
         }
       ],
       rightSeries: [
@@ -63,7 +79,7 @@ export default {
         },
         {
           name: "rangeL",
-          data: [0, 32, 33, 52, 13, 44, 32, 10]
+          data: []
         }
       ],
       chartOptions: {
@@ -103,13 +119,68 @@ export default {
         }
       }
     };
+  },
+  methods: {
+    ...mapActions(["RANGE_CHART"]),
+    updateChart() {
+      let newData = [
+        this.rangeDataArr[this.selectDateIndex].leftRange.up,
+        this.rangeDataArr[this.selectDateIndex].leftRange.rightUp,
+        this.rangeDataArr[this.selectDateIndex].leftRange.right,
+        this.rangeDataArr[this.selectDateIndex].leftRange.rightDown,
+        this.rangeDataArr[this.selectDateIndex].leftRange.down,
+        this.rangeDataArr[this.selectDateIndex].leftRange.leftDown,
+        this.rangeDataArr[this.selectDateIndex].leftRange.left,
+        this.rangeDataArr[this.selectDateIndex].leftRange.leftUp
+      ];
+      this.leftSeries = [
+        {
+          name: "normal-average",
+          data: [30, 35, 50, 45, 40, 45, 50, 35]
+        },
+        {
+          name: "rangeL",
+          data: newData
+        }
+      ];
+      newData = [
+        this.rangeDataArr[this.selectDateIndex].rightRange.up,
+        this.rangeDataArr[this.selectDateIndex].rightRange.rightUp,
+        this.rangeDataArr[this.selectDateIndex].rightRange.right,
+        this.rangeDataArr[this.selectDateIndex].rightRange.rightDown,
+        this.rangeDataArr[this.selectDateIndex].rightRange.down,
+        this.rangeDataArr[this.selectDateIndex].rightRange.leftDown,
+        this.rangeDataArr[this.selectDateIndex].rightRange.left,
+        this.rangeDataArr[this.selectDateIndex].rightRange.leftUp
+      ];
+      this.rightSeries = [
+        {
+          name: "normal-average",
+          data: [30, 35, 50, 45, 40, 45, 50, 35]
+        },
+        {
+          name: "rangeR",
+          data: newData
+        }
+      ];
+    }
+  },
+  mounted() {
+    this.RANGE_CHART()
+      .then(data => {
+        this.rangeDataArr = data;
+        this.recentDate = Array.from(data, data => data.date);
+      })
+      .catch(_ => {
+        alert("error");
+      });
   }
 };
 </script>
 <style>
 .rangeSetting {
   width: 274px;
-  height: 613px;
+  min-height: 613px;
   border-radius: 3px;
   box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;

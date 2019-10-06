@@ -16,8 +16,10 @@ const store = new Vuex.Store({
 })
 
 //새로고침했을 때 로그인 유지
-const {
-    token
-} = localStorage
-store.commit('LOGIN', token)
+const data = {
+    token: localStorage.token,
+    name: localStorage.name,
+    role: localStorage.role
+}
+store.commit('LOGIN', data)
 export default store

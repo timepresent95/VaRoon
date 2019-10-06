@@ -18,15 +18,26 @@ const mutations = {
     CHANGE_MANAGE_COMPONENT(state, index) {
         state.managerComponent = index
     },
-    LOGIN(state, token) {
-        if (!token) return
-        state.token = token
-        localStorage.setItem('token', token)
-        setAuthInHeader(token)
+    CHANGE_FIND_COMPONENT(state, index) {
+        state.findComponent = index
+    },
+    LOGIN(state, data) {
+        if (!data.token) return
+        state.token = data.token
+        state.name = data.name
+        state.role = data.role
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('name', data.name)
+        localStorage.setItem('role', data.role)
+        setAuthInHeader(data.token)
     },
     LOGOUT(state) {
         state.token = null
+        state.name = null
+        state.role = null
         delete localStorage.token
+        delete localStorage.name
+        delete localStorage.role
         setAuthInHeader(null)
     },
 }

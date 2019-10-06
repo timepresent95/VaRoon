@@ -10,9 +10,6 @@ const request = (method, url, data) => {
     return axios({
             method,
             url: DOMAIN + url,
-            headers: {
-                Accept: 'application/hal+json'
-            },
             data
         }).then(result => result.data)
         .catch(result => {
@@ -25,8 +22,8 @@ const request = (method, url, data) => {
 }
 
 export const setAuthInHeader = token => {
-    axios.defaults.headers.common['X-AUTH-TOKEN'] = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcHAiLCJyb2xlcyI6IlJPTEVfUGF0aWVudCIsImlhdCI6MTU2OTkxOTQ4NCwiZXhwIjoxNTY5OTIzMDg0fQ.XVI-RVK4lXyF647V6EsJ92iqvQ0Dylj9ItJh44XhUwo';
-    //TODO: 이부분에 변수로 토큰을 집어넣으면 undefined가 뜨는 오류를 해결해야함(token.token이 안됨)
+    axios.defaults.headers.common['Accept'] = 'application/json'
+    axios.defaults.headers.common['X-AUTH-TOKEN'] = token ? `${token}` : null
 }
 
 export const auth = {
@@ -42,17 +39,20 @@ export const regist = {
     checkDuplicate(id) {
         return request('get', `/Home/Regist/${id}`)
     },
-    regist(regist) {
+    registIt(regist) {
         return request('post', `/Home/Regist`, regist)
     }
 }
 
 export const medi = {
-    pdchartDay() {
-        /* 어떻게 쓰는지 모르겠어.... */
+    pdchart() {
+        return request('get', '/MediBoard/PDChart')
     },
     rangeChart() {
-        return request('get', '/M')
+        return request('get', '/MediBoard/RangeChart')
+    },
+    focusChart() {
+        return request('get', '/MediBoard/FocusChart')
     },
     trainingChart() {
         return request('get', '/MediBoard/TrainingChart')
@@ -62,9 +62,12 @@ export const medi = {
 
 export const chart = {
     refer() {
-        return request('get', `/Home/Chart`)
+        return request('get', `/Chart`)
     },
     regist(id) {
-        return request('post', `/Home/Chart`, id)
+        return request('post', `/Chart?id=${id}`, )
+    },
+    patientChart(id) {
+        return request('get', `/Chart/${id}`)
     }
 }

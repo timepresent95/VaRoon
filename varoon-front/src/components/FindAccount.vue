@@ -1,46 +1,33 @@
 <template>
   <div>
-    <ul class="tabs">
-    <li :key = "tab" v-for="tab in tabs" :class="{active: tab === selectedTab}"
-    @click="onClickTab(tab)">
-      {{tab}}
-    </li>
-  </ul>
-    <div v-if="selectedTab === tabs[0]">
-      <FindId> </FindId>
-    </div>
-    <div v-else>
-      <FindPassword> </FindPassword>
-      <NewPassword/>
-      <CompleteChange/>
-    </div>
+    <FindId v-if="findComponent === 'id'"></FindId>
+    <FindPassword v-else-if="findComponent === 'pass'"></FindPassword>
+    <NewPassword v-else-if="findComponent === 'newPass'" />
+    <CompleteChange v-else-if="findComponent === 'complete'" />
   </div>
 </template>
 <script>
-import FindId from './FindId.vue'
-import FindPassword from './FindPassword.vue'
-import NewPassword from './NewPassword.vue'
-import CompleteChange from './CompleteChange.vue'
+import { mapState } from "vuex";
+
+import FindId from "./FindId.vue";
+import FindPassword from "./FindPassword.vue";
+import NewPassword from "./NewPassword.vue";
+import CompleteChange from "./CompleteChange.vue";
 
 export default {
-  components:{
+  components: {
     FindId,
     FindPassword,
     NewPassword,
     CompleteChange
   },
-  data(){
-    return{
-      tabs:['아이디 찾기', '비밀번호 찾기'],
-      selectedTab: '아이디 찾기'
-    }
+  data() {
+    return {};
   },
-  methods: {
-    onClickTab(tab) {
-      this.selectedTab = tab
-    }
+  computed: {
+    ...mapState(["findComponent"])
   }
-}
+};
 </script>
 <style>
 ul.tabs {
@@ -52,7 +39,7 @@ ul.tabs {
   padding: 15px;
   text-align: center;
   box-sizing: border-box;
-  border-bottom: 1px solid #ccc; 
+  border-bottom: 1px solid #ccc;
   background-color: #eee;
   color: #999;
 }
@@ -64,7 +51,7 @@ ul.tabs {
   box-sizing: border-box;
   display: block;
   padding: 15px;
-  border-bottom: 1px solid #ccc; 
+  border-bottom: 1px solid #ccc;
   position: relative;
 }
 .list li:last-child {

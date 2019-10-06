@@ -7,7 +7,8 @@ import {
 
 const actions = {
     LOGIN({
-        commit
+        commit,
+        state
     }, {
         id,
         pw
@@ -17,13 +18,22 @@ const actions = {
                 commit('LOGIN', data)
             })
     },
-    CHECK_DUPLICATE(_, {
+    CHECK_DUPLICATE(_,
         id
-    }) {
+    ) {
         return regist.checkDuplicate(id)
     },
-    REGIST(_, regist) {
-        return regist.regist(regist)
+    REGIST_FUNC(_, data) {
+        return regist.registIt(data)
+    },
+    PD_CHART() {
+        return medi.pdchart()
+    },
+    RANGE_CHART() {
+        return medi.rangeChart()
+    },
+    FOCOUS_CHART() {
+        return medi.focusChart()
     },
     TRAINING_CHART() {
         return medi.trainingChart()
@@ -31,12 +41,11 @@ const actions = {
     PATIENT_REFER() {
         return chart.refer();
     },
-    PATIENT_REGIST({
-        dispatch
-    }, id) {
-        return chart.regist(id).then(() =>
-            dispatch('PATIENT_REFER')
-        );
+    PATIENT_REGIST(_, id) {
+        return chart.regist(id)
+    },
+    PATIENT_CHART(_, id) {
+        return chart.patientChart(id)
     }
 }
 

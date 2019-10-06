@@ -9,25 +9,25 @@
     <div class="gameImageBox">
       <ul class="ingameImages">
         <li>
-          <img class="congratulation" src="http://placehold.it/102x50" />
+          <img class="smallInagameImage" src="http://placehold.it/102x59" />
         </li>
         <li>
-          <img class="congratulation" src="http://placehold.it/102x50" />
+          <img class="smallInagameImage" src="http://placehold.it/102x59" />
         </li>
         <li>
-          <img class="congratulation" src="http://placehold.it/102x50" />
+          <img class="smallInagameImage" src="http://placehold.it/102x59" />
         </li>
         <li>
-          <img class="congratulation" src="http://placehold.it/102x50" />
+          <img class="smallInagameImage" src="http://placehold.it/102x59" />
         </li>
         <li>
-          <img class="congratulation" src="http://placehold.it/102x50" />
+          <img class="smallInagameImage" src="http://placehold.it/102x59" />
         </li>
         <li>
-          <img class="congratulation" src="http://placehold.it/102x50" />
+          <img class="smallInagameImage" src="http://placehold.it/102x59" />
         </li>
       </ul>
-      <img class="bigIngameImage" src="http://placehold.it/544x410" />
+      <img class="bigIngameImage" src="../images/36@2x.png" />
     </div>
     <div class="gameDescriptBox">
       <div class="age">{{descript.useAge}}세 이용가</div>
@@ -194,9 +194,17 @@ export default {
   left: 382px;
 }
 .ingameImages li {
-  margin-bottom: 15px;
+  height: 59px;
+  margin-bottom: 11px;
+}
+.smallInagameImage {
+  width: 102px;
+  height: 59px;
 }
 .bigIngameImage {
+  width: 542px;
+  height: 409px;
+  object-fit: contain;
   position: absolute;
   top: 183.7px;
   left: 503.3px;
