@@ -20,7 +20,7 @@
           <div :class="{'index': false, 'lastIndex': true}">{{index+1}}</div>
           <div :class="{'name': false, 'lastName': true}">{{i.name}}</div>
           <div :class="{'sex': false, 'lastSex': true}">{{i.gender}}</div>
-          <div :class="{'age': false, 'lastAge': true}">{{2019-Number(i.age.slice(0,4))+1}}</div>
+          <div :class="{'age': false, 'lastAge': true}">{{2019-Number(i.age.slice(0,4))-1}}</div>
         </li>
       </ul>
       <div class="patientListButton" @click.prevent="patientRegist = !patientRegist">추가</div>
@@ -55,7 +55,24 @@
         </div>
         <div class="infoBoxButton">저장</div>
       </div>
-      <div class="patientInfochart"></div>
+      <div class="patientInfochart">
+        <!-- <doctor-p-d-chart :pdlist="pdlist" /> -->
+        <!-- <doctor-range-chart :rangesList="rangesList" /> -->
+        <!-- <doctor-focus-chart :playLogs="playLogs" /> -->
+        <!-- <doctor-training-chart
+          :blurMax="prescription.blurMax"
+          :blurMin="prescription.blurMin"
+          :horizontalMax="prescription.horizontalMax"
+          :horizontalMin="prescription.horizontalMin"
+          :mainEye="prescription.mainEye"
+          :objectMax="prescription.objectMax"
+          :objectMin="prescription.objectMin"
+          :verticalMax="prescription.verticalMax"
+          :verticalMin="prescription.verticalMin"
+          :vividMax="prescription.vividMax"
+          :vividMin="prescription.vividMin"
+        />-->
+      </div>
     </div>
     <PatientRegister v-if="patientRegist" @regist="RegistFunc" />
   </div>
@@ -69,21 +86,33 @@ TODO:
   의사 그래프!
 */
 import PatientRegister from "./PatientRegister";
+import DoctorPDChart from "./DoctorPDChart.vue";
+import DoctorRangeChart from "./DoctorRangeChart.vue";
+import DoctorFocusChart from "./DoctorFocusChart.vue";
+import DoctorTrainingChart from "./DoctorTrainingChart.vue";
 import { mapActions } from "vuex";
 
 export default {
   components: {
-    PatientRegister
+    PatientRegister,
+    DoctorPDChart,
+    DoctorRangeChart,
+    DoctorFocusChart,
+    DoctorTrainingChart
   },
   watch: {
     id() {
-      console.log(this.id);
       this.PATIENT_CHART(this.id).then(data => {
         console.log(data);
         this.name = data.name;
         this.age = data.age;
         this.sex = data.gender;
         this.etc = data.desc;
+        this.prescription = data.prescription;
+        this.angle = `L:${data.leftPD.horizontal},${data.leftPD.vertical} R:${data.rightPD.horizontal},${data.rightPD.vertical}`;
+        this.pdlist = data.pdlist;
+        this.rangesList = data.rangesList;
+        this.playLogs = data.playLogs;
       });
     },
     search() {
@@ -94,7 +123,7 @@ export default {
       let i = -1;
       while (true) {
         if (this.chargePatient[++i].name.indexOf(this.search) !== -1) {
-          this.selectIndex = i;
+          this.selectList(i);
           break;
         }
         if (i >= this.chargePatient.length - 1) {
@@ -117,17 +146,38 @@ export default {
       patientName: "",
       sex: "",
       age: "",
-      angle: [0, 0],
+      angle: "",
       etc: "",
       search: "",
       id: "",
       totalPlayTime: 0,
       averagePlayTime: 0,
-      patientRegist: false
+      patientRegist: false,
+      prescription: {
+        blurMax: 0,
+        blurMin: 0,
+        horizontalMax: 0,
+        horizontalMin: 0,
+        mainEye: null,
+        objectMax: 0,
+        objectMin: 0,
+        verticalMax: 0,
+        verticalMin: 0,
+        vividMax: 0,
+        vividMin: 0
+      },
+      pdlist: [],
+      rangesList: [],
+      playLogs: []
     };
   },
   methods: {
-    ...mapActions(["PATIENT_REFER", "PATIENT_REGIST", "PATIENT_CHART"]),
+    ...mapActions([
+      "PATIENT_REFER",
+      "PATIENT_REGIST",
+      "PATIENT_CHART",
+      "PATIENT_CHARTUPDATE"
+    ]),
     RegistFunc(id) {
       this.PATIENT_REGIST(id).then(_ => {
         this.PATIENT_REFER().then(data => {
@@ -137,9 +187,6 @@ export default {
     },
     selectList(index) {
       this.selectIndex = index;
-      this.name = this.chargePatient[index].name;
-      this.age = this.chargePatient[index].age;
-      this.sex = this.chargePatient[index].gender;
       this.id = this.chargePatient[index].id;
     }
   }

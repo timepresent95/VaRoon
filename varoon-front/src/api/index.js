@@ -69,5 +69,12 @@ export const chart = {
     },
     patientChart(id) {
         return request('get', `/Chart/${id}`)
+    },
+    patientChartUpdate({
+        id,
+        prescription
+    }) {
+        console.log(id, prescription)
+        return request('post', `/Chart/${id}`, prescription)
     }
 }

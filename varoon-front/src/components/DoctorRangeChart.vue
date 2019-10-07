@@ -1,0 +1,237 @@
+<template>
+  <div>
+    <div class="rangeSetting">
+      <div class="settingTitle">측정 날짜</div>
+      <ul v-for="(date, index) in recentDate" :key="index">
+        <input type="radio" :value="index" v-model="selectDateIndex" />
+        {{date}}
+      </ul>
+    </div>
+    <div class="rangeChartIn">
+      <div class="rangeBox">
+        <div class="rangeboxId">우안</div>
+        <VueApexCharts
+          class="rangeChart"
+          type="radar"
+          width="375"
+          height="375"
+          :options="chartOptions"
+          :series="leftSeries"
+        ></VueApexCharts>
+      </div>
+      <div class="rangeBox">
+        <div class="rangeboxId">좌안</div>
+        <VueApexCharts
+          class="rangeChart"
+          type="radar"
+          width="375"
+          height="375"
+          :options="chartOptions"
+          :series="rightSeries"
+        ></VueApexCharts>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+/*
+TODO:
+
+  그래프 위치 조정해야함
+
+  아직 props값이 들어오기 전에 처리
+
+
+*/
+import VueApexCharts from "vue-apexcharts";
+
+import { mapActions } from "vuex";
+
+export default {
+  components: {
+    VueApexCharts
+  },
+  props: {
+    rangesList: {}
+  },
+  watch: {
+    selectDateIndex() {
+      this.updateChart();
+    },
+    rangesList() {
+      this.rangeDataArr = Array.from(this.rangesList);
+      this.recentDate = Array.from(this.rangeDataArr, data => data.date);
+    }
+  },
+  data() {
+    return {
+      rangeDataArr: [],
+      recentDate: [],
+      selectDateIndex: "",
+      angleL: 12,
+      angleR: 13,
+      startDay: "2019.09.01",
+      endDay: "2019.09.12",
+      leftSeries: [
+        {
+          name: "normal-average",
+          data: [30, 35, 50, 45, 40, 45, 50, 35]
+        },
+        {
+          name: "rangeR",
+          data: []
+        }
+      ],
+      rightSeries: [
+        {
+          name: "normal-average",
+          data: [30, 35, 50, 45, 40, 45, 50, 35]
+        },
+        {
+          name: "rangeL",
+          data: []
+        }
+      ],
+      chartOptions: {
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            dataLabels: {
+              position: "top"
+            }
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          offsetX: -6,
+          style: {
+            fontSize: "12px",
+            colors: ["#fff"]
+          }
+        },
+        stroke: {
+          show: true,
+          width: 1,
+          colors: ["#fff"]
+        },
+
+        xaxis: {
+          categories: [
+            "up",
+            "leftup",
+            "right",
+            "rightdown",
+            "down",
+            "leftdown",
+            "left",
+            "leftup"
+          ]
+        }
+      }
+    };
+  },
+  methods: {
+    ...mapActions(["RANGE_CHART"]),
+    updateChart() {
+      let newData = [
+        this.rangeDataArr[this.selectDateIndex].leftRange.up,
+        this.rangeDataArr[this.selectDateIndex].leftRange.rightUp,
+        this.rangeDataArr[this.selectDateIndex].leftRange.right,
+        this.rangeDataArr[this.selectDateIndex].leftRange.rightDown,
+        this.rangeDataArr[this.selectDateIndex].leftRange.down,
+        this.rangeDataArr[this.selectDateIndex].leftRange.leftDown,
+        this.rangeDataArr[this.selectDateIndex].leftRange.left,
+        this.rangeDataArr[this.selectDateIndex].leftRange.leftUp
+      ];
+      this.leftSeries = [
+        {
+          name: "normal-average",
+          data: [30, 35, 50, 45, 40, 45, 50, 35]
+        },
+        {
+          name: "rangeL",
+          data: newData
+        }
+      ];
+      newData = [
+        this.rangeDataArr[this.selectDateIndex].rightRange.up,
+        this.rangeDataArr[this.selectDateIndex].rightRange.rightUp,
+        this.rangeDataArr[this.selectDateIndex].rightRange.right,
+        this.rangeDataArr[this.selectDateIndex].rightRange.rightDown,
+        this.rangeDataArr[this.selectDateIndex].rightRange.down,
+        this.rangeDataArr[this.selectDateIndex].rightRange.leftDown,
+        this.rangeDataArr[this.selectDateIndex].rightRange.left,
+        this.rangeDataArr[this.selectDateIndex].rightRange.leftUp
+      ];
+      this.rightSeries = [
+        {
+          name: "normal-average",
+          data: [30, 35, 50, 45, 40, 45, 50, 35]
+        },
+        {
+          name: "rangeR",
+          data: newData
+        }
+      ];
+    }
+  }
+};
+</script>
+<style>
+.rangeSetting {
+  width: 274px;
+  min-height: 613px;
+  border-radius: 3px;
+  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
+  background-color: #ffffff;
+  float: left;
+  margin-right: 21px;
+}
+.rangeChartIn {
+  float: left;
+  width: 867px;
+  height: 613px;
+  border-radius: 3px;
+  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
+  background-color: #ffffff;
+}
+.rangeBox {
+  height: 613px;
+  width: 433.5px;
+  float: left;
+}
+.rangeboxId {
+  width: 43px;
+  height: 27px;
+  font-family: NanumBarunGothicOTF;
+  font-size: 24px;
+  text-align: left;
+  color: #000000;
+  position: absolute;
+  left: 215.1px;
+  top: 93px;
+}
+.rangeChart {
+  position: absolute;
+  left: 45px;
+  top: 120px;
+}
+.settingTitle {
+  height: 20px;
+  font-family: NanumBarunGothicOTF;
+  font-size: 18px;
+  line-height: 2.5;
+  text-align: left;
+  color: #000000;
+  position: relative;
+  top: 36px;
+  left: 49.1px;
+  margin-bottom: 26px;
+}
+.rangeSetting ul {
+  position: relative;
+  top: 36px;
+  left: 49.1px;
+  margin-bottom: 20px;
+}
+</style>

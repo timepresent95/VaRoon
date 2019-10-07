@@ -46,6 +46,15 @@ const actions = {
     },
     PATIENT_CHART(_, id) {
         return chart.patientChart(id)
+    },
+    PATIENT_CHARTUPDATE(_, {
+        id,
+        prescription
+    }) {
+        return chart.patientChartUpdate({
+            id,
+            prescription
+        })
     }
 }
 
