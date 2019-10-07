@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="registTitle">회원가입</div>
-    <!-- <img class="loadMap" src="http://placehold.it/321x100" /> -->
+    <img class="loadMap" src="../images/join-step-two@2x.png" />
     <div class="registBoundLine"></div>
     <div class="registBox">
       <div class="registCategory">
@@ -93,7 +93,7 @@
     <button
       class="registBtn"
       @click.prevent="regist"
-      :class="{'btn-success': !invalidForm}"
+      :class="{'registBtn-success': !invalidForm}"
       :disabled="invalidForm"
     >가입하기</button>
   </div>
@@ -251,6 +251,14 @@ export default {
   position: absolute;
   top: 100px;
   left: 903px;
+}
+.loadMap {
+  width: 400px;
+  height: 72px;
+  object-fit: contain;
+  position: absolute;
+  top: 165px;
+  left: 760px;
 }
 .registBoundLine {
   width: 636px;
@@ -425,6 +433,22 @@ export default {
   position: absolute;
   left: 752px;
   top: 1189px;
+  outline: none;
+}
+.registBtn-success {
+  width: 416px;
+  height: 64px;
+  border-radius: 3px;
+  box-shadow: 0 3px 10px 0 rgba(75, 116, 255, 0.6);
+  background-color: #4b74ff;
+  font-family: NanumBarunGothicOTF;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+  left: 752px;
+  top: 1189px;
+  outline: none;
 }
 .canUseId {
   width: 152px;

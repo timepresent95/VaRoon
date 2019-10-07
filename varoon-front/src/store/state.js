@@ -4,7 +4,7 @@ const state = {
     sellingComponent: 'sdk',
     patientComponent: 'pd',
     managerComponent: 'approval',
-    findComponent: 'newPass',
+    findComponent: 'id',
     token: null,
     name: null,
     role: null,

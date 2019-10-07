@@ -7,7 +7,7 @@
     <div class="patientListBox">
       <div class="patientSearchBox">
         <img src="../images/search-icon@2x.png" />
-        <input type="text" placeholder="검색" />
+        <input type="text" v-model="search" placeholder="검색" />
       </div>
       <div class="patientListText">검색 결과</div>
       <ul>
@@ -29,11 +29,30 @@
     <div class="patientInfoBox">
       <div class="patientInfoText">
         <div class="patientInfoTextTitle">환자 정보</div>
-        <div class="name">이름{{name}}</div>
-        <div class="sex">성별{{sex}}</div>
-        <div class="age">나이{{2019-Number(age.slice(0,4))+1}}</div>
-        <div class="PD">사시각{{angle}}</div>
-        <div class="etc">기타 특이사항{{etc}}</div>
+        <div class="name">
+          이름
+          <span class="infoBlank"></span>
+          {{name}}
+        </div>
+        <div class="sex">
+          성별
+          <span class="infoBlank"></span>
+          {{sex}}
+        </div>
+        <div class="age">
+          나이
+          <span class="infoBlank"></span>
+          {{age}}
+        </div>
+        <div class="PD">
+          사시각
+          <span style="margin-right: 51.9px"></span>
+          {{angle}}
+        </div>
+        <div class="etc">
+          <span>기타 사항</span>
+          <textarea v-model="etc"></textarea>
+        </div>
         <div class="infoBoxButton">저장</div>
       </div>
       <div class="patientInfochart"></div>
@@ -45,11 +64,9 @@
 /*
 TODO:
 
-  검색기능 추가
+  특이사항 서버연결 없음??
 
-  특이사항 기능 추가
-
-  기타 환자 서버와 연동기능 추가
+  의사 그래프!
 */
 import PatientRegister from "./PatientRegister";
 import { mapActions } from "vuex";
@@ -63,22 +80,38 @@ export default {
       console.log(this.id);
       this.PATIENT_CHART(this.id).then(data => {
         console.log(data);
+        this.name = data.name;
+        this.age = data.age;
+        this.sex = data.gender;
+        this.etc = data.desc;
       });
+    },
+    search() {
+      if (this.search === "") {
+        this.selectIndex = -1;
+        return;
+      }
+      let i = -1;
+      while (true) {
+        if (this.chargePatient[++i].name.indexOf(this.search) !== -1) {
+          this.selectIndex = i;
+          break;
+        }
+        if (i >= this.chargePatient.length - 1) {
+          this.selectIndex = -1;
+          break;
+        }
+      }
     }
   },
   created() {
     this.PATIENT_REFER().then(data => {
-      console.log(data);
       this.chargePatient = data;
-      this.name = this.chargePatient[0].name;
-      this.age = this.chargePatient[0].age;
-      this.sex = this.chargePatient[0].gender;
-      this.id = this.chargePatient[0].id;
     });
   },
   data() {
     return {
-      selectIndex: 0,
+      selectIndex: -1,
       chargePatient: [],
       name: "",
       patientName: "",
@@ -86,6 +119,7 @@ export default {
       age: "",
       angle: [0, 0],
       etc: "",
+      search: "",
       id: "",
       totalPlayTime: 0,
       averagePlayTime: 0,
@@ -383,6 +417,9 @@ export default {
   margin-left: 52px;
   border-bottom: solid 0.5px #e2e2e2;
 }
+.patientInfoText .infoBlank {
+  margin-right: 63.9px;
+}
 .patientInfoTextTitle {
   width: 76px;
   height: 23px;
@@ -421,6 +458,16 @@ export default {
   position: absolute;
   left: 52.1px;
   top: 177px;
+}
+.patientInfoText .etc span {
+  float: left;
+  margin-right: 36.9px;
+}
+.patientInfoText .etc textarea {
+  height: 60px;
+  width: 500px;
+  overflow: scroll;
+  border: none;
 }
 .patientInfoBox .infoBoxButton {
   position: absolute;
