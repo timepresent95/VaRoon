@@ -3,7 +3,7 @@
     <div class="pdChartIn">
       <GChart class="leftPDChart" type="BubbleChart" :data="series1" :options="chartOptions" />
       <GChart class="rightPDChart" type="BubbleChart" :data="series2" :options="chartOptions" />
-      <div class="text">
+      <div class="pdChartIntext">
         <div style="margin-bottom: 13px;" class="recentCheck">
           <div class="category" style="float: left">최근 검사일</div>
           <div class="categoryResult">{{recentDate}}</div>
@@ -27,15 +27,6 @@
   </div>
 </template>
 <script>
-/*
-TODO:
-
-  그래프 위치 조정해야함
-
-  아직 props값이 들어오기 전에 처리
-
-*/
-
 import { GChart } from "vue-google-charts";
 
 import { mapActions } from "vuex";
@@ -163,9 +154,9 @@ export default {
 .pdChartIn .chartVue {
   position: absolute;
 }
-.pdChartIn .text {
+.pdChartIntext {
   position: absolute;
-  left: 852px;
+  left: 552px;
   top: 37px;
   width: 500px;
 }
@@ -174,16 +165,11 @@ export default {
   height: 16px;
   font-family: NanumBarunGothicOTF;
   font-size: 14px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   text-align: right;
-  color: #000000;
   display: inline-block;
   margin-right: 25px;
 }
-.text .categoryResult {
+.pdChartIntext .categoryResult {
   margin-left: 25px;
   height: 16px;
   width: 300px;
@@ -198,7 +184,7 @@ export default {
   color: #000000;
 }
 .selectBox {
-  width: 1159.5px;
+  width: 867px;
   height: 100px;
   border-radius: 3px;
   box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
@@ -214,7 +200,7 @@ export default {
 }
 .selectBox .endDay {
   position: absolute;
-  left: 707.3px;
+  left: 507.3px;
   top: 41px;
 }
 .selectBox .startSelector {
@@ -224,7 +210,7 @@ export default {
 }
 .selectBox .endSelector {
   position: absolute;
-  left: 823.3px;
+  left: 623.3px;
   top: 41px;
 }
 </style>

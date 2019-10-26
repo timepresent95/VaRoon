@@ -9,22 +9,22 @@
     <div class="gameImageBox">
       <ul class="ingameImages">
         <li>
-          <img class="smallInagameImage" src="http://placehold.it/102x59" />
+          <img class="smallInagameImage" src="../images/36@2x.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="http://placehold.it/102x59" />
+          <img class="smallInagameImage" src="../images/36@2x.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="http://placehold.it/102x59" />
+          <img class="smallInagameImage" src="../images/36@2x.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="http://placehold.it/102x59" />
+          <img class="smallInagameImage" src="../images/36@2x.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="http://placehold.it/102x59" />
+          <img class="smallInagameImage" src="../images/36@2x.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="http://placehold.it/102x59" />
+          <img class="smallInagameImage" src="../images/36@2x.png" />
         </li>
       </ul>
       <img class="bigIngameImage" src="../images/36@2x.png" />
@@ -99,13 +99,7 @@
       <div class="gameDescriptLine" style="margin-bottom: 43.3px;"></div>
       <button class="contain">담기</button>
       <button class="pay">구매</button>
-      <!-- <button class="downLoad">다운로드</button> -->
     </div>
-    <!-- <img class="congratulation" src="http://placehold.it/300x200" />
-    <div>{{descript}}</div>
-    <button>담기</button>
-    <button>PAY</button>
-    <button>DownLoad</button>-->
   </div>
 </template>
 <script>
@@ -200,6 +194,7 @@ export default {
 .smallInagameImage {
   width: 102px;
   height: 59px;
+  cursor: pointer;
 }
 .bigIngameImage {
   width: 542px;
@@ -295,6 +290,7 @@ export default {
   letter-spacing: normal;
   text-align: center;
   color: #4b74ff;
+  outline: 0;
 }
 .gameDescriptBox button:hover {
   background-color: #4b74ff;

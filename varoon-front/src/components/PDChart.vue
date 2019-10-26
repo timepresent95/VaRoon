@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="pdChartIn">
-      <GChart class="leftPDChart" type="BubbleChart" :data="series1" :options="chartOptions" />
-      <GChart class="rightPDChart" type="BubbleChart" :data="series2" :options="chartOptions" />
+      <GChart class="leftPDChart" type="BubbleChart" :data="series1" :options="chartOptions2" />
+      <GChart class="rightPDChart" type="BubbleChart" :data="series2" :options="chartOptions1" />
       <div class="text">
         <div style="margin-bottom: 13px;" class="recentCheck">
           <div class="category" style="float: left">최근 검사일</div>
@@ -11,6 +11,12 @@
         <div class="angle">
           <div class="category" style="float: left">사시각도</div>
           <div class="categoryResult">L-{{angleL}} / R-{{angleR}}</div>
+        </div>
+      </div>
+      <div class="pdLegend">
+        <div v-for="(item, index) in endIndex-startIndex+1" :key="index" class="cirecleBox">
+          <div :class="pdCircle_idx(index+1, endIndex-startIndex+1)"></div>
+          <p class="circleText">{{recentDatesSlice[startIndex+index-1]}}</p>
         </div>
       </div>
     </div>
@@ -27,15 +33,6 @@
   </div>
 </template>
 <script>
-/*
-TODO:
-
-  점 색상 점점 연하게 만드는 작업 해야함
-
-  create할때 에러발생시 대처법 만들어야함
-
-*/
-
 import { GChart } from "vue-google-charts";
 
 import { mapActions } from "vuex";
@@ -53,17 +50,21 @@ export default {
       this.endIndex = 0;
       while (this.recentDates[this.endIndex++] !== this.endDay);
     },
-    startIndex() {
+    startIndex(newVal, oldVal) {
       if (this.startIndex > this.endIndex) {
+        this.startDay = this.recentDates[oldVal - 1];
         alert("wrong!!");
-        this.startDay = this.recentDates[0];
+      } else if (this.endIndex - this.startIndex > 4) {
+        this.endDay = this.recentDates[this.startIndex + 3];
       }
       this.chartDataUpdate();
     },
-    endIndex() {
+    endIndex(newVal, oldVal) {
       if (this.startIndex > this.endIndex) {
+        this.endDay = this.recentDates[oldVal - 1];
         alert("wrong!!");
-        this.endDay = this.recentDates[this.recentDates.length - 1];
+      } else if (this.endIndex - this.startIndex > 4) {
+        this.startDay = this.recentDates[this.endIndex - 5];
       }
       this.chartDataUpdate();
     }
@@ -72,6 +73,7 @@ export default {
     return {
       rangeDataArr: [],
       recentDates: [],
+      recentDatesSlice: [],
       recentDate: "",
       leftPDs: [],
       rightPDs: [],
@@ -82,58 +84,98 @@ export default {
       endDay: "",
       startIndex: 0,
       endIndex: 0,
-      series1: [["id", "horizontal", "vartical", "color"], ["", 0, 0, 0, 1]],
-      series2: [["id", "horizontal", "vartical", "color"], ["", 0, 0, 0, 1]],
-      chartOptions: {
+      series1: [["id", "horizontal", "vartical", "color"], ["1", 0, 0, 0]],
+      series2: [["id", "horizontal", "vartical", "color"], ["2", 0, 0, 0]],
+      chartOptions1: {
         legend: "none",
         width: 580,
         height: 613,
-        colorAxis: { colors: ["black", "white"], legend: { position: "none" } },
+        colorAxis: {
+          colors: ["white", "Blue"],
+          legend: { position: "none" }
+        },
         sizeAxis: { minSize: 1, maxSize: 10 },
         bubble: {
           textStyle: { auraColor: "none", color: "#ffffff", fontSize: 0.1 }
-        }
+        },
+        title: "우안",
+        titleTextStyle: {
+          fontSize: 20,
+          bold: true
+        },
+        hAxis: { title: "Horizontal", maxValue: 20, minValue: -20 },
+        vAxis: { title: "Vertical", maxValue: 20, minValue: -20 }
+      },
+      chartOptions2: {
+        legend: "none",
+        width: 580,
+        height: 613,
+        colorAxis: {
+          colors: ["white", "Blue"],
+          legend: { position: "none" }
+        },
+        sizeAxis: { minSize: 1, maxSize: 10 },
+        bubble: {
+          textStyle: { auraColor: "none", color: "#ffffff", fontSize: 0.1 }
+        },
+        title: "좌안",
+        titleTextStyle: {
+          fontSize: 20,
+          bold: true
+        },
+        hAxis: { title: "Horizontal", maxValue: 20, minValue: -20 },
+        vAxis: { title: "Vertical", maxValue: 20, minValue: -20 }
       }
     };
   },
   methods: {
     ...mapActions(["PD_CHART"]),
     chartDataUpdate() {
-      const nameTag = ["checkupDay", "horizontal", "vartical", "recentPlus"];
+      const nameTag = ["checkupDay", "horizontal", "vartical", "dataNum"];
       this.series1 = this.leftPDs
-        .slice(this.startIndex, this.endIndex + 1)
+        .slice(this.startIndex - 1, this.endIndex)
         .map((data, index) => [
           this.recentDates[this.startIndex + index - 1],
           data[0],
           data[1],
-          index
+          this.recentDates.length - this.endIndex + index
         ]);
-
       this.series1.unshift(nameTag);
       this.series2 = this.rightPDs
-        .slice(this.startIndex, this.endIndex + 1)
+        .slice(this.startIndex - 1, this.endIndex)
         .map((data, index) => [
           this.recentDates[this.startIndex + index - 1],
           data[0],
           data[1],
-          index
+          this.startIndex + index
         ]);
       this.series2.unshift(nameTag);
+    },
+    pdCircle_idx(idx, total) {
+      if (total === 4 && idx >= 3) return `pdCircle${idx + 1}`;
+      else if (total === 3) return `pdCircle${idx * 2 - 1}`;
+      else if (total === 2 && idx == 2) return `pdCircle5`;
+      else if (total === 1) return `pdCircle5`;
+      else return `pdCircle${idx}`;
     }
   },
   created() {
     this.PD_CHART().then(data => {
       this.rangeDataArr = data;
+      console.log(data);
       this.recentDates = Array.from(data, data => data.date);
       this.leftPDs = Array.from(Array.from(data, data => data.leftPD), data => [
         data.horizontal,
         data.vertical
       ]);
+      this.recentDatesSlice = Array.from(this.recentDates, data =>
+        data.slice(5)
+      );
       this.rightPDs = Array.from(
         Array.from(data, data => data.rightPD),
         data => [data.horizontal, data.vertical]
       );
-      this.startIndex = 0;
+      this.startIndex = this.recentDates.length - 5;
       this.endIndex = this.recentDates.length - 1;
       this.startDay = this.recentDates[this.startIndex];
       this.endDay = this.recentDates[this.endIndex];
@@ -221,5 +263,69 @@ export default {
   position: absolute;
   left: 823.3px;
   top: 41px;
+}
+.pdCircle5 {
+  width: 15px;
+  height: 15px;
+  border: 0.5px solid rgb(204, 204, 205);
+  border-radius: 50px;
+  background: rgba(51, 77, 247, 1);
+}
+
+.pdCircle4 {
+  width: 15px;
+  height: 15px;
+  border: 0.5px solid rgb(204, 204, 205);
+  border-radius: 50px;
+  background: rgba(99, 109, 247, 1);
+}
+
+.pdCircle3 {
+  width: 15px;
+  height: 15px;
+  border: 0.5px solid rgb(204, 204, 205);
+  border-radius: 50px;
+  background: rgba(152, 156, 249, 1);
+}
+
+.pdCircle2 {
+  width: 15px;
+  height: 15px;
+  border: 0.5px solid rgb(204, 204, 205);
+  border-radius: 50px;
+  background: rgba(203, 205, 251, 1);
+}
+
+.pdCircle1 {
+  width: 15px;
+  height: 15px;
+  border: 0.5px solid rgb(204, 204, 205);
+  border-radius: 50px;
+  background: #ffffff;
+}
+
+.pdCircle {
+  width: 30px;
+  height: 30px;
+  border: 0.5px solid rgb(204, 204, 205);
+  border-radius: 50px;
+  background: rgba(51, 77, 247, 1);
+}
+.pdLegend {
+  width: 1000px;
+  position: absolute;
+  left: 400px;
+  top: 20px;
+}
+.cirecleBox {
+  width: 60px;
+  height: 50px;
+  float: left;
+  padding-left: 10px;
+}
+.circleText {
+  text-align: center;
+  position: relative;
+  left: -5px;
 }
 </style>

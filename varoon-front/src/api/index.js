@@ -74,7 +74,6 @@ export const chart = {
         id,
         prescription
     }) {
-        console.log(id, prescription)
         return request('post', `/Chart/${id}`, prescription)
     }
 }

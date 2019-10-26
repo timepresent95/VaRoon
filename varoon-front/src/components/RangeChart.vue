@@ -1,15 +1,16 @@
 <template>
   <div>
-    <div class="rangeSetting">
+    <div class="rangeSetting" ref="rangeSet">
       <div class="settingTitle">측정 날짜</div>
-      <ul v-for="(date, index) in recentDate" :key="index">
-        <input type="radio" :value="index" v-model="selectDateIndex" />
-        {{date}}
+      <ul class="rangeUl" v-for="(date, index) in recentDate" :key="index">
+        <input class="rangeRadio" type="radio" :value="index" v-model="selectDateIndex" />
+        <div class="rangeRadioTag">{{date}}</div>
       </ul>
+      <div style="height: 100px;"></div>
     </div>
     <div class="rangeChartIn">
       <div class="rangeBox">
-        <div class="rangeboxId">우안</div>
+        <div class="rangeboxId">좌안</div>
         <VueApexCharts
           class="rangeChart"
           type="radar"
@@ -20,7 +21,7 @@
         ></VueApexCharts>
       </div>
       <div class="rangeBox">
-        <div class="rangeboxId">좌안</div>
+        <div class="rangeboxId">우안</div>
         <VueApexCharts
           class="rangeChart"
           type="radar"
@@ -34,12 +35,6 @@
   </div>
 </template>
 <script>
-/*
-TODO:
-
-create할때 에러발생시 문제 해결해야함
-
-*/
 import VueApexCharts from "vue-apexcharts";
 
 import { mapActions } from "vuex";
@@ -163,6 +158,10 @@ export default {
           data: newData
         }
       ];
+    },
+    scrollTest() {
+      const height = this.$refs.rangeSet.scrollHeight;
+      this.$refs.rangeSet.scrollTo(0, height);
     }
   },
   mounted() {
@@ -170,16 +169,23 @@ export default {
       .then(data => {
         this.rangeDataArr = data;
         this.recentDate = Array.from(data, data => data.date);
+        // this.recentDate = this.recentDate.reverse();
+        this.selectDateIndex = this.recentDate.length - 1;
       })
       .catch(_ => {
         alert("error");
       });
+  },
+  updated() {
+    this.scrollTest();
   }
 };
 </script>
 <style>
 .rangeSetting {
   width: 274px;
+  height: 613px;
+  overflow: scroll;
   min-height: 613px;
   border-radius: 3px;
   box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
@@ -228,10 +234,21 @@ export default {
   left: 49.1px;
   margin-bottom: 26px;
 }
-.rangeSetting ul {
+.rangeUl {
   position: relative;
   top: 36px;
   left: 49.1px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+.rangeRadio {
+  height: 20px;
+  float: left;
+}
+.rangeRadioTag {
+  width: 120px;
+  float: left;
+  text-align: right;
 }
 </style>

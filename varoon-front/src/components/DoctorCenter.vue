@@ -55,23 +55,28 @@
         </div>
         <div class="infoBoxButton">저장</div>
       </div>
-      <div class="patientInfochart">
-        <!-- <doctor-p-d-chart :pdlist="pdlist" /> -->
-        <!-- <doctor-range-chart :rangesList="rangesList" /> -->
-        <!-- <doctor-focus-chart :playLogs="playLogs" /> -->
-        <!-- <doctor-training-chart
-          :blurMax="prescription.blurMax"
-          :blurMin="prescription.blurMin"
-          :horizontalMax="prescription.horizontalMax"
-          :horizontalMin="prescription.horizontalMin"
-          :mainEye="prescription.mainEye"
-          :objectMax="prescription.objectMax"
-          :objectMin="prescription.objectMin"
-          :verticalMax="prescription.verticalMax"
-          :verticalMin="prescription.verticalMin"
-          :vividMax="prescription.vividMax"
-          :vividMin="prescription.vividMin"
-        />-->
+      <div class="patientInfochart" v-if="selectIndex !== -1">
+        <div @click="chartNoMin" class="docLt">&lt;</div>
+        <div @click="chartNoPlus" class="docRt">&gt;</div>
+        <div class="doctorpatientChart">
+          <doctor-p-d-chart :pdlist="pdlist" v-if="chartNo === 1" />
+          <doctor-range-chart :rangesList="rangesList" v-else-if="chartNo === 2" />
+          <doctor-focus-chart :playLogs="playLogs" v-else-if="chartNo === 3" />
+          <doctor-training-chart
+            v-else-if="chartNo === 4"
+            :blurMax="prescription.blurMax"
+            :blurMin="prescription.blurMin"
+            :horizontalMax="prescription.horizontalMax"
+            :horizontalMin="prescription.horizontalMin"
+            :mainEye="prescription.mainEye"
+            :objectMax="prescription.objectMax"
+            :objectMin="prescription.objectMin"
+            :verticalMax="prescription.verticalMax"
+            :verticalMin="prescription.verticalMin"
+            :vividMax="prescription.vividMax"
+            :vividMin="prescription.vividMin"
+          />
+        </div>
       </div>
     </div>
     <PatientRegister v-if="patientRegist" @regist="RegistFunc" />
@@ -100,8 +105,10 @@ export default {
     DoctorFocusChart,
     DoctorTrainingChart
   },
+  computed: {},
   watch: {
     id() {
+      console.log(this.id);
       this.PATIENT_CHART(this.id).then(data => {
         console.log(data);
         this.name = data.name;
@@ -140,6 +147,7 @@ export default {
   },
   data() {
     return {
+      chartNo: 1,
       selectIndex: -1,
       chargePatient: [],
       name: "",
@@ -188,13 +196,27 @@ export default {
     selectList(index) {
       this.selectIndex = index;
       this.id = this.chargePatient[index].id;
+    },
+    chartNoPlus() {
+      if (this.chartNo === 4) {
+        this.chartNo = 1;
+        return;
+      }
+      this.chartNo++;
+    },
+    chartNoMin() {
+      if (this.chartNo === 1) {
+        this.chartNo = 4;
+        return;
+      }
+      this.chartNo--;
     }
   }
 };
 </script>
 <style>
 .DoctorCenterMainBox {
-  height: 1080px;
+  height: 1580px;
   background-color: #fcfcfc;
 }
 .centerTitle {
@@ -244,7 +266,7 @@ export default {
 }
 .patientInfoBox {
   width: 867px;
-  height: 879px;
+  height: 1080px;
   border-radius: 3px;
   box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
@@ -530,5 +552,30 @@ export default {
   line-height: 49.3px;
   text-align: center;
   color: #4b74ff;
+}
+.patientInfochart {
+  height: 1000px;
+  width: 867px;
+}
+.doctorpatientChart {
+  position: relative;
+  top: 56.5px;
+}
+.docLt {
+  font-size: 36px;
+  color: #4b74ff;
+  float: left;
+  position: absolute;
+  top: 360px;
+  left: 50px;
+  cursor: pointer;
+}
+.docRt {
+  font-size: 36px;
+  color: #4b74ff;
+  position: absolute;
+  left: 800px;
+  top: 360px;
+  cursor: pointer;
 }
 </style>

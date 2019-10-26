@@ -12,7 +12,7 @@
       <div class="line"></div>
     </div>
     <div slot="footer">
-      <button @click.prevent="$emit(`regist`, id)">로그인</button>
+      <button @click.prevent="$emit(`regist`, id)">등록</button>
     </div>
   </Modal>
 </template>

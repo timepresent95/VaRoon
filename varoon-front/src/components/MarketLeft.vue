@@ -1,18 +1,34 @@
 <template>
   <div class="marketLeft">
     <div class="vrBoxTitle">VR</div>
-    <div class="leftCurrent"></div>
-    <div class="leftMarket" @click.prevent="CHANGE_MARKET_COMPONENT('market')">VR 마켓</div>
+    <div class="leftCurrentVR" v-if="marketComponent ==='market'"></div>
+    <div class="leftMarket" @click.prevent="CHANGE_MARKET_COMPONENT('market')">
+      <div :class="{'marketSelect' : marketComponent ==='market'}">VR 마켓</div>
+    </div>
     <div class="leftLine1"></div>
     <div class="myBoxTitle">MY</div>
-    <div class="leftCart" @click.prevent="CHANGE_MARKET_COMPONENT('cart')">장바구니</div>
-    <div class="leftLibrary" @click.prevent="CHANGE_MARKET_COMPONENT('library')">구매내역</div>
-    <div class="leftClient" @click.prevent="CHANGE_MARKET_COMPONENT('client')">클라이언트 다운로드</div>
+    <div class="leftCart" @click.prevent="CHANGE_MARKET_COMPONENT('cart')">
+      <div :class="{'marketSelect' : marketComponent ==='cart'}">장바구니</div>
+    </div>
+    <div class="leftCurrentBox" v-if="marketComponent ==='cart'"></div>
+    <div class="leftLibrary" @click.prevent="CHANGE_MARKET_COMPONENT('library')">
+      <div :class="{'marketSelect' : marketComponent ==='library'}">구매내역</div>
+    </div>
+    <div class="leftCurrentLibrary" v-if="marketComponent ==='library'"></div>
+    <div class="leftClient" @click.prevent="CHANGE_MARKET_COMPONENT('client')">
+      <div :class="{'marketSelect' : marketComponent ==='client'}">클라이언트 다운로드</div>
+    </div>
+    <div class="leftCurrentClient" v-if="marketComponent ==='client'"></div>
     <div class="leftLine2"></div>
     <div class="moreBoxTitle">MORE</div>
 
-    <router-link to="/">
+    <router-link to="/PatientCenter" v-if="role === 'ROLE_Patient'">
       <img class="leftLinkImg" src="../images/mediboard-btn@2x.png" />
+      <div class="overlay1"></div>
+    </router-link>
+    <router-link to="/SellerManager" v-else>
+      <img class="leftLinkImg" src="../images/home-salescenter-img@2x.png" />
+      <div class="overlay1"></div>
     </router-link>
   </div>
 </template>
@@ -26,7 +42,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["marketComponent"])
+    ...mapState(["marketComponent", "role"])
   },
   methods: {
     ...mapMutations(["CHANGE_MARKET_COMPONENT"]),
@@ -43,12 +59,33 @@ export default {
   background-color: #fcfcfc;
   float: left;
 }
-.leftCurrent {
+.leftCurrentVR {
   width: 0;
   height: 28.5px;
   border: solid 4px #4b74ff;
   position: absolute;
   top: 115px;
+}
+.leftCurrentBox {
+  width: 0;
+  height: 28.5px;
+  border: solid 4px #4b74ff;
+  position: absolute;
+  top: 302px;
+}
+.leftCurrentLibrary {
+  width: 0;
+  height: 28.5px;
+  border: solid 4px #4b74ff;
+  position: absolute;
+  top: 350px;
+}
+.leftCurrentClient {
+  width: 0;
+  height: 28.5px;
+  border: solid 4px #4b74ff;
+  position: absolute;
+  top: 395px;
 }
 .vrBoxTitle {
   width: 29px;
@@ -75,10 +112,16 @@ export default {
   font-stretch: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #4b74ff;
   position: absolute;
   left: 40px;
+  cursor: pointer;
   top: 123px;
+}
+.marketSelect {
+  color: #4b74ff;
+}
+.marketUnSelect {
+  color: #000000;
 }
 .leftLine1 {
   width: 251.9px;
@@ -107,6 +150,7 @@ export default {
   position: absolute;
   top: 307px;
   left: 40px;
+  cursor: pointer;
   width: 64px;
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
@@ -116,13 +160,13 @@ export default {
   font-stretch: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000000;
 }
 .leftLibrary {
   position: absolute;
   top: 355px;
   left: 40px;
   width: 68px;
+  cursor: pointer;
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
@@ -131,7 +175,6 @@ export default {
   font-stretch: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #000000;
 }
 .leftClient {
   position: absolute;
@@ -145,8 +188,8 @@ export default {
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
+  cursor: pointer;
   text-align: left;
-  color: #000000;
 }
 .leftLine2 {
   width: 251.9px;
@@ -178,5 +221,19 @@ export default {
   position: absolute;
   top: 594px;
   left: 40px;
+}
+.overlay1 {
+  width: 220px;
+  height: 220.8px;
+  object-fit: cover;
+  position: absolute;
+  top: 594px;
+  left: 40px;
+  transition: all 1s;
+  background: rgba(75, 116, 255, 0);
+  z-index: 2;
+}
+.overlay1:hover {
+  background: rgba(75, 116, 255, 0.25);
 }
 </style>

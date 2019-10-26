@@ -13,13 +13,19 @@
         </ul>
       </div>
       <div class="trangingChartIn">
+        <div class="traingingBoxLine"></div>
         <div class="traingingBox">
           <div class="boxId">프리즘 치료</div>
           <div class="slider">
             <div class="sliderDescript">수평 프리즘</div>
             <div class="sliderContain">{{horizontalPrizm[0]}}</div>
             <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="horizontalPrizm"></vue-slider>
+              <vue-slider
+                :min="-100"
+                :width="380.5"
+                :enable-cross="false"
+                v-model="horizontalPrizm"
+              ></vue-slider>
             </div>
             <div class="sliderContain">{{horizontalPrizm[1]}}</div>
           </div>
@@ -27,11 +33,12 @@
             <div class="sliderDescript">수직 프리즘</div>
             <div class="sliderContain">{{verticalPrizm[0]}}</div>
             <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="verticalPrizm"></vue-slider>
+              <vue-slider :min="-100" :width="380.5" :enable-cross="false" v-model="verticalPrizm"></vue-slider>
             </div>
             <div class="sliderContain">{{verticalPrizm[1]}}</div>
           </div>
         </div>
+        <div class="traingingBoxLine"></div>
         <div class="traingingBox">
           <div class="boxId">양안시 협응 훈련</div>
           <div class="slider">
@@ -43,6 +50,7 @@
             <div class="sliderContain">{{object[1]}}</div>
           </div>
         </div>
+        <div class="traingingBoxLine"></div>
         <div class="traingingBox">
           <div class="boxId">약시안 강화 치료</div>
           <div class="slider">
@@ -76,23 +84,7 @@ export default {
   components: {
     VueSlider
   },
-  computed: {
-    horizontalPrizm() {
-      return [this.horizontalMin, this.horizontalMax];
-    },
-    verticalPrizm() {
-      return [this.verticalMin, this.verticalMax];
-    },
-    object() {
-      return [this.objectMin, this.objectMax];
-    },
-    blur() {
-      return [this.blurMin, this.blurMax];
-    },
-    vivid() {
-      return [this.vividMin, this.vividMax];
-    }
-  },
+  computed: {},
   props: {
     blurMax: 0,
     blurMin: 0,
@@ -107,7 +99,13 @@ export default {
     vividMin: 0
   },
   data() {
-    return {};
+    return {
+      horizontalPrizm: [0, 0],
+      verticalPrizm: [0, 0],
+      object: [0, 0],
+      blur: [0, 0],
+      vivid: [0, 0]
+    };
   },
   methods: {
     ...mapActions(["PATIENT_CHARTUPDATE"])
@@ -118,10 +116,9 @@ export default {
 <style>
 /* 이름바꿀것 */
 .Setting {
-  width: 274px;
-  height: 613px;
+  width: 867px;
+  height: 154px;
   border-radius: 3px;
-  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
   float: left;
   margin-right: 21px;
@@ -146,6 +143,8 @@ export default {
   position: relative;
   top: 60px;
   left: 49.1px;
+  float: left;
+  margin-right: 100px;
 }
 .Setting span {
   padding-left: 22px;
@@ -155,14 +154,12 @@ export default {
   width: 867px;
   height: 613px;
   border-radius: 3px;
-  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
 }
 .traingingBox {
   width: 867px;
   height: 204px;
   border-radius: 3px;
-  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
 }
 
@@ -200,5 +197,12 @@ export default {
   left: 50px;
   top: 40px;
   margin-right: 31px;
+}
+.traingingBoxLine {
+  width: 764.9px;
+  height: 0;
+  border: solid 0.5px #e2e2e2;
+  position: relative;
+  left: 51px;
 }
 </style>

@@ -19,7 +19,8 @@ const store = new Vuex.Store({
 const data = {
     token: localStorage.token,
     name: localStorage.name,
-    role: localStorage.role
+    role: localStorage.role,
+    id: localStorage.id
 }
 store.commit('LOGIN', data)
 export default store

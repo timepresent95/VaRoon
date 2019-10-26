@@ -46,30 +46,30 @@
           <div class="boxId">양안시 협응 훈련</div>
           <div class="slider">
             <div class="sliderDescript">약시안 개체수</div>
-            <div class="sliderContain">{{value[0]}}</div>
+            <div class="sliderContain">{{object[0]}}</div>
             <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="value" :disabled="true"></vue-slider>
+              <vue-slider :width="380.5" :enable-cross="false" v-model="object" :disabled="true"></vue-slider>
             </div>
-            <div class="sliderContain">{{value[1]}}</div>
+            <div class="sliderContain">{{object[1]}}</div>
           </div>
         </div>
         <div class="traingingBox">
           <div class="boxId">약시안 강화 치료</div>
           <div class="slider">
             <div class="sliderDescript">흐림 정도</div>
-            <div class="sliderContain">{{value[0]}}</div>
+            <div class="sliderContain">{{blur[0]}}</div>
             <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="value" :disabled="true"></vue-slider>
+              <vue-slider :width="380.5" :enable-cross="false" v-model="blur" :disabled="true"></vue-slider>
             </div>
-            <div class="sliderContain">{{value[1]}}</div>
+            <div class="sliderContain">{{blur[1]}}</div>
           </div>
           <div class="slider">
             <div class="sliderDescript">구체화 정도</div>
-            <div class="sliderContain">{{value[0]}}</div>
+            <div class="sliderContain">{{vivid[0]}}</div>
             <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="value" :disabled="true"></vue-slider>
+              <vue-slider :width="380.5" :enable-cross="false" v-model="vivid" :disabled="true"></vue-slider>
             </div>
-            <div class="sliderContain">{{value[1]}}</div>
+            <div class="sliderContain">{{vivid[1]}}</div>
           </div>
         </div>
       </div>
@@ -77,12 +77,6 @@
   </div>
 </template>
 <script>
-/*
-TODO:
-
-  create할때 에러발생시 대처법 만들어야함
-
-*/
 import VueSlider from "vue-slider-component";
 import { mapActions } from "vuex";
 
@@ -104,41 +98,35 @@ export default {
         this.trainingChartData.verticalMin,
         this.trainingChartData.verticalMax
       ];
+    },
+    object() {
+      return [
+        this.trainingChartData.objectMin,
+        this.trainingChartData.objectMax
+      ];
+    },
+    blur() {
+      return [this.trainingChartData.blurMin, this.trainingChartData.blurMax];
+    },
+    vivid() {
+      return [this.trainingChartData.vividMin, this.trainingChartData.vividMax];
     }
-    //TODO:데이터 수정해야함
-    // horizontalPrizm() {
-    //   return [
-    //     this.trainingChartData.horizontalMin,
-    //     this.trainingChartData.horizontalMax
-    //   ];
-    // },
-    // //TODO:데이터 수정해야함
-    // horizontalPrizm() {
-    //   return [
-    //     this.trainingChartData.horizontalMin,
-    //     this.trainingChartData.horizontalMax
-    //   ];
-    // },
-    // //TODO:데이터 수정해야함
-    // horizontalPrizm() {
-    //   return [
-    //     this.trainingChartData.horizontalMin,
-    //     this.trainingChartData.horizontalMax
-    //   ];
-    // }
   },
   data() {
     return {
       value: [0, 50],
       trainingChartData: {
-        blur: 0,
+        blurMax: 0,
+        blurMin: 0,
         horizontalMax: 0,
         horizontalMin: 0,
         mainEye: "right",
-        objectNumber: 0,
+        objectMax: 0,
+        objectMin: 0,
         verticalMax: 0,
         verticalMin: 0,
-        vivid: 0
+        vividMax: 0,
+        vividMin: 0
       }
     };
   },
@@ -147,6 +135,7 @@ export default {
   },
   created() {
     this.TRAINING_CHART().then(data => {
+      console.log(data);
       this.trainingChartData = { ...data };
     });
   }

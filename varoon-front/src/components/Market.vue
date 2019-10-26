@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="marketBox">
     <div class="marketSearchBar">
       <img class="searchIcon" src="../images/search-icon@2x.png" />
       <input type="text" v-model="search" autofocus placeholder="VR 컨텐츠의 이름을 검색해보세요!" />
@@ -25,6 +25,12 @@ export default {
 };
 </script>
 <style>
+.marketBox {
+  width: 1620px;
+  position: relative;
+  left: 308px;
+  background-color: #ffffff;
+}
 .marketSearchBar {
   width: 1160px;
   height: 64px;
@@ -32,7 +38,7 @@ export default {
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
   position: absolute;
-  left: 380px;
+  left: 72px;
   top: 56px;
 }
 .searchIcon {

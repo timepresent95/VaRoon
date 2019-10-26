@@ -1,20 +1,13 @@
 <template>
   <div>
-    <div class="rangeSetting">
-      <div class="settingTitle">측정 날짜</div>
-      <ul v-for="(date, index) in recentDate" :key="index">
-        <input type="radio" :value="index" v-model="selectDateIndex" />
-        {{date}}
-      </ul>
-    </div>
     <div class="rangeChartIn">
       <div class="rangeBox">
         <div class="rangeboxId">우안</div>
         <VueApexCharts
           class="rangeChart"
           type="radar"
-          width="375"
-          height="375"
+          width="325"
+          height="325"
           :options="chartOptions"
           :series="leftSeries"
         ></VueApexCharts>
@@ -24,11 +17,18 @@
         <VueApexCharts
           class="rangeChart"
           type="radar"
-          width="375"
-          height="375"
+          width="325"
+          height="325"
           :options="chartOptions"
           :series="rightSeries"
         ></VueApexCharts>
+      </div>
+      <div class="rangeSetting">
+        <div class="settingTitle">측정 날짜</div>
+        <ul v-for="(date, index) in recentDate" :key="index">
+          <input type="radio" :value="index" v-model="selectDateIndex" />
+          {{date}}
+        </ul>
       </div>
     </div>
   </div>
@@ -180,23 +180,21 @@ export default {
 <style>
 .rangeSetting {
   width: 274px;
-  min-height: 613px;
+  min-height: 213px;
   border-radius: 3px;
-  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
   float: left;
   margin-right: 21px;
+  overflow: scroll;
 }
 .rangeChartIn {
-  float: left;
   width: 867px;
-  height: 613px;
+  height: 813px;
   border-radius: 3px;
-  box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
 }
 .rangeBox {
-  height: 613px;
+  height: 433px;
   width: 433.5px;
   float: left;
 }

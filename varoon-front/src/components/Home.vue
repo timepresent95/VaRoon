@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-    if (this.role == "ROLE_Doctor") this.$router.push("/DoctorCenter");
+    if (this.role === "ROLE_Doctor") this.$router.push("/DoctorCenter");
   }
 };
 </script>

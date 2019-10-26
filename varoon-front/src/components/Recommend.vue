@@ -58,7 +58,6 @@ export default {
   height: 539px;
   background-color: #f7f7f7;
   position: absolute;
-  left: 308px;
   top: 185px;
 }
 .recommendTitle {
@@ -88,6 +87,7 @@ export default {
   height: 290px;
   object-fit: fill;
   position: relative;
+  cursor: pointer;
   top: 142px;
 }
 .marketUpload {

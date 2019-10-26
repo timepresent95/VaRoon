@@ -1,7 +1,19 @@
 <template>
   <div>
-    <div class="pdChartIn">
+    <div class="focusChartIn">
       <GChart class="leftPDChart" type="ColumnChart" :data="chartData" :options="chartOptions" />
+      <div class="text">
+        <div style="margin-bottom: 13px;" class="recentCheck">
+          <div class="category" style="float: left">최근 검사일</div>
+          <div class="categoryResult">{{recentDate}}</div>
+        </div>
+        <div class="angle">
+          <div class="category" style="float: left">사시각도</div>
+          <div
+            class="categoryResult"
+          >L-[{{angleL.horizontal}},{{angleL.vertical}}] / R-[{{angleR.horizontal}},{{angleR.vertical}}]</div>
+        </div>
+      </div>
     </div>
     <div class="selectBox">
       <div class="startDay">시작일</div>
@@ -50,6 +62,9 @@ export default {
   },
   data() {
     return {
+      recentDate: "",
+      angleL: [],
+      angleR: [],
       name: "",
       focusDataArr: [],
       recentDates: [],
@@ -154,12 +169,22 @@ export default {
   },
   created() {
     this.FOCOUS_CHART().then(data => {
-      this.focusDataArr = data;
-      this.recentDates = Array.from(data, data => data.date);
-      this.leftFocusDatas = Array.from(data, data => data.leftFocus);
-      this.rightFocusDatas = Array.from(data, data => data.rightFocus);
-      this.leftPDDatas = Array.from(data, data => data.leftPd);
-      this.rightPDDatas = Array.from(data, data => data.rightPd);
+      console.log(data);
+      this.recentDate = data.recentPDs.date;
+      this.angleL = data.recentPDs.leftPD;
+      this.angleR = data.recentPDs.rightPD;
+      this.focusDataArr = data.playLogList;
+      this.recentDates = Array.from(this.focusDataArr, data => data.date);
+      this.leftFocusDatas = Array.from(
+        this.focusDataArr,
+        data => data.leftFocus
+      );
+      this.rightFocusDatas = Array.from(
+        this.focusDataArr,
+        data => data.rightFocus
+      );
+      this.leftPDDatas = Array.from(this.focusDataArr, data => data.leftPd);
+      this.rightPDDatas = Array.from(this.focusDataArr, data => data.rightPd);
       this.startIndex = 0;
       this.endIndex = this.recentDates.length - 1;
       this.startDay = this.recentDates[this.startIndex];
@@ -169,19 +194,19 @@ export default {
 };
 </script>
 <style>
-.pdChartIn {
+.focusChartIn {
   height: 613px;
 }
-.pdChartIn .chartVue {
+.focusChartIn .chartVue {
   position: absolute;
 }
-.pdChartIn .text {
+.focusChartIn .text {
   position: absolute;
   left: 852px;
   top: 37px;
   width: 500px;
 }
-.pdChartIn .category {
+.focusChartIn .category {
   width: 69px;
   height: 16px;
   font-family: NanumBarunGothicOTF;
@@ -194,9 +219,8 @@ export default {
   color: #000000;
   display: inline-block;
 }
-.pdChartIn .categoryResult {
+.focusChartIn .categoryResult {
   margin-left: 25px;
-  width: 86px;
   height: 16px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 14px;
