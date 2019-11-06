@@ -61,7 +61,6 @@ export default {
   top: 185px;
 }
 .recommendTitle {
-  width: 219px;
   height: 30px;
   font-family: NanumBarunGothicOTF;
   font-size: 26px;

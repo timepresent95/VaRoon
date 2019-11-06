@@ -44,7 +44,6 @@ export default {
   left: 75px;
 }
 .clientDownTag {
-  width: 322px;
   height: 46px;
   font-family: NanumBarunGothicOTF;
   font-size: 40px;

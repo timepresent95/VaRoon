@@ -120,7 +120,6 @@ export default {
 </script>
 <style>
 .gameTitle {
-  width: 376px;
   height: 20px;
   font-family: NanumBarunGothicLightOTF;
   font-size: 18px;
@@ -174,7 +173,6 @@ export default {
   margin: 11px;
   font-family: NanumBarunGothicOTF;
   font-size: 14px;
-  font-weight: 300;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -229,7 +227,6 @@ export default {
   height: 70px;
   font-family: NanumBarunGothicLightOTF;
   font-size: 28px;
-  font-weight: 300;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.36;
@@ -243,7 +240,6 @@ export default {
   height: 16px;
   font-family: NanumBarunGothicOTF;
   font-size: 14px;
-  font-weight: 300;
   font-style: normal;
   font-stretch: normal;
   line-height: 2.86;
@@ -258,7 +254,6 @@ export default {
   height: 280px;
   font-family: NanumBarunGothicOTF;
   font-size: 14px;
-  font-weight: 300;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.57;

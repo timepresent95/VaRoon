@@ -54,7 +54,6 @@ export default {
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
-  font-weight: 200;
   color: #d9d9d9;
   border: 0px;
   line-height: 3.56;

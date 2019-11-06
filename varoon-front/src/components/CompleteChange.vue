@@ -60,7 +60,6 @@ export default {
   height: 23px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 20px;
-  font-weight: 200;
   text-align: center;
   color: #c2c2c2;
   position: absolute;

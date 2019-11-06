@@ -201,7 +201,6 @@ export default {
   height: 32px;
   font-family: NanumBarunGothicLightOTF;
   font-size: 28px;
-  font-weight: 300;
   position: absolute;
   top: 40px;
 }
@@ -227,9 +226,7 @@ export default {
   cursor: pointer;
 }
 .cartItemAgeLimit {
-  margin-left: 24px;
   margin-top: 43.7px;
-  width: 98px;
   height: 19px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
@@ -257,7 +254,6 @@ export default {
   height: 23px;
   font-family: NanumBarunGothicLightOTF;
   font-size: 20px;
-  font-weight: 300;
   position: relative;
   top: 43px;
   float: left;
@@ -274,7 +270,6 @@ export default {
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
-  font-weight: 300;
   position: relative;
   top: 34px;
 }

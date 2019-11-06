@@ -91,6 +91,7 @@ export default {
   width: 29px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
+  font-weight: 400;
   font-size: 20px;
   font-weight: normal;
   font-style: normal;
@@ -135,6 +136,7 @@ export default {
   width: 34px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
+  font-weight: 400;
   font-size: 20px;
   font-weight: normal;
   font-style: normal;
@@ -151,11 +153,9 @@ export default {
   top: 307px;
   left: 40px;
   cursor: pointer;
-  width: 64px;
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -170,7 +170,7 @@ export default {
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
-  font-weight: 200;
+
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -184,7 +184,7 @@ export default {
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
-  font-weight: 200;
+
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -203,6 +203,7 @@ export default {
   width: 70px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
+  font-weight: 400;
   font-size: 20px;
   font-weight: normal;
   font-style: normal;

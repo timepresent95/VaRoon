@@ -13,35 +13,28 @@ export default {};
 }
 .footer {
   width: 1920px;
-  height: 167px;
+  height: 100px;
   background-color: #4b74ff;
   margin: 0px;
 }
 .catchprize {
-  padding-top: 44px;
+  padding-top: 20px;
   left: 1148px;
   position: absolute;
-  width: 388px;
   height: 46px;
   font-family: NanumBarunGothicOTF;
   font-size: 40px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   text-align: left;
   color: #fcfcfc;
 }
 .catchprize-2 {
-  padding-top: 102px;
+  padding-top: 70px;
   left: 1353px;
   position: absolute;
-  width: 187px;
   height: 23px;
   opacity: 0.5;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 20px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;

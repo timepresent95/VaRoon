@@ -119,7 +119,6 @@ export default {
   width: 500px;
   font-family: NanumBarunGothicOTF;
   font-size: 28px;
-  font-weight: 300;
   float: left;
   margin-left: 36px;
   margin-top: 44.5px;

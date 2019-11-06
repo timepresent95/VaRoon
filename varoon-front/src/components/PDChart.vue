@@ -89,7 +89,7 @@ export default {
       chartOptions1: {
         legend: "none",
         width: 580,
-        height: 613,
+        height: 513,
         colorAxis: {
           colors: ["white", "Blue"],
           legend: { position: "none" }
@@ -109,7 +109,7 @@ export default {
       chartOptions2: {
         legend: "none",
         width: 580,
-        height: 613,
+        height: 513,
         colorAxis: {
           colors: ["white", "Blue"],
           legend: { position: "none" }
@@ -242,7 +242,7 @@ export default {
   background-color: #ffffff;
   position: absolute;
   left: 0px;
-  top: 637px;
+  top: 507px;
 }
 .selectBox .startDay {
   position: absolute;

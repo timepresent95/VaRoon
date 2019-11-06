@@ -73,8 +73,6 @@
             :objectMin="prescription.objectMin"
             :verticalMax="prescription.verticalMax"
             :verticalMin="prescription.verticalMin"
-            :vividMax="prescription.vividMax"
-            :vividMin="prescription.vividMin"
           />
         </div>
       </div>
@@ -224,7 +222,6 @@ export default {
   height: 37px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 32px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.41;
@@ -243,7 +240,6 @@ export default {
   border-radius: 30px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -298,7 +294,6 @@ export default {
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   line-height: 3.56;
@@ -358,7 +353,6 @@ export default {
   height: 35px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -371,7 +365,6 @@ export default {
   height: 35px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -385,7 +378,6 @@ export default {
   width: 112px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -398,7 +390,6 @@ export default {
   width: 112px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -412,7 +403,6 @@ export default {
   width: 39px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -425,7 +415,6 @@ export default {
   width: 39px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -439,7 +428,6 @@ export default {
   width: 35.9px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -452,7 +440,6 @@ export default {
   width: 35.9px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   text-align: center;
   line-height: 35px;
   border-top: solid 0.5px #d9d9d9;
@@ -547,8 +534,8 @@ export default {
   border-radius: 3px;
   border: solid 2px #4b74ff;
   background-color: #ffffff;
-  font-family: NanumBarunGothicOTF;
   font-size: 16px;
+  font-family: NanumBarunGothicOTF;
   line-height: 49.3px;
   text-align: center;
   color: #4b74ff;

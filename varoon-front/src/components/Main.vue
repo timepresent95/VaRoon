@@ -40,14 +40,12 @@ export default {
   position: relative;
 }
 .About-VaRoon {
-  width: 232px;
   height: 42px;
   margin-top: 68.6px;
   left: 845px;
   position: relative;
   font-family: NanumBarunGothicLightOTF;
   font-size: 36px;
-  font-weight: 300;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -78,7 +76,6 @@ export default {
   height: 32px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 28px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -91,7 +88,6 @@ export default {
   height: 27px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 24px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;

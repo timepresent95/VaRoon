@@ -60,7 +60,7 @@ export default {
       leftSeries: [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeR",
@@ -70,7 +70,7 @@ export default {
       rightSeries: [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeL",
@@ -103,7 +103,7 @@ export default {
         xaxis: {
           categories: [
             "up",
-            "leftup",
+            "rightup",
             "right",
             "rightdown",
             "down",
@@ -131,7 +131,7 @@ export default {
       this.leftSeries = [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeL",
@@ -151,7 +151,7 @@ export default {
       this.rightSeries = [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeR",
@@ -169,16 +169,14 @@ export default {
       .then(data => {
         this.rangeDataArr = data;
         this.recentDate = Array.from(data, data => data.date);
-        // this.recentDate = this.recentDate.reverse();
-        this.selectDateIndex = this.recentDate.length - 1;
+        this.recentDate = this.recentDate.reverse();
+        this.selectDateIndex = 0;
       })
       .catch(_ => {
         alert("error");
       });
   },
-  updated() {
-    this.scrollTest();
-  }
+  updated() {}
 };
 </script>
 <style>
@@ -247,7 +245,7 @@ export default {
   float: left;
 }
 .rangeRadioTag {
-  width: 120px;
+  width: 90px;
   float: left;
   text-align: right;
 }

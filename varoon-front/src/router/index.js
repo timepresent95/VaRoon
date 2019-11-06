@@ -9,6 +9,7 @@ import PatientCenter from '../components/PatientCenter.vue';
 import DoctorCenter from '../components/DoctorCenter.vue';
 import Manager from '../components/Manager.vue';
 import MypageManager from '../components/MypageManager.vue';
+import Error404 from '../components/Error404.vue';
 
 import store from '../store'
 
@@ -63,6 +64,10 @@ const router = new VueRouter({
             path: "/MypageManager",
             component: MypageManager
         },
+        {
+            path: "*",
+            component: Error404
+        }
     ]
 });
 

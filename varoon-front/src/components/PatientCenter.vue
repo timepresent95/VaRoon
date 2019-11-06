@@ -41,7 +41,7 @@ export default {
 </script>
 <style>
 .patentCenter {
-  min-height: 1080px;
+  min-height: 880px;
 }
 .patientChart {
   position: absolute;

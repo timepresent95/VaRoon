@@ -50,7 +50,6 @@ export default {
   top: 52px;
   left: 380px;
   position: relative;
-  width: 63px;
   height: 19px;
   font-family: NanumBarunGothicBoldOTF;
   font-size: 16px;
@@ -75,7 +74,6 @@ export default {
   display: inline-block;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 32px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
@@ -86,6 +84,7 @@ export default {
   color: #4b74ff;
   display: inline-block;
   font-family: NanumBarunGothicOTF;
+  font-weight: 400;
   font-size: 32px;
   font-weight: normal;
   font-style: normal;
@@ -98,11 +97,9 @@ export default {
   position: relative;
   top: 82px;
   left: 380px;
-  width: 266px;
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;

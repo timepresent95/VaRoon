@@ -175,7 +175,6 @@ export default {
   width: 300px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 14px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;

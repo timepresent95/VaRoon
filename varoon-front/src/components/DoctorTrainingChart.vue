@@ -61,14 +61,6 @@
             </div>
             <div class="sliderContain">{{blur[1]}}</div>
           </div>
-          <div class="slider">
-            <div class="sliderDescript">구체화 정도</div>
-            <div class="sliderContain">{{vivid[0]}}</div>
-            <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="vivid"></vue-slider>
-            </div>
-            <div class="sliderContain">{{vivid[1]}}</div>
-          </div>
         </div>
       </div>
     </div>
@@ -94,17 +86,14 @@ export default {
     objectMax: 0,
     objectMin: 0,
     verticalMax: 0,
-    verticalMin: 0,
-    vividMax: 0,
-    vividMin: 0
+    verticalMin: 0
   },
   data() {
     return {
       horizontalPrizm: [0, 0],
       verticalPrizm: [0, 0],
       object: [0, 0],
-      blur: [0, 0],
-      vivid: [0, 0]
+      blur: [0, 0]
     };
   },
   methods: {
@@ -179,7 +168,6 @@ export default {
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-weight: 200;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
