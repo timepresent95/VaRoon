@@ -75,7 +75,7 @@ export default {
 }
 body,
 #app {
-  width: 1929px;
+  width: 1920px;
   height: 100%;
   margin: 0px;
 }
@@ -87,24 +87,28 @@ a {
   text-decoration: none;
 }
 .fontDown1 {
+  cursor: default;
   position: absolute;
   color: rgba(255, 255, 255, 1);
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 20px;
 }
 .fontDown2 {
+  cursor: default;
   position: absolute;
   color: rgba(255, 255, 255, 1);
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
 }
 .fontDown3 {
+  cursor: default;
   position: absolute;
   color: rgba(255, 255, 255, 1);
   font-family: NanumBarunGothicLightOTF;
   font-size: 20px;
 }
 .fontDown4 {
+  cursor: default;
   position: absolute;
   color: rgba(255, 255, 255, 1);
   font-family: NanumBarunGothicBoldOTF;

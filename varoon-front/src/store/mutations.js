@@ -47,6 +47,18 @@ const mutations = {
         delete localStorage.id
         setAuthInHeader(null)
     },
+    CHANGE_PRESCRIPTION(state, input) {
+        state.DocPrescription = input
+    },
+    CHANGE_DOCLIST(state, input) {
+        state.Docpdlist = input
+    },
+    CHANGE_DOCRANGE(state, input) {
+        state.DocrangesList = input
+    },
+    CHANGE_DOCPLAY(state, input) {
+        state.DocplayLogs = input
+    }
 }
 
 export default mutations

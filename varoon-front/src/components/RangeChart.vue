@@ -19,6 +19,7 @@
           :options="chartOptions"
           :series="leftSeries"
         ></VueApexCharts>
+        <div class="clickInduce">&uarr;Click this</div>
       </div>
       <div class="rangeBox">
         <div class="rangeboxId">우안</div>
@@ -30,6 +31,7 @@
           :options="chartOptions"
           :series="rightSeries"
         ></VueApexCharts>
+        <div class="clickInduce">&uarr;Click this</div>
       </div>
     </div>
   </div>
@@ -78,6 +80,10 @@ export default {
         }
       ],
       chartOptions: {
+        legend: {
+          show: true,
+          fontSize: "22px"
+        },
         plotOptions: {
           bar: {
             horizontal: false,
@@ -248,5 +254,10 @@ export default {
   width: 90px;
   float: left;
   text-align: right;
+}
+.clickInduce {
+  position: absolute;
+  top: 506px;
+  left: 200px;
 }
 </style>

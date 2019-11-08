@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="mypageCheckInputTitle">현재 비밀번호</div>
-    <input class="mypageCheckInput" v-model="inputPassword" type="text" placeholder="비밀번호를 입력해주세요" />
+    <input
+      class="mypageCheckInput"
+      v-model="inputPassword"
+      type="password"
+      placeholder="비밀번호를 입력해주세요"
+    />
     <div class="mypageCheckButton" @click="checkPass">확인</div>
   </div>
 </template>

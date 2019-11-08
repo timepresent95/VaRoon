@@ -11,7 +11,7 @@
     <div class="here">
       <router-link to="/MarketManager">
         <img class="pageImg" id="first" src="../images/home-vrmarket-img@2x.png" />
-        <div class="overlay1"></div>
+        <div class="overlay1Home"></div>
       </router-link>
       <router-link v-if="role === 'ROLE_Patient'" to="/PatientCenter">
         <img class="pageImg" id="second" src="../images/home-mediboard-img@2x.png" />
@@ -49,6 +49,7 @@ export default {
 .author {
   top: 52px;
   left: 380px;
+  width: 300px;
   position: relative;
   height: 19px;
   font-family: NanumBarunGothicBoldOTF;
@@ -96,6 +97,7 @@ export default {
 .homeDscript2 {
   position: relative;
   top: 82px;
+  width: 600px;
   left: 380px;
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;
@@ -117,7 +119,7 @@ export default {
   background-color: #ffffff;
 }
 
-.overlay1 {
+.overlay1Home {
   width: 454px;
   height: 637.1px;
   background: rgba(75, 116, 255, 0);
@@ -129,7 +131,7 @@ export default {
   border-radius: 3px;
   transition: all 1s;
 }
-.overlay1:hover,
+.overlay1Home:hover,
 .overlay2:hover {
   background: rgba(75, 116, 255, 0.25);
 }

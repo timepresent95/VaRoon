@@ -2,13 +2,13 @@
   <div>
     <div>
       <div class="Setting">
-        <div class="mainEye">주시안 선택</div>
+        <div class="mainEye">주시안</div>
         <ul>
-          <input type="radio" value="right" disabled v-model="trainingChartData.mainEye" />
+          <input type="radio" value="rightEye" disabled v-model="trainingChartData.mainEye" />
           <span>우안</span>
         </ul>
         <ul>
-          <input type="radio" value="left" disabled v-model="trainingChartData.mainEye" />
+          <input type="radio" value="leftEye" disabled v-model="trainingChartData.mainEye" />
           <span>좌안</span>
         </ul>
       </div>

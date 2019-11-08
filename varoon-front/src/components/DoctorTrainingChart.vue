@@ -4,11 +4,11 @@
       <div class="Setting">
         <div class="mainEye">주시안 선택</div>
         <ul>
-          <input type="radio" value="right" v-model="mainEye" />
+          <input type="radio" value="rightEye" v-model="mainEye" />
           <span>우안</span>
         </ul>
         <ul>
-          <input type="radio" value="left" v-model="mainEye" />
+          <input type="radio" value="leftEye" v-model="mainEye" />
           <span>좌안</span>
         </ul>
       </div>
@@ -21,7 +21,8 @@
             <div class="sliderContain">{{horizontalPrizm[0]}}</div>
             <div class="sliderContain">
               <vue-slider
-                :min="-100"
+                :min="-20"
+                :max="20"
                 :width="380.5"
                 :enable-cross="false"
                 v-model="horizontalPrizm"
@@ -41,7 +42,7 @@
         <div class="traingingBoxLine"></div>
         <div class="traingingBox">
           <div class="boxId">양안시 협응 훈련</div>
-          <div class="slider">
+          <div class="sliderM">
             <div class="sliderDescript">약시안 개체수</div>
             <div class="sliderContain">{{object[0]}}</div>
             <div class="sliderContain">
@@ -53,7 +54,7 @@
         <div class="traingingBoxLine"></div>
         <div class="traingingBox">
           <div class="boxId">약시안 강화 치료</div>
-          <div class="slider">
+          <div class="sliderM">
             <div class="sliderDescript">흐림 정도</div>
             <div class="sliderContain">{{blur[0]}}</div>
             <div class="sliderContain">
@@ -68,7 +69,7 @@
 </template>
 <script>
 import VueSlider from "vue-slider-component";
-import { mapActions } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 
 import "vue-slider-component/theme/default.css";
 
@@ -76,29 +77,74 @@ export default {
   components: {
     VueSlider
   },
-  computed: {},
-  props: {
-    blurMax: 0,
-    blurMin: 0,
-    horizontalMax: 0,
-    horizontalMin: 0,
-    mainEye: null,
-    objectMax: 0,
-    objectMin: 0,
-    verticalMax: 0,
-    verticalMin: 0
+  watch: {
+    mainEye() {
+      this.prescription.mainEye = this.mainEye;
+      this.CHANGE_PRESCRIPTION(this.prescription);
+    },
+    blur() {
+      this.prescription.blurMin = this.blur[0];
+      this.prescription.blurMax = this.blur[1];
+      this.CHANGE_PRESCRIPTION(this.prescription);
+    },
+    horizontalPrizm() {
+      this.prescription.horizontalMin = this.horizontalPrizm[0];
+      this.prescription.horizontalMax = this.horizontalPrizm[1];
+      this.CHANGE_PRESCRIPTION(this.prescription);
+    },
+    verticalPrizm() {
+      this.prescription.verticalMin = this.verticalPrizm[0];
+      this.prescription.verticalMax = this.verticalPrizm[1];
+      this.CHANGE_PRESCRIPTION(this.prescription);
+    },
+    object() {
+      this.prescription.objectMin = this.object[0];
+      this.prescription.objectMax = this.object[1];
+      this.CHANGE_PRESCRIPTION(this.prescription);
+    }
+  },
+  computed: {
+    ...mapState(["DocPrescription"])
+  },
+  created() {
+    this.horizontalPrizm = [
+      this.DocPrescription.horizontalMin,
+      this.DocPrescription.horizontalMax
+    ];
+    this.verticalPrizm = [
+      this.DocPrescription.verticalMin,
+      this.DocPrescription.verticalMax
+    ];
+    this.object = [
+      this.DocPrescription.objectMin,
+      this.DocPrescription.objectMax
+    ];
+    this.blur = [this.DocPrescription.blurMin, this.DocPrescription.blurMax];
+    this.mainEye = this.DocPrescription.mainEye;
+    this.prescription = this.DocPrescription;
   },
   data() {
     return {
       horizontalPrizm: [0, 0],
       verticalPrizm: [0, 0],
       object: [0, 0],
-      blur: [0, 0]
+      blur: [0, 0],
+      prescription: {
+        blurMax: 0,
+        blurMin: 0,
+        horizontalMax: 0,
+        horizontalMin: 0,
+        mainEye: null,
+        objectMax: 0,
+        objectMin: 0,
+        verticalMax: 0,
+        verticalMin: 0
+      },
+      mainEye: null
     };
   },
   methods: {
-    ...mapActions(["PATIENT_CHARTUPDATE"])
-    //PATIENT_CHARTUPDATE({  id, prescription  }) 형식으로 사용
+    ...mapMutations(["CHANGE_PRESCRIPTION"])
   }
 };
 </script>
@@ -192,5 +238,10 @@ export default {
   border: solid 0.5px #e2e2e2;
   position: relative;
   left: 51px;
+}
+
+.sliderM {
+  height: 50px;
+  padding-top: 50px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="pdChartIn">
-      <GChart class="leftPDChart" type="ColumnChart" :data="chartData" :options="chartOptions" />
+      <VueApexCharts type="line" width="867" height="613" :options="chartOptions" :series="series"></VueApexCharts>
     </div>
     <div class="selectBox">
       <div class="startDay">시작일</div>
@@ -25,15 +25,15 @@ TODO:
 
 
 */
-import { mapActions } from "vuex";
-import { GChart } from "vue-google-charts";
+import { mapActions, mapState } from "vuex";
+import VueApexCharts from "vue-apexcharts";
 
 export default {
   components: {
-    GChart
+    VueApexCharts
   },
-  props: {
-    playLogs: {}
+  computed: {
+    ...mapState(["DocplayLogs"])
   },
   watch: {
     startDay() {
@@ -60,119 +60,76 @@ export default {
       this.chartDataUpdate();
     },
     playLogs() {
-      this.focusDataArr = Array.from(this.playLogs);
-      this.recentDates = Array.from(this.playLogs, data => data.date);
-      this.leftFocusDatas = Array.from(this.playLogs, data => data.leftFocus);
-      this.rightFocusDatas = Array.from(this.playLogs, data => data.rightFocus);
-      this.leftPDDatas = Array.from(this.playLogs, data => data.leftPd);
-      this.rightPDDatas = Array.from(this.playLogs, data => data.rightPd);
-      this.startIndex = 0;
-      this.endIndex = this.recentDates.length - 1;
-      this.startDay = this.recentDates[this.startIndex];
-      this.endDay = this.recentDates[this.endIndex];
+      console.log(this.playLogs);
     }
+  },
+  created() {
+    this.recentDates = Array.from(this.DocplayLogs, playLogs => playLogs.date);
+    this.gameDatas = Array.from(this.DocplayLogs, playLogs => playLogs.curGame);
+    this.blurDatas = Array.from(this.DocplayLogs, playLogs => playLogs.blur);
+    this.pdDatas = Array.from(this.DocplayLogs, playLogs => playLogs.pd);
+    this.focusDatas = Array.from(this.DocplayLogs, playLogs => playLogs.focus);
+    this.startIndex = 0;
+    this.endIndex = this.recentDates.length - 1;
+    this.startDay = this.recentDates[this.startIndex];
+    this.endDay = this.recentDates[this.endIndex];
   },
   data() {
     return {
-      name: "",
-      focusDataArr: [],
       recentDates: [],
+      gameDatas: [],
+      blurDatas: [],
+      pdDatas: [],
+      focusDatas: [],
       recentDate: "",
       startDay: "",
       endDay: "",
       startIndex: 0,
       endIndex: 0,
-      leftFocusDatas: [],
-      rightFocusDatas: [],
-      leftPDDatas: [],
-      rightPDDatas: [],
-      chartData: [
-        ["date", "leftFocus", "rightFocus", { role: "annotation" }],
-        ["0000.01.01", 100, 100, "[1,2],[2,1]"]
-        // label작업 하다가 맘
+      series: [
+        {
+          name: "Focus",
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        }
       ],
       chartOptions: {
-        legend: "none",
-        width: 1160,
-        height: 613,
-        tooltip: { isHtml: true },
-        focusTarget: "category"
+        tooltip: {
+          custom: this.cusotm_tooltip
+        },
+        markers: {
+          size: 3,
+          hover: {
+            size: 6
+          },
+          colors: "#636df7"
+        },
+        stroke: {
+          width: [3],
+          colors: "#636df7"
+        }
       }
     };
   },
   methods: {
     ...mapActions(["FOCOUS_CHART"]),
     chartDataUpdate() {
-      let startIdx = this.startIndex;
-      const newData = [
-        [
-          "date",
-          { role: "annotation" },
-          { role: "tooltip", p: { html: true } },
-          "leftFocus",
-          "rightFocus"
-        ]
+      this.series = [
+        {
+          name: "Focus",
+          data: this.focusDatas.slice(this.startIndex, this.endIndex + 1)
+        }
       ];
-      while (startIdx <= this.endIndex) {
-        newData.push([
-          this.recentDates[startIdx],
-          `(${this.leftPDDatas[startIdx].horizontal}${this.leftPDDatas[startIdx].vertical})(${this.rightPDDatas[startIdx].horizontal}${this.rightPDDatas[startIdx].vertical})`,
-          this.drawGraph(
-            this.leftPDDatas[startIdx].horizontal,
-            this.leftPDDatas[startIdx].vertical,
-            this.rightPDDatas[startIdx].horizontal,
-            this.rightPDDatas[startIdx].vertical
-          ),
-          this.leftFocusDatas[startIdx],
-          this.rightFocusDatas[startIdx]
-        ]);
-        startIdx = startIdx + 1;
-      }
-      console.log(newData);
-      this.chartData = newData;
     },
-    drawGraph(leftH, leftV, rightH, rightV) {
-      const leftHo = Math.abs(leftH);
-      const leftVe = Math.abs(leftV);
-      const rightHo = Math.abs(rightH);
-      const rightVe = Math.abs(rightV);
-      const first = (h, v) => [147 - h * 10, 147 - v * 10];
-      const second = (h, v) => [150, 147 - v * 10];
-      const third = (h, v) => [150, 150];
-      const fourth = (h, v) => [147 - h * 10, 150];
-      let Lpos;
-      let Rpos;
-      if (leftH < 0 && leftV > 0) Lpos = first(leftHo, leftVe);
-      else if (leftH > 0 && leftV > 0) Lpos = second(leftHo, leftVe);
-      else if (leftH > 0 && leftV < 0) Lpos = third(leftHo, leftVe);
-      else Lpos = fourth(leftHo, leftVe);
-      if (rightH < 0 && rightV > 0) Rpos = first(rightHo, rightVe);
-      else if (rightH > 0 && rightV > 0) Rpos = second(rightHo, rightVe);
-      else if (rightH > 0 && rightV < 0) Rpos = third(rightHo, rightVe);
-      else Rpos = fourth(rightHo, rightVe);
+    cusotm_tooltip({ series, seriesIndex, dataPointIndex }) {
       return (
-        '<div style="width:300px; height:300px; float:left;border-right: solid 0.5px #000000; ">' +
-        '<div style="width:300px; height: 150px; border-bottom: solid 0.5px #c2c2c2; position:absolute;"></div>' +
-        '<div style="width:150px; height: 300px; border-right: solid 0.5px #c2c2c2; position:absolute;"></div>' +
-        `<div style="width:${leftHo * 10}px; height: ${leftVe * 10}px;
-         border: solid 2px #4b74ff; background-color: #a5b9ff; position:absolute;
-         left:${Lpos[0]}px; top:${Lpos[1]}px"></div>` +
-        `<div style="position:absolute; left: 150px;
-        top:${150 - leftV * 10}px">${leftV}</div>` +
-        `<div style="position:absolute; top: 150px;
-        left:${150 + leftH * 10}px">${leftH}</div>` +
-        "</div>" +
-        '<div style="width:300px; height:300px; float:left">' +
-        '<div style="width:300px; height: 150px; border-bottom: solid 0.5px #c2c2c2; position:absolute;"></div>' +
-        '<div style="width:150px; height: 300px; border-right: solid 0.5px #c2c2c2; position:absolute;"></div>' +
-        `<div style="width:${rightHo * 10}px; height: ${rightVe * 10}px;
-         border: solid 2px #4b74ff; background-color: #a5b9ff; position:absolute;
-         left:${Rpos[0] + 300}px; top:${Rpos[1]}px"></div>` +
-        `<div style="position:absolute; left: 450px;
-        top:${150 - rightV * 10}px">${rightV}</div>` +
-        `<div style="position:absolute; top: 150px;
-        left:${450 + rightH * 10}px">${rightH}</div>` +
-        "</div>"
+        `<div>Focus: ${series[seriesIndex][dataPointIndex]}</div>` +
+        `<div>Game: ${this.gameDatas[this.startIndex + dataPointIndex]}</div>` +
+        `<div>Blur: ${this.blurDatas[this.startIndex + dataPointIndex]}</div>` +
+        `<div>Recent: ${
+          this.recentDates[this.startIndex + dataPointIndex]
+        }</div>` +
+        `<div>PD-Horizontal: ${this.pdDatas[this.startIndex + dataPointIndex].horizontal}</div>` +
+        `<div>PD-vertical: ${this.pdDatas[this.startIndex + dataPointIndex].vertical}</div>`
       );
     }
   }

@@ -23,8 +23,8 @@
           :series="rightSeries"
         ></VueApexCharts>
       </div>
+      <div class="settingTitle">측정 날짜</div>
       <div class="rangeSetting">
-        <div class="settingTitle">측정 날짜</div>
         <ul v-for="(date, index) in recentDate" :key="index">
           <input type="radio" :value="index" v-model="selectDateIndex" />
           {{date}}
@@ -45,23 +45,25 @@ TODO:
 */
 import VueApexCharts from "vue-apexcharts";
 
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
     VueApexCharts
   },
-  props: {
-    rangesList: {}
+  computed: {
+    ...mapState(["DocrangesList"])
   },
   watch: {
     selectDateIndex() {
       this.updateChart();
-    },
-    rangesList() {
-      this.rangeDataArr = Array.from(this.rangesList);
-      this.recentDate = Array.from(this.rangeDataArr, data => data.date);
     }
+  },
+  created() {
+    this.rangeDataArr = Array.from(this.DocrangesList);
+    this.recentDate = Array.from(this.rangeDataArr, data => data.date);
+    this.recentDate = this.recentDate.reverse();
+    this.selectDateIndex = 0;
   },
   data() {
     return {
@@ -75,7 +77,7 @@ export default {
       leftSeries: [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeR",
@@ -85,7 +87,7 @@ export default {
       rightSeries: [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeL",
@@ -146,7 +148,7 @@ export default {
       this.leftSeries = [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeL",
@@ -166,7 +168,7 @@ export default {
       this.rightSeries = [
         {
           name: "normal-average",
-          data: [30, 35, 50, 45, 40, 45, 50, 35]
+          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
           name: "rangeR",
@@ -179,6 +181,7 @@ export default {
 </script>
 <style>
 .rangeSetting {
+  height: 320px;
   width: 274px;
   min-height: 213px;
   border-radius: 3px;
@@ -186,6 +189,9 @@ export default {
   float: left;
   margin-right: 21px;
   overflow: scroll;
+  position: absolute;
+  top: 480px;
+  left: 350px;
 }
 .rangeChartIn {
   width: 867px;
@@ -221,14 +227,13 @@ export default {
   line-height: 2.5;
   text-align: left;
   color: #000000;
-  position: relative;
-  top: 36px;
-  left: 49.1px;
+  position: absolute;
+  top: 500px;
+  left: 200px;
   margin-bottom: 26px;
 }
 .rangeSetting ul {
   position: relative;
-  top: 36px;
   left: 49.1px;
   margin-bottom: 20px;
 }

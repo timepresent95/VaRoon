@@ -19,7 +19,7 @@
         >
           <div :class="{'index': false, 'lastIndex': true}">{{index+1}}</div>
           <div :class="{'name': false, 'lastName': true}">{{i.name}}</div>
-          <div :class="{'sex': false, 'lastSex': true}">{{i.gender}}</div>
+          <div :class="{'sex': false, 'lastSex': true}">{{i.gender.slice(0,1)}}</div>
           <div :class="{'age': false, 'lastAge': true}">{{2019-Number(i.age.slice(0,4))-1}}</div>
         </li>
       </ul>
@@ -53,47 +53,27 @@
           <span>기타 사항</span>
           <textarea v-model="etc"></textarea>
         </div>
-        <div class="infoBoxButton">저장</div>
+        <div class="infoBoxButton" @click="patientDataUpdate()">저장</div>
       </div>
-      <div class="patientInfochart" v-if="selectIndex !== -1">
-        <div @click="chartNoMin" class="docLt">&lt;</div>
-        <div @click="chartNoPlus" class="docRt">&gt;</div>
-        <div class="doctorpatientChart">
-          <doctor-p-d-chart :pdlist="pdlist" v-if="chartNo === 1" />
-          <doctor-range-chart :rangesList="rangesList" v-else-if="chartNo === 2" />
-          <doctor-focus-chart :playLogs="playLogs" v-else-if="chartNo === 3" />
-          <doctor-training-chart
-            v-else-if="chartNo === 4"
-            :blurMax="prescription.blurMax"
-            :blurMin="prescription.blurMin"
-            :horizontalMax="prescription.horizontalMax"
-            :horizontalMin="prescription.horizontalMin"
-            :mainEye="prescription.mainEye"
-            :objectMax="prescription.objectMax"
-            :objectMin="prescription.objectMin"
-            :verticalMax="prescription.verticalMax"
-            :verticalMin="prescription.verticalMin"
-          />
-        </div>
+      <div @click="chartNoMin" class="docLt">&lt;</div>
+      <div @click="chartNoPlus" class="docRt">&gt;</div>
+      <div class="doctorpatientChart">
+        <doctor-p-d-chart v-if="chartNo === 1" />
+        <doctor-range-chart v-else-if="chartNo === 2" />
+        <doctor-focus-chart v-else-if="chartNo === 3" />
+        <doctor-training-chart v-else-if="chartNo === 4" />
       </div>
     </div>
     <PatientRegister v-if="patientRegist" @regist="RegistFunc" />
   </div>
 </template>
 <script>
-/*
-TODO:
-
-  특이사항 서버연결 없음??
-
-  의사 그래프!
-*/
 import PatientRegister from "./PatientRegister";
 import DoctorPDChart from "./DoctorPDChart.vue";
 import DoctorRangeChart from "./DoctorRangeChart.vue";
 import DoctorFocusChart from "./DoctorFocusChart.vue";
 import DoctorTrainingChart from "./DoctorTrainingChart.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 
 export default {
   components: {
@@ -103,21 +83,22 @@ export default {
     DoctorFocusChart,
     DoctorTrainingChart
   },
-  computed: {},
+  computed: {
+    ...mapState(["DocPrescription"])
+  },
   watch: {
     id() {
-      console.log(this.id);
-      this.PATIENT_CHART(this.id).then(data => {
-        console.log(data);
+      this.PATIENT_CHART(this.name).then(data => {
         this.name = data.name;
         this.age = data.age;
         this.sex = data.gender;
         this.etc = data.desc;
-        this.prescription = data.prescription;
+        this.CHANGE_PRESCRIPTION(data.prescription);
         this.angle = `L:${data.leftPD.horizontal},${data.leftPD.vertical} R:${data.rightPD.horizontal},${data.rightPD.vertical}`;
-        this.pdlist = data.pdlist;
-        this.rangesList = data.rangesList;
-        this.playLogs = data.playLogs;
+        this.CHANGE_DOCLIST(data.pdlist);
+        this.CHANGE_DOCRANGE(data.rangesList);
+        this.CHANGE_DOCPLAY(data.playLogs);
+        this.chartNo = 1;
       });
     },
     search() {
@@ -145,7 +126,7 @@ export default {
   },
   data() {
     return {
-      chartNo: 1,
+      chartNo: 0,
       selectIndex: -1,
       chargePatient: [],
       name: "",
@@ -158,23 +139,7 @@ export default {
       id: "",
       totalPlayTime: 0,
       averagePlayTime: 0,
-      patientRegist: false,
-      prescription: {
-        blurMax: 0,
-        blurMin: 0,
-        horizontalMax: 0,
-        horizontalMin: 0,
-        mainEye: null,
-        objectMax: 0,
-        objectMin: 0,
-        verticalMax: 0,
-        verticalMin: 0,
-        vividMax: 0,
-        vividMin: 0
-      },
-      pdlist: [],
-      rangesList: [],
-      playLogs: []
+      patientRegist: false
     };
   },
   methods: {
@@ -184,16 +149,24 @@ export default {
       "PATIENT_CHART",
       "PATIENT_CHARTUPDATE"
     ]),
+    ...mapMutations([
+      "CHANGE_PRESCRIPTION",
+      "CHANGE_DOCLIST",
+      "CHANGE_DOCRANGE",
+      "CHANGE_DOCPLAY"
+    ]),
     RegistFunc(id) {
       this.PATIENT_REGIST(id).then(_ => {
         this.PATIENT_REFER().then(data => {
           this.chargePatient = data;
         });
       });
+      this.patientRegist = !this.patientRegist;
     },
     selectList(index) {
       this.selectIndex = index;
       this.id = this.chargePatient[index].id;
+      this.name = this.chargePatient[index].name;
     },
     chartNoPlus() {
       if (this.chartNo === 4) {
@@ -208,6 +181,15 @@ export default {
         return;
       }
       this.chartNo--;
+    },
+    patientDataUpdate() {
+      const data = this.DocPrescription;
+      data.desc = this.etc;
+      const input = {
+        id: this.id,
+        prescription: data
+      };
+      this.PATIENT_CHARTUPDATE(input);
     }
   }
 };
@@ -218,7 +200,6 @@ export default {
   background-color: #fcfcfc;
 }
 .centerTitle {
-  width: 178px;
   height: 37px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 32px;
@@ -533,12 +514,13 @@ export default {
   height: 49.3px;
   border-radius: 3px;
   border: solid 2px #4b74ff;
-  background-color: #ffffff;
+  background-color: #4b74ff;
   font-size: 16px;
   font-family: NanumBarunGothicOTF;
   line-height: 49.3px;
   text-align: center;
-  color: #4b74ff;
+  cursor: pointer;
+  color: #ffffff;
 }
 .patientInfochart {
   height: 1000px;

@@ -1,11 +1,9 @@
 <template>
   <div>
     <div class="main-navi">
-      <div class="header-BI">
-        <router-link to="/">
-          <img class="logo" src="../images/logo-icon@2x.png" />
-        </router-link>
-      </div>
+      <router-link class="logo" to="/">
+        <img src="../images/logo-icon@2x.png" />
+      </router-link>
       <div class="menu">
         <a v-if="!isAuth" class="join" @click.prevent="movePage('terms')" href>JOIN</a>
         <router-link v-else class="join" to="/MypageManager">MYPAGE</router-link>
@@ -49,12 +47,14 @@ export default {
   border-bottom: solid 0.5px #d9d9d9;
 }
 .logo {
-  width: 154.6px;
-  height: 31px;
-  object-fit: contain;
   position: relative;
   left: 380px;
   top: 26px;
+}
+.logo img {
+  width: 154.6px;
+  height: 31px;
+  object-fit: contain;
 }
 
 .join {

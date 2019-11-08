@@ -105,7 +105,6 @@ export default {
   left: 40px;
 }
 .sellerResistTag {
-  width: 100px;
   height: 20px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;

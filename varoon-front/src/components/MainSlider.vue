@@ -59,7 +59,6 @@ export default {
 }
 .current-bar {
   top: 639.7px;
-  width: 100%;
   left: 815px;
   position: absolute;
 }
@@ -82,7 +81,6 @@ export default {
   overflow: hidden;
   visibility: visible;
   opacity: 1;
-  position: absolute;
 }
 .fade-enter,
 .fade-leave {

@@ -19,7 +19,6 @@
         @click.prevent="CHANGE_LOGIN_COMPONENT('findAccount')"
       >아이디/비밀번호 찾기</a>
     </div>-->
-    <hr />
     <Login v-if="loginComponent === 'login'" />
     <Terms v-else-if="loginComponent === 'terms'" />
     <Regist v-else-if="loginComponent === 'regist'" />

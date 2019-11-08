@@ -10,7 +10,9 @@
         </div>
         <div class="angle">
           <div class="category" style="float: left">사시각도</div>
-          <div class="categoryResult">L-{{angleL}} / R-{{angleR}}</div>
+          <div
+            class="categoryResult"
+          >L-[{{String(angleL[0]).slice(0,6)}},{{String(angleL[1]).slice(0,6)}}] / R-[{{String(angleR[0]).slice(0,6)}},{{String(angleR[1]).slice(0,6)}}]</div>
         </div>
       </div>
       <div class="pdLegend">
@@ -223,7 +225,6 @@ export default {
 .text .categoryResult {
   margin-left: 25px;
   height: 16px;
-  width: 300px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 14px;
   font-weight: 200;
