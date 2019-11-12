@@ -21,18 +21,23 @@
             <div class="sliderContain">
               <vue-slider
                 :width="380.5"
+                :min="-20"
+                :max="20"
                 :enable-cross="false"
                 v-model="horizontalPrizm"
                 :disabled="true"
               ></vue-slider>
             </div>
             <div class="sliderContain">{{horizontalPrizm[1]}}</div>
+            <div class="unit1">(PD)</div>
           </div>
           <div class="slider">
             <div class="sliderDescript">수직 프리즘</div>
             <div class="sliderContain">{{verticalPrizm[0]}}</div>
             <div class="sliderContain">
               <vue-slider
+                :min="-20"
+                :max="20"
                 :width="380.5"
                 :enable-cross="false"
                 v-model="verticalPrizm"
@@ -40,19 +45,27 @@
               ></vue-slider>
             </div>
             <div class="sliderContain">{{verticalPrizm[1]}}</div>
+            <div class="unit2">(PD)</div>
           </div>
         </div>
-        <div class="traingingBox">
+        <!-- <div class="traingingBox">
           <div class="boxId">양안시 협응 훈련</div>
           <div class="sliderM">
-            <div class="sliderDescript">약시안 개체수</div>
+            <div class="sliderDescript">차별송출 개체 수</div>
             <div class="sliderContain">{{object[0]}}</div>
             <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="object" :disabled="true"></vue-slider>
+              <vue-slider
+                :width="380.5"
+                :max="20"
+                :enable-cross="false"
+                v-model="object"
+                :disabled="true"
+              ></vue-slider>
             </div>
             <div class="sliderContain">{{object[1]}}</div>
           </div>
-        </div>
+          <div class="unit3">(개)</div>
+        </div>-->
         <div class="traingingBox">
           <div class="boxId">약시안 강화 치료</div>
           <div class="sliderM">
@@ -63,6 +76,7 @@
             </div>
             <div class="sliderContain">{{blur[1]}}</div>
           </div>
+          <div class="unit4">(%)</div>
         </div>
       </div>
     </div>
@@ -132,7 +146,7 @@ export default {
 /* 이름바꿀것 */
 .Setting {
   width: 274px;
-  height: 613px;
+  height: 404px;
   border-radius: 3px;
   box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
@@ -166,14 +180,14 @@ export default {
 .trangingChartIn {
   float: left;
   width: 867px;
-  height: 613px;
+  height: 404px;
   border-radius: 3px;
   box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
 }
 .traingingBox {
   width: 867px;
-  height: 204px;
+  height: 202px;
   border-radius: 3px;
   box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
@@ -195,7 +209,6 @@ export default {
   padding-top: 50px;
 }
 .sliderDescript {
-  width: 100px;
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
@@ -217,5 +230,26 @@ export default {
   left: 50px;
   top: 40px;
   margin-right: 31px;
+}
+.unit1 {
+  position: absolute;
+  top: 83px;
+  left: 950px;
+}
+.unit2 {
+  position: absolute;
+  top: 153px;
+  left: 950px;
+}
+.unit3 {
+  position: absolute;
+  top: 318px;
+  left: 980px;
+}
+.unit4 {
+  position: absolute;
+  top: 318px;
+  /* top: 521px; */
+  left: 930px;
 }
 </style>

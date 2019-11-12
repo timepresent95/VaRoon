@@ -191,7 +191,7 @@ export default {
   overflow: scroll;
   position: absolute;
   top: 480px;
-  left: 350px;
+  left: 320px;
 }
 .rangeChartIn {
   width: 867px;

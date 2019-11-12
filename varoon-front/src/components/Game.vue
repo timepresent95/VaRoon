@@ -9,25 +9,25 @@
     <div class="gameImageBox">
       <ul class="ingameImages">
         <li>
-          <img class="smallInagameImage" src="../images/36@2x.png" />
+          <img class="smallInagameImage" src="../images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/36@2x.png" />
+          <img class="smallInagameImage" src="../images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/36@2x.png" />
+          <img class="smallInagameImage" src="../images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/36@2x.png" />
+          <img class="smallInagameImage" src="../images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/36@2x.png" />
+          <img class="smallInagameImage" src="../images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/36@2x.png" />
+          <img class="smallInagameImage" src="../images/dif.png" />
         </li>
       </ul>
-      <img class="bigIngameImage" src="../images/36@2x.png" />
+      <img class="bigIngameImage" src="../images/dif.png" />
     </div>
     <div class="gameDescriptBox">
       <div class="age">{{descript.useAge}}세 이용가</div>
@@ -107,7 +107,7 @@ export default {
   data() {
     return {
       descript: {
-        title: "Asia-Pacific Common Residential Theme Pack",
+        title: "Fruit Cutting",
         updateDate: "2019.07.01",
         useAge: 15,
         category: ["전략", "시뮬레이션", "사시", "약시"],

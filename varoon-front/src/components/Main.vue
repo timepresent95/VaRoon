@@ -19,6 +19,7 @@
         <div class="introduce">
           <div id="num">03</div>
           <div id="name">차별 송출</div>
+          <img src="../images/dif.png" />
         </div>
       </div>
     </div>

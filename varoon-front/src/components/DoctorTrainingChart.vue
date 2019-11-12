@@ -29,6 +29,7 @@
               ></vue-slider>
             </div>
             <div class="sliderContain">{{horizontalPrizm[1]}}</div>
+            <div class="unit1">(PD)</div>
           </div>
           <div class="slider">
             <div class="sliderDescript">수직 프리즘</div>
@@ -37,21 +38,23 @@
               <vue-slider :min="-100" :width="380.5" :enable-cross="false" v-model="verticalPrizm"></vue-slider>
             </div>
             <div class="sliderContain">{{verticalPrizm[1]}}</div>
+            <div class="unit2">(PD)</div>
           </div>
         </div>
         <div class="traingingBoxLine"></div>
-        <div class="traingingBox">
+        <!-- <div class="traingingBox">
           <div class="boxId">양안시 협응 훈련</div>
           <div class="sliderM">
-            <div class="sliderDescript">약시안 개체수</div>
+            <div class="sliderDescript">차별송출 개체 수</div>
             <div class="sliderContain">{{object[0]}}</div>
             <div class="sliderContain">
               <vue-slider :width="380.5" :enable-cross="false" v-model="object"></vue-slider>
             </div>
             <div class="sliderContain">{{object[1]}}</div>
+            <div class="unit3">(개)</div>
           </div>
         </div>
-        <div class="traingingBoxLine"></div>
+        <div class="traingingBoxLine"></div>-->
         <div class="traingingBox">
           <div class="boxId">약시안 강화 치료</div>
           <div class="sliderM">
@@ -61,6 +64,7 @@
               <vue-slider :width="380.5" :enable-cross="false" v-model="blur"></vue-slider>
             </div>
             <div class="sliderContain">{{blur[1]}}</div>
+            <div class="unit4">(%)</div>
           </div>
         </div>
       </div>
@@ -187,7 +191,7 @@ export default {
 .trangingChartIn {
   float: left;
   width: 867px;
-  height: 613px;
+  height: 403px;
   border-radius: 3px;
   background-color: #ffffff;
 }
@@ -210,7 +214,6 @@ export default {
   padding-top: 20px;
 }
 .sliderDescript {
-  width: 100px;
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
@@ -243,5 +246,26 @@ export default {
 .sliderM {
   height: 50px;
   padding-top: 50px;
+}
+.unit1 {
+  position: absolute;
+  top: 238px;
+  left: 680px;
+}
+.unit2 {
+  position: absolute;
+  top: 308px;
+  left: 680px;
+}
+.unit3 {
+  position: absolute;
+  top: 473px;
+  left: 680px;
+}
+.unit4 {
+  position: absolute;
+  top: 473px;
+  /* top: 678px; */
+  left: 680px;
 }
 </style>

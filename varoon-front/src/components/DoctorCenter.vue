@@ -243,7 +243,7 @@ export default {
 }
 .patientInfoBox {
   width: 867px;
-  height: 1080px;
+  height: 1020px;
   border-radius: 3px;
   box-shadow: 0 10px 60px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;

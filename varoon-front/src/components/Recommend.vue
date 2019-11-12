@@ -4,10 +4,10 @@
       <div class="recommendTitle">VaRoon 에디터 추천</div>
       <ul>
         <li>
-          <img src="../images/50.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="../images/dif.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
-          <img src="../images/51.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="../images/UTube.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
           <img src="../images/52.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
