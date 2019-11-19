@@ -39,7 +39,7 @@ export default {
     pageName() {
       if (this.patientComponent === "pd") return "사시각";
       else if (this.patientComponent === "range") return "안근능력";
-      else if (this.patientComponent === "focus") return "경과";
+      else if (this.patientComponent === "focus") return "집중도";
       else if (this.patientComponent === "training") return "훈련정보";
     }
   },

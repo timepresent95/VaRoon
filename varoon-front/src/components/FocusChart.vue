@@ -80,6 +80,9 @@ export default {
         stroke: {
           width: [3],
           colors: "#636df7"
+        },
+        yaxis: {
+          min: 0
         }
       }
     };

@@ -61,7 +61,7 @@ export default {
       endDay: "2019.09.12",
       leftSeries: [
         {
-          name: "normal-average",
+          name: "init_R",
           data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
@@ -71,7 +71,7 @@ export default {
       ],
       rightSeries: [
         {
-          name: "normal-average",
+          name: "init_L",
           data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
         },
         {
@@ -134,10 +134,20 @@ export default {
         this.rangeDataArr[this.selectDateIndex].leftRange.left,
         this.rangeDataArr[this.selectDateIndex].leftRange.leftUp
       ];
+      let newData_init = [
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.up,
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.rightUp,
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.right,
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.rightDown,
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.down,
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.leftDown,
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.left,
+        this.rangeDataArr[this.rangeDataArr.length - 1].leftRange.leftUp
+      ];
       this.leftSeries = [
         {
-          name: "normal-average",
-          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
+          name: "init_L",
+          data: newData_init
         },
         {
           name: "rangeL",
@@ -154,10 +164,20 @@ export default {
         this.rangeDataArr[this.selectDateIndex].rightRange.left,
         this.rangeDataArr[this.selectDateIndex].rightRange.leftUp
       ];
+      newData_init = [
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.up,
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.rightUp,
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.right,
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.rightDown,
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.down,
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.leftDown,
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.left,
+        this.rangeDataArr[this.rangeDataArr.length - 1].rightRange.leftUp
+      ];
       this.rightSeries = [
         {
-          name: "normal-average",
-          data: [31.8, 39.69, 47.39, 52.71, 47.76, 49.23, 46.39, 40.74]
+          name: "init_R",
+          data: newData_init
         },
         {
           name: "rangeR",
@@ -173,9 +193,8 @@ export default {
   mounted() {
     this.RANGE_CHART()
       .then(data => {
-        this.rangeDataArr = data;
+        this.rangeDataArr = data.reverse();
         this.recentDate = Array.from(data, data => data.date);
-        this.recentDate = this.recentDate.reverse();
         this.selectDateIndex = 0;
       })
       .catch(_ => {

@@ -16,15 +16,6 @@
   </div>
 </template>
 <script>
-/*
-TODO:
-
-  그래프 위치 조정해야함
-
-  아직 props값이 들어오기 전에 처리
-
-
-*/
 import { mapActions, mapState } from "vuex";
 import VueApexCharts from "vue-apexcharts";
 
@@ -106,6 +97,9 @@ export default {
         stroke: {
           width: [3],
           colors: "#636df7"
+        },
+        yaxis: {
+          min: 0
         }
       }
     };
@@ -175,7 +169,7 @@ export default {
   color: #000000;
 }
 .selectBox {
-  width: 1159.5px;
+  width: 867px;
   height: 100px;
   border-radius: 3px;
   box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
@@ -191,7 +185,7 @@ export default {
 }
 .selectBox .endDay {
   position: absolute;
-  left: 707.3px;
+  left: 507.3px;
   top: 41px;
 }
 .selectBox .startSelector {
@@ -201,7 +195,7 @@ export default {
 }
 .selectBox .endSelector {
   position: absolute;
-  left: 823.3px;
+  left: 623.3px;
   top: 41px;
 }
 </style>

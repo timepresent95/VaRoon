@@ -6,12 +6,12 @@
       <div class="text">
         <div style="margin-bottom: 13px;" class="recentCheck">
           <div class="category" style="float: left">최근 검사일</div>
-          <div class="categoryResult">{{recentDate}}</div>
+          <div class="DrPDcategoryResult">{{recentDate}}</div>
         </div>
         <div class="angle">
           <div class="category" style="float: left">사시각도</div>
           <div
-            class="categoryResult"
+            class="DrPDcategoryResult"
           >L-[{{String(angleL[0]).slice(0,6)}},{{String(angleL[1]).slice(0,6)}}] / R-[{{String(angleR[0]).slice(0,6)}},{{String(angleR[1]).slice(0,6)}}]</div>
         </div>
       </div>
@@ -222,7 +222,7 @@ export default {
   display: inline-block;
   margin-right: 25px;
 }
-.text .categoryResult {
+.text .DrPDcategoryResult {
   margin-left: 25px;
   height: 16px;
   font-family: NanumBarunGothicUltraLightOTF;
