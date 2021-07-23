@@ -1,13 +1,13 @@
 <template>
-  <div class="input">
+  <article class="login-artice">
     <form @submit.prevent="onSubmit">
       <div>
-        <div class="login-text">로그인</div>
-        <div class="id-text">ID</div>
+        <h1 class="login-text">로그인</h1>
+        <h2 class="id-text">ID</h2>
         <div class="id-input" @click.prevent="setfocus('id')">
           <input type="text" v-model="id" placeholder="6~13자 영문 소문자, 숫자 입력" ref="id" />
         </div>
-        <div class="pass-text">Password</div>
+        <h2 class="pass-text">Password</h2>
         <div class="pass-input" @click.prevent="setfocus('pass')">
           <input
             type="password"
@@ -28,10 +28,10 @@
         <button class="join-btn" @click.prevent="CHANGE_LOGIN_COMPONENT('terms')">회원가입</button>
       </div>
     </form>
-  </div>
+  </article>
 </template>
 <script>
-import { auth, setAuthInHeader } from "../api";
+import { auth, setAuthInHeader } from "@/api";
 import { mapMutations, mapActions } from "vuex";
 
 export default {
@@ -78,47 +78,34 @@ export default {
 };
 </script>
 <style>
-.input {
-  margin-left: 40%;
-  height: auto;
-  overflow: hidden;
-}
-.input div {
-  margin: 10px 0px;
-  float: left;
+.login-artice {
+  height: calc(100vh - 191px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10rem;
 }
 .login-text {
-  width: 86px;
   height: 37px;
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
+  font-weight: normal;
   text-align: center;
-  color: #000000;
-  position: absolute;
-  top: 100px;
-  left: 917px;
 }
 .id-text {
   width: 19px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
-  text-align: left;
-  color: #000000;
-  position: absolute;
-  top: 207px;
-  left: 752px;
+  font-weight: normal;
 }
 .pass-text {
   width: 86px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
-  text-align: left;
-  color: #000000;
-  position: absolute;
-  top: 334px;
-  left: 752px;
+  font-weight: normal;
+  margin-top: 1rem;
 }
 .id-input {
   width: 416px;
@@ -126,9 +113,6 @@ export default {
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 240px;
-  left: 752px;
 }
 
 .pass-input {
@@ -137,12 +121,9 @@ export default {
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 367px;
-  left: 752px;
 }
 
-.input input {
+.login-artice input {
   outline: none;
   border: none;
   margin-top: 24px;
@@ -160,16 +141,10 @@ export default {
   text-align: center;
   color: #a6a6a6;
   text-decoration-line: underline;
-  position: absolute;
-  top: 449px;
-  left: 1028px;
 }
 .login-button-box {
   height: 148px;
   width: 416px;
-  position: absolute;
-  top: 512px;
-  left: 752px;
 }
 .login-btn {
   width: 416px;

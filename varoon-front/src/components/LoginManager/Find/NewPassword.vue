@@ -1,20 +1,22 @@
 <template>
-  <div>
-    <div class="findPassTitle">비밀번호 찾기</div>
-    <div class="myId">
-      아이디
-      <span style="margin-right: 245px"></span>
-      {{id}}
+  <div class="new-password">
+    <h1 class="find-pass-title">비밀번호 찾기</h1>
+      <p class="my-id">
+        아이디: {{id}}
+      </p>
+    <div>
+      <h2 class="new-pass-title">새 비밀번호</h2>
+      <div class="new-pass-input">
+        <input type="text" autofocus placeholder="영문, 숫자, 특수 문자 조합, 8-12자 내외" />
+      </div>
     </div>
-    <div class="newPassTitle">새 비밀번호</div>
-    <div class="newPassInput">
-      <input type="text" autofocus placeholder="영문, 숫자, 특수 문자 조합, 8-12자 내외" />
+    <div>
+      <h2 class="pass-check-title">새 비밀번호 확인</h2>
+      <div class="check-pass-input">
+        <input type="text" placeholder="비밀번호와 일치해야 합니다" />
+      </div>
     </div>
-    <div class="passCheckTitle">새 비밀번호 확인</div>
-    <div class="checkPassInput">
-      <input type="text" placeholder="비밀번호와 일치해야 합니다" />
-    </div>
-    <button class="nextBtn">다음</button>
+    <button class="next-btn">다음</button>
   </div>
 </template>
 <script>
@@ -32,76 +34,71 @@ export default {
 };
 </script>
 <style>
-.findPassTitle {
+.new-password {
+  min-height: calc(100vh - 191px);
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-password h1,
+.new-password h2 {
+  font-weight: normal;
+}
+
+.new-password > div {
+  margin-bottom: 10px;
+}
+.find-pass-title {
   width: 179px;
   height: 37px;
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
   text-align: center;
   color: #000000;
-  position: absolute;
-  top: 100px;
-  left: 885px;
 }
-.myId {
-  width: 500px;
-  height: 23px;
+.my-id {
+  width: 416px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #a6a6a6;
-  position: absolute;
-  top: 207px;
-  left: 752px;
 }
-.newPassTitle {
+.new-pass-title {
   width: 135px;
-  height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #000000;
-  position: absolute;
-  top: 262px;
-  left: 752px;
 }
 
-.passCheckTitle {
+.pass-check-title {
   width: 135px;
-  height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #000000;
-  position: absolute;
-  top: 389px;
-  left: 752px;
 }
 
-.newPassInput {
+.new-pass-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 295px;
-  left: 752px;
 }
 
-.checkPassInput {
+.check-pass-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 422px;
-  left: 752px;
 }
 
-.newPassInput input,
-.checkPassInput input {
+.new-pass-input input,
+.check-pass-input input {
   outline: none;
   border: none;
   margin-top: 24px;
@@ -119,7 +116,7 @@ export default {
   width: 200px;
   font-family: NanumBarunGothicUltraLightOTF;
 }
-.nextBtn {
+.next-btn {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -130,9 +127,7 @@ export default {
   line-height: 1.6;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  top: 528px;
-  left: 752px;
+  border: none;
 }
 </style>
 

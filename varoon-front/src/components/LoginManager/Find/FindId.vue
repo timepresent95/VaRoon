@@ -1,20 +1,26 @@
 <template>
-  <div>
-    <div class="findIdTitle">아이디 찾기</div>
-    <div class="nameTitle">이름</div>
-    <div class="nameInput">
-      <input type="text" autofocus placeholder="이름을 입력하세요" />
+  <div class="find-id">
+    <h1 class="find-id__title">아이디 찾기</h1>
+    <div>
+      <h2 class="name-title">이름</h2>
+      <div class="name-input">
+        <input type="text" autofocus placeholder="이름을 입력하세요" />
+      </div>
     </div>
-    <div class="emailTitle">이메일</div>
-    <div class="emailInput">
-      <input type="text" placeholder="등록된 이메일과 같아야 인증번호가 발송됩니다" />
+    <div>
+      <h2 class="email-title">이메일</h2>
+      <div class="email-input">
+        <input type="text" placeholder="등록된 이메일과 같아야 인증번호가 발송됩니다" />
+      </div>
     </div>
-    <div class="checkNum">
-      <input type="text" placeholder="인증번호 4자리" />
+    <div class="check-num-content">
+      <div class="check-num">
+        <input type="text" placeholder="인증번호 4자리" />
+      </div>
+      <button class="check-num-btn">인증번호 받기</button>
     </div>
-    <button class="checkNumBtn">인증번호 받기</button>
-    <button class="nextBtn">다음</button>
-    <button class="changeComponent" @click.prevent="CHANGE_FIND_COMPONENT('pass')">비밀번호 찾기</button>
+    <button class="next-btn">다음</button>
+    <button class="change-component" @click.prevent="CHANGE_FIND_COMPONENT('pass')">비밀번호 찾기</button>
   </div>
 </template>
 <script>
@@ -32,77 +38,72 @@ export default {
 };
 </script>
 <style>
-.findIdTitle {
-  width: 150px;
+.find-id {
+  min-height: calc(100vh - 191px);
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.find-id h1,
+.find-id h2 {
+  font-weight: normal;
+}
+
+.find-id > div {
+  margin-bottom: 10px;
+}
+
+.find-id__title {
   height: 37px;
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
   text-align: center;
-  color: #000000;
-  position: absolute;
-  top: 100px;
-  left: 885px;
 }
 
-.nameTitle {
-  width: 36px;
+.name-title {
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
-  color: #000000;
-  position: absolute;
-  top: 200px;
-  left: 752px;
 }
 
-.emailTitle {
+.email-title {
   width: 54px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #000000;
-  position: absolute;
-  top: 334px;
-  left: 752px;
 }
 
-.nameInput {
+.name-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 240px;
-  left: 752px;
 }
 
-.emailInput {
+.email-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 367px;
-  left: 752px;
 }
 
-.checkNum {
+.check-num {
   width: 264px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 442px;
-  left: 752px;
 }
 
-.nameInput input,
-.emailInput input {
+.name-input input,
+.email-input input {
   outline: none;
   border: none;
   margin-top: 24px;
@@ -111,31 +112,34 @@ export default {
   width: 300px;
   font-family: NanumBarunGothicUltraLightOTF;
 }
-.checkNum input {
+
+.check-num-content {
+  display: flex;
+}
+
+.check-num input {
   outline: none;
   border: none;
   margin-top: 24px;
-  margin-left: 19px;
   font-size: 16px;
   width: 200px;
+  padding: 0 20px;
   font-family: NanumBarunGothicUltraLightOTF;
 }
 
-.checkNumBtn {
+.check-num-btn {
   width: 140px;
   height: 62px;
   border-radius: 3px;
   border: solid 2px #4b74ff;
-  position: absolute;
-  top: 442px;
-  left: 1028px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
   line-height: 2.81;
   text-align: center;
   color: #4b74ff;
+  margin-left: 13px;
 }
-.nextBtn {
+.next-btn {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -146,11 +150,10 @@ export default {
   line-height: 1.6;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  top: 548px;
-  left: 752px;
+  margin-bottom: 10px;
+  border: none;
 }
-.changeComponent {
+.change-component {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -161,8 +164,5 @@ export default {
   line-height: 1.6;
   text-align: center;
   color: #4b74ff;
-  position: absolute;
-  top: 632px;
-  left: 752px;
 }
 </style>

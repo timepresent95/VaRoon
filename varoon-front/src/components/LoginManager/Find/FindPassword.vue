@@ -1,24 +1,32 @@
 <template>
-  <div>
-    <div class="findIdTitle">비밀번호 찾기</div>
-    <div class="idTitle">아이디</div>
-    <div class="idInput">
+  <div class="find-password">
+    <h1 class="find-id-title">비밀번호 찾기</h1>
+    <div>
+    <h2 class="id-title">아이디</h2>
+    <div class="id-input">
       <input type="text" autofocus placeholder="사용하는 아이디를 입력하세요" />
     </div>
-    <div class="passNameTitle">이름</div>
-    <div class="passNameInput">
+    </div>
+    <div>
+    <h2 class="pass-name-title">이름</h2>
+    <div class="pass-name-input">
       <input type="text" autofocus placeholder="이름을 입력하세요" />
     </div>
-    <div class="passEmailTitle">이메일</div>
-    <div class="passEmailInput">
+    </div>
+    <div>
+    <h2 class="pass-email-title">이메일</h2>
+    <div class="pass-email-input">
       <input type="text" placeholder="등록된 이메일과 같아야 인증번호가 발송됩니다" />
     </div>
-    <div class="passCheckNum">
+    </div>
+    <div class="pass-check-content">
+    <div class="pass-check-num">
       <input type="text" placeholder="인증번호 4자리" />
     </div>
-    <button class="passCheckNumBtn">인증번호 받기</button>
-    <button class="passNextBtn">다음</button>
-    <button class="passChangeComponent" @click.prevent="CHANGE_FIND_COMPONENT('id')">아이디 찾기</button>
+    <button class="pass-check-num-btn">인증번호 받기</button>
+    </div>
+    <button class="pass-next-btn">다음</button>
+    <button class="pass-chanage-component" @click.prevent="CHANGE_FIND_COMPONENT('id')">아이디 찾기</button>
   </div>
 </template>
 <script>
@@ -36,99 +44,93 @@ export default {
 };
 </script>
 <style>
-.findIdTitle {
+.find-password{
+  min-height: calc(100vh - 191px);
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.find-password h1,
+.find-password h2 {
+  font-weight: normal;
+}
+.find-password > div {
+  margin-bottom: 10px;
+}
+.find-id-title {
   width: 179px;
   height: 37px;
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
   text-align: center;
   color: #000000;
-  position: absolute;
-  top: 100px;
-  left: 871px;
 }
 
-.idTitle {
+.id-title {
   width: 54px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #000000;
-  position: absolute;
-  top: 200px;
-  left: 752px;
 }
-.passNameTitle {
+.pass-name-title {
   width: 54px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #000000;
-  position: absolute;
-  top: 334px;
-  left: 752px;
 }
 
-.passEmailTitle {
+.pass-email-title {
   width: 54px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #000000;
-  position: absolute;
-  top: 461px;
-  left: 752px;
 }
 
-.idInput {
+.id-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 240px;
-  left: 752px;
 }
-.passNameInput {
+.pass-name-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 367px;
-  left: 752px;
 }
 
-.passEmailInput {
+.pass-email-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 494px;
-  left: 752px;
 }
 
-.passCheckNum {
+.pass-check-content{
+  display: flex;
+}
+
+.pass-check-num {
   width: 264px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
-  top: 569px;
-  left: 752px;
 }
 
-.idInput input,
-.passNameInput input,
-.passEmailInput input {
+.id-input input,
+.pass-name-input input,
+.pass-email-input input {
   outline: none;
   border: none;
   margin-top: 24px;
@@ -137,31 +139,29 @@ export default {
   width: 300px;
   font-family: NanumBarunGothicUltraLightOTF;
 }
-.passCheckNum input {
+.pass-check-num input {
   outline: none;
   border: none;
   margin-top: 24px;
-  margin-left: 19px;
   font-size: 16px;
   width: 200px;
   font-family: NanumBarunGothicUltraLightOTF;
+  padding: 0 20px;
 }
 
-.passCheckNumBtn {
+.pass-check-num-btn {
   width: 140px;
   height: 62px;
   border-radius: 3px;
   border: solid 2px #4b74ff;
-  position: absolute;
-  top: 569px;
-  left: 1028px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
   line-height: 2.81;
   text-align: center;
   color: #4b74ff;
+  margin-left: 13px;
 }
-.passNextBtn {
+.pass-next-btn {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -172,11 +172,9 @@ export default {
   line-height: 1.6;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  top: 675px;
-  left: 752px;
+  margin-bottom: 10px;
 }
-.passChangeComponent {
+.pass-chanage-component {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -187,9 +185,6 @@ export default {
   line-height: 1.6;
   text-align: center;
   color: #4b74ff;
-  position: absolute;
-  top: 759px;
-  left: 752px;
 }
 </style>
 

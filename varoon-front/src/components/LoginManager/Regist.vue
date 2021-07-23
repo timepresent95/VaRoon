@@ -1,32 +1,30 @@
 <template>
-  <div>
-    <div class="registTitle">회원가입</div>
-    <img class="loadMap" src="../images/join-step-two@2x.png" />
-    <div class="registBoundLine"></div>
-    <div class="registBox">
-      <div class="registCategory">
-        <div class="categoryTitle">성명</div>
+  <article class="regist">
+    <h1 class="regist-title">회원가입</h1>
+    <img class="load-map" src="@/images/join-step-two@2x.png" />
+    <div class="regist-bound-line"></div>
+    <div class="regist-box">
+      <div class="regist-category">
+        <h2 class="category-title">성명</h2>
         <input
-          class="categoryInput"
+          class="category-input"
           type="text"
           v-model="name"
           autofocus
-          placeholder="강태우"
+          placeholder="이름을 입력해주세요"
           maxlength="20"
         />
-        <div class="error_box">{{nameCheck}}</div>
+        <p class="error_box">{{nameCheck}}</p>
       </div>
-      <div class="registCategory">
-        <div class="categoryTitle">생년월일</div>
-        <div>
-          <input class="yearInput" type="text" v-model="year" placeholder="YYYY" />
-          <input class="monthInput" type="text" v-model="month" placeholder="MM" />
-          <input class="dayInput" type="text" v-model="date" placeholder="DD" />
-        </div>
-        <div class="error_box">{{birthCheck}}</div>
+      <div class="regist-category">
+        <h2 class="category-title">생년월일</h2>
+        <input class="yearInput" type="text" v-model="year" placeholder="YYYY" />
+        <input class="monthInput" type="text" v-model="month" placeholder="MM" />
+        <input class="dayInput" type="text" v-model="date" placeholder="DD" />
+        <p class="error_box">{{birthCheck}}</p>
       </div>
-      <div class="registCategory">
-        <div class="categoryTitle">성별</div>
+      <div class="regist-category">
+        <h2 class="category-title">성별</h2>
         <button
           :class="{'sexBox': gender !== 'male', 'selectedSexBox': gender === 'male'}"
           @click.prevent="selectSex('male')"
@@ -35,80 +33,69 @@
           :class="{'sexBox' : gender !== 'female', 'selectedSexBox' : gender === 'female'}"
           @click.prevent="selectSex('female')"
         >여성</button>
-        <div class="error_box">{{genderCheck}}</div>
+        <p class="error_box">{{genderCheck}}</p>
       </div>
-      <div class="registCategory">
-        <div class="categoryTitle">E-mail</div>
-        <input class="categoryInput" type="text" v-model="email" placeholder="soma@soma.com" />
-        <div class="error_box">{{mailCheck}}</div>
+      <div class="regist-category">
+        <h2 class="category-title">E-mail</h2>
+        <input class="category-input" type="text" v-model="email" placeholder="soma@soma.com" />
+        <p class="error_box">{{mailCheck}}</p>
       </div>
-      <div style="margin-bottom: 61px"></div>
-      <div class="registCategory">
-        <div class="categoryTitle">아이디</div>
-        <input class="categoryInput" type="text" v-model="id" placeholder="soma" />
-        <div class="error_box">{{idCheck}}</div>
+      <div class="regist-category">
+        <h2 class="category-title">아이디</h2>
+        <input class="category-input" type="text" v-model="id" placeholder="soma" />
+        <p class="error_box">{{idCheck}}</p>
+        <button v-if="this.checkId === null" class="check-duplicate" @click.prevent="checkDuplicate">아이디 중복 확인</button>
+        <p v-if="checkId" class="can-use-id">* 사용 가능한 ID 입니다</p>
+        <p v-else-if="checkId === false" class="cant-use-id">* 사용 불가능한 ID 입니다</p>
       </div>
-      <div v-if="checkId === true" class="canUseId">* 사용 가능한 ID 입니다</div>
-      <div v-else-if="checkId === false" class="cantUseId">* 사용 불가능한 ID 입니다</div>
-      <div class="checkDuplicate" @click.prevent="checkDuplicate">아이디 중복 확인</div>
-      <div class="registCategory">
-        <div class="categoryTitle">비밀번호</div>
+      <div class="regist-category">
+        <h2 class="category-title">비밀번호</h2>
         <input
-          class="categoryInput"
+          class="category-input"
           type="password"
           v-model="password"
           placeholder="soma123"
           maxlength="16"
         />
-        <div class="error_box">{{passwordCheck2}}</div>
+        <p class="error_box">{{passwordCheck2}}</p>
       </div>
-      <div class="registCategory">
-        <div class="categoryTitle">비밀번호 확인</div>
+      <div class="regist-category">
+        <h2 class="category-title">비밀번호 확인</h2>
         <input
-          class="categoryInput"
+          class="category-input"
           type="password"
           v-model="passwordCheck"
           placeholder="soma123"
           maxlength="16"
         />
-        <div class="error_box" :class="{success_box: !passwordCheckCheck}">{{passwordCheckCheck}}</div>
+        <p class="error_box" :class="{success_box: !passwordCheckCheck}">{{passwordCheckCheck}}</p>
       </div>
-      <div class="registCategory">
-        <div class="categoryTitle">직업 선택</div>
+      <div class="regist-category">
+        <h2 class="category-title">직업 선택</h2>
         <button
-          :class="{'roleBox' : role !== 'ROLE_Seller', 'selectedRoleBox' : role === 'ROLE_Seller'}"
+          :class="{'role-box' : role !== 'ROLE_Seller', 'selected-role-box' : role === 'ROLE_Seller'}"
           @click.prevent="selectRole('ROLE_Seller')"
         >판매자</button>
         <button
-          :class="{'roleBox' : role !== 'ROLE_Patien', 'selectedRoleBox' : role === 'ROLE_Patien'}"
+          :class="{'role-box' : role !== 'ROLE_Patien', 'selected-role-box' : role === 'ROLE_Patien'}"
           @click.prevent="selectRole('ROLE_Patien')"
         >환자</button>
         <button
-          :class="{'roleBox' : role !== 'ROLE_Doctor', 'selectedRoleBox' : role === 'ROLE_Doctor'}"
+          :class="{'role-box' : role !== 'ROLE_Doctor', 'selected-role-box' : role === 'ROLE_Doctor'}"
           @click.prevent="selectRole('ROLE_Doctor')"
         >의사</button>
-        <div class="error_box">{{roleCheck}}</div>
+        <p class="error_box">{{roleCheck}}</p>
       </div>
     </div>
     <button
-      class="registBtn"
+      class="regist-btn"
       @click.prevent="regist"
-      :class="{'registBtn-success': !invalidForm}"
+      :class="{'regist-btn-success': !invalidForm}"
       :disabled="invalidForm"
     >가입하기</button>
-  </div>
+  </article>
 </template>
 <script>
-/*
-TODO:
-
-    이메일, 성명, 생년월일 유효성 검사 (. 뒤에 글자, 이름에 숫자 x)
-
-    로드맵 이미지 추가할것
-
-    아이디 확인 이미지 추가할것
-
-*/
 import { mapMutations, mapActions } from "vuex";
 
 export default {
@@ -241,69 +228,60 @@ export default {
 };
 </script>
 <style>
-.registTitle {
+.regist{
+  min-height: calc(100vh - 191px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+}
+.regist-title {
   width: 115px;
   height: 37px;
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
   text-align: center;
-  color: #000000;
-  position: absolute;
-  top: 100px;
-  left: 903px;
+  font-weight: normal;
 }
-.loadMap {
+.load-map {
   width: 400px;
   height: 72px;
   object-fit: contain;
-  position: absolute;
-  top: 165px;
-  left: 760px;
 }
-.registBoundLine {
+.regist-bound-line {
   width: 636px;
   height: 0;
   border: solid 0.5px #e2e2e2;
-  position: absolute;
-  top: 275.7px;
-  left: 642px;
+  margin: 10px 0;
 }
-.registBox {
-  position: absolute;
-  width: 1000px;
-  top: 328px;
-  left: 642px;
+h2 {
+  font-weight: normal;
 }
-.registCategory {
-  height: 62px;
+.regist-category {
   margin-bottom: 27px;
 }
-.categoryTitle {
+.category-title {
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   text-align: left;
   color: #000000;
-  padding: 19.5px 0px;
+  margin-bottom: 5px;
 }
-.categoryInput {
+.category-input {
   width: 468px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
   font-size: 16px;
-  left: 160px;
-  padding-left: 30px;
+  padding: 0 20px;
 }
 .yearInput {
   width: 203px;
   height: 62px;
   border-radius: 3px;
   border: solid 1px #e2e2e2;
-  position: absolute;
-  left: 160px;
   background-color: #ffffff;
   text-align: center;
   font-size: 16px;
@@ -314,9 +292,7 @@ export default {
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
   text-align: center;
-  left: 375px;
   font-size: 16px;
 }
 .dayInput {
@@ -325,15 +301,12 @@ export default {
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  position: absolute;
   text-align: center;
-  left: 522px;
   font-size: 16px;
 }
 
 .selectedSexBox {
   outline: none;
-  position: relative;
   left: 122px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
@@ -344,13 +317,10 @@ export default {
   border: solid 2px #4b74ff;
   background-color: #ffffff;
   margin-right: 12px;
-  float: left;
 }
 
 .sexBox {
   margin-right: 12px;
-  position: relative;
-  left: 122px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
   font-weight: 200;
@@ -362,29 +332,22 @@ export default {
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-  float: left;
 }
-.registCategory div {
-  float: left;
+.regist-category div {
 }
-.checkDuplicate {
-  width: 127px;
+.check-duplicate {
   height: 19px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  text-align: right;
   color: #4b74ff;
   text-decoration-line: underline;
-  position: relative;
-  left: 500px;
   cursor: pointer;
   margin-bottom: 27px;
+  background-color: inherit;
+  outline: none;
+  border: none;
 }
-.selectedRoleBox {
+.selected-role-box {
   width: 158px;
   height: 62px;
   border-radius: 3px;
@@ -395,17 +358,12 @@ export default {
   text-align: center;
   color: #4b74ff;
   position: relative;
-  left: 82px;
   margin-right: 12px;
   outline: none;
-  float: left;
 }
-.roleBox {
-  float: left;
+.role-box {
   outline: none;
   margin-right: 12px;
-  position: relative;
-  left: 82px;
   width: 158px;
   height: 62px;
   border-radius: 3px;
@@ -420,7 +378,7 @@ export default {
 .input_regist {
   width: 300px;
 }
-.registBtn {
+.regist-btn {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -430,12 +388,10 @@ export default {
   font-size: 20px;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  left: 752px;
-  top: 1189px;
   outline: none;
+  border: none;
 }
-.registBtn-success {
+.regist-btn-success {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -445,58 +401,37 @@ export default {
   font-size: 20px;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  left: 752px;
-  top: 1189px;
   outline: none;
+  border: none;
 }
-.canUseId {
+.can-use-id {
   width: 152px;
   height: 19px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
   line-height: 2.81;
-  letter-spacing: normal;
   text-align: left;
   color: #4b74ff;
-  position: relative;
-  left: 165px;
 }
-.cantUseId {
+.cant-use-id {
   width: 170px;
   height: 19px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
   line-height: 2.81;
-  letter-spacing: normal;
   text-align: left;
   color: #ff4b4b;
-  position: relative;
-  left: 165px;
 }
 .error_box {
-  position: absolute;
-  left: 736px;
-  height: 19px;
   font-family: NanumBarunGothicOTF;
   font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   text-align: left;
+  display: block;
   color: #4b74ff;
-  padding: 22.5px 0px;
+  padding-top: 10px;
 }
 .success_box {
   display: block;
-  float: left;
   margin: 9px 0;
   font-size: 12px;
   line-height: 14px;
