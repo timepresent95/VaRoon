@@ -42,14 +42,16 @@ export default {
 </script>
 <style>
 .main-navi {
-  width: 1920px;
+  width: 100%;
   height: 82px;
   border-bottom: solid 0.5px #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 .logo {
-  position: relative;
-  left: 380px;
-  top: 26px;
+  width: 154.6px;
 }
 .logo img {
   width: 154.6px;
@@ -58,9 +60,6 @@ export default {
 }
 
 .join {
-  top: 32px;
-  left: 1375px;
-  position: absolute;
   width: 45px;
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;
@@ -73,11 +72,9 @@ export default {
   text-align: left;
   letter-spacing: 5px;
   color: #000000;
+  margin-right: 10px;
 }
 .login {
-  top: 32px;
-  left: 1478px;
-  position: absolute;
   width: 62px;
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;

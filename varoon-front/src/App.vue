@@ -29,6 +29,7 @@ export default {
 * {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
 }
 @font-face {
   font-family: "NanumBarunGothicOTF";
@@ -75,12 +76,13 @@ export default {
 }
 body,
 #app {
-  width: 1920px;
-  height: 100%;
+  width: 100%;
   margin: 0px;
 }
+::-webkit-scrollbar {
+      display: none;
+}
 .container {
-  flex-grow: 1;
   position: relative;
 }
 a {

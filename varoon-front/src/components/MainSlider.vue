@@ -1,23 +1,22 @@
 <template>
   <div>
-    <div transition="fade">
-      <img
-        class="slider"
-        :src="images[Math.abs(currentNumber) % images.length]"
-        @mouseover="stopRotation"
-        @mouseout="startRotation"
-      />
-      <div class="current-bar">
-        <a
-          href
-          v-for="number in images.length"
-          :key="number"
-          @click.prevent="currentNumber = number-1"
-        >
-          <div v-if="((currentNumber) % images.length) === number-1" :class="'current'"></div>
-          <div v-else :class="'notCurrent'"></div>
-        </a>
-      </div>
+    <img
+      class="slider"
+      :src="images[Math.abs(currentNumber) % images.length]"
+      @mouseover="stopRotation"
+      @mouseout="startRotation"
+    />
+    <div class="bar-content" @mouseover="stopRotation" @mouseout="startRotation">
+      <a
+        href
+        v-for="number in images.length"
+        :key="number"
+        @click.prevent="currentNumber = number-1"
+        class="bar-anchor"
+      >
+        <div v-if="((currentNumber) % images.length) === number-1" class="bar" :class="'current'"></div>
+        <div v-else class="bar" :class="'not-current'"></div>
+      </a>
     </div>
   </div>
 </template>
@@ -30,7 +29,8 @@ export default {
       images: [
         require("../images/main-vr-man-img@2x.png"),
         "http://placehold.it/1920x722",
-        "http://placehold.it/1920x722"
+        require("../images/main-vr-man-img@2x.png"),
+        "http://placehold.it/1920x722",
       ]
     };
   },
@@ -53,37 +53,26 @@ export default {
 
 <style>
 .slider {
-  width: 1920px;
+  width: 100%;
   height: auto;
 }
-.current-bar {
-  top: 639.7px;
-  left: 815px;
-  position: absolute;
+.bar-content {
+  width: 275px;
+  margin: 30px auto;
+  display: flex;
+}
+.bar{
+  width: 85px;
+  height: 0;
+
+}
+.bar-anchor:not(:last-child) {
+  margin-right: 10px;
 }
 .current {
-  width: 84.9px;
-  height: 0;
   border: solid 3px #4b74ff;
-  margin-left: 10px;
-  float: left;
 }
-.notCurrent {
-  width: 84.9px;
-  height: 0;
-  border: solid 3px #ffffff;
-  float: left;
-  margin-left: 10px;
-}
-.fade-transition {
-  transition: all 0.8s ease;
-  overflow: hidden;
-  visibility: visible;
-  opacity: 1;
-}
-.fade-enter,
-.fade-leave {
-  opacity: 0;
-  visibility: hidden;
+.not-current {
+  border: solid 3px black;
 }
 </style>
