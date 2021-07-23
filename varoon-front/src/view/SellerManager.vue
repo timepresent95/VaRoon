@@ -8,11 +8,11 @@
   </div>
 </template>
 <script>
-import SellerLeft from "./SellerLeft.vue";
-import SDKDownload from "./SDKDownload.vue";
-import ResistContents from "./ResistContents.vue";
-import SellingContents from "./SellingContents.vue";
-import Revenue from "./Revenue.vue";
+import SellerLeft from "@/components/SellerLeft.vue";
+import SDKDownload from "@/components/SDKDownload.vue";
+import ResistContents from "@/components/ResistContents.vue";
+import SellingContents from "@/components/SellingContents.vue";
+import Revenue from "@/components/Revenue.vue";
 
 import { mapState, mapMutations } from "vuex";
 

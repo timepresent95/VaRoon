@@ -68,11 +68,11 @@
   </div>
 </template>
 <script>
-import PatientRegister from "./PatientRegister";
-import DoctorPDChart from "./DoctorPDChart.vue";
-import DoctorRangeChart from "./DoctorRangeChart.vue";
-import DoctorFocusChart from "./DoctorFocusChart.vue";
-import DoctorTrainingChart from "./DoctorTrainingChart.vue";
+import PatientRegister from "@/components/PatientRegister";
+import DoctorPDChart from "@/components/DoctorPDChart.vue";
+import DoctorRangeChart from "@/components/DoctorRangeChart.vue";
+import DoctorFocusChart from "@/components/DoctorFocusChart.vue";
+import DoctorTrainingChart from "@/components/DoctorTrainingChart.vue";
 import { mapActions, mapMutations, mapState } from "vuex";
 
 export default {

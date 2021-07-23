@@ -7,10 +7,10 @@
   </div>
 </template>
 <script>
-import ManagerLeft from './ManagerLeft.vue'
-import ManageApproval from './ManageApproval.vue'
-import ManageMember from './ManageMember.vue'
-import ManageContentsList from './ManageContentsList.vue'
+import ManagerLeft from '@/components/ManagerLeft.vue'
+import ManageApproval from '@/components/ManageApproval.vue'
+import ManageMember from '@/components/ManageMember.vue'
+import ManageContentsList from '@/components/ManageContentsList.vue'
 
 import {mapState, mapMutations} from 'vuex'
 

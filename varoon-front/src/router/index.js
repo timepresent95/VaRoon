@@ -1,15 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Main from "../components/Main.vue";
-import LoginManager from "../components/LoginManager.vue";
-import Home from '../components/Home.vue';
-import MarketManager from '../components/MarketManager.vue';
-import SellerManager from '../components/SellerManager.vue';
-import PatientCenter from '../components/PatientCenter.vue';
-import DoctorCenter from '../components/DoctorCenter.vue';
-import Manager from '../components/Manager.vue';
-import MypageManager from '../components/MypageManager.vue';
-import Error404 from '../components/Error404.vue';
+import Main from "@/view/Main.vue";
+import LoginManager from "@/view/LoginManager.vue";
+import Home from '@/view/Home.vue';
+import MarketManager from '@/view/MarketManager.vue';
+import SellerManager from '@/view/SellerManager.vue';
+import PatientCenter from '@/view/PatientCenter.vue';
+import DoctorCenter from '@/view/DoctorCenter.vue';
+import Manager from '@/view/Manager.vue';
+import MypageManager from '@/view/MypageManager.vue';
+import Error404 from '@/view/Error404.vue';
 
 import store from '../store'
 

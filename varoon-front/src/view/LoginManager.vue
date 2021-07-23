@@ -27,11 +27,11 @@
   </div>
 </template>
 <script>
-import Login from "./Login.vue";
-import Terms from "./Terms.vue";
-import Regist from "./Regist.vue";
-import Welcome from "./Welcome.vue";
-import FindAccount from "./FindAccount.vue";
+import Login from "@/components/Login.vue";
+import Terms from "@/components/Terms.vue";
+import Regist from "@/components/Regist.vue";
+import Welcome from "@/components/Welcome.vue";
+import FindAccount from "@/components/FindAccount.vue";
 
 import { mapState, mapMutations } from "vuex";
 

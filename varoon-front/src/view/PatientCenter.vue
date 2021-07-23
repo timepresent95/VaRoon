@@ -10,11 +10,11 @@
   </div>
 </template>
 <script>
-import PatientLeft from "./PatientLeft.vue";
-import PDChart from "./PDChart.vue";
-import RangeChart from "./RangeChart.vue";
-import FocusChart from "./FocusChart.vue";
-import TrainingChart from "./TrainingChart.vue";
+import PatientLeft from "@/components/PatientLeft.vue";
+import PDChart from "@/components/PDChart.vue";
+import RangeChart from "@/components/RangeChart.vue";
+import FocusChart from "@/components/FocusChart.vue";
+import TrainingChart from "@/components/TrainingChart.vue";
 
 import { mapState, mapMutations } from "vuex";
 

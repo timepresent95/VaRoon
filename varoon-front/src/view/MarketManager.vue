@@ -9,12 +9,12 @@
   </div>
 </template>
 <script>
-import MarketLeft from "./MarketLeft.vue";
-import Market from "./Market.vue";
-import Game from "./Game.vue";
-import Cart from "./Cart.vue";
-import Library from "./Library.vue";
-import ClientDownload from "./ClientDownload.vue";
+import MarketLeft from "@/components/MarketLeft.vue";
+import Market from "@/components/Market.vue";
+import Game from "@/components/Game.vue";
+import Cart from "@/components/Cart.vue";
+import Library from "@/components/Library.vue";
+import ClientDownload from "@/components/ClientDownload.vue";
 
 import { mapState, mapMutations } from "vuex";
 

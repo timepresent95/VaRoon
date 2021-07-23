@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import MainSlider from "./MainSlider";
+import MainSlider from "@/components/MainSlider";
 
 export default {
   components: {
