@@ -1,11 +1,11 @@
 <template>
-  <div class="ErrorContent">
-    <div class="Image404Box">
-      <img class="Image404" src="@/images/error-illust-img@2x.png" />
+  <div class="error-content">
+    <div class="image-404-content">
+      <img class="image-404" src="@/images/error-illust-img@2x.png" />
     </div>
-    <div class="ErrorText">찾을 수 없는 페이지를 요청하셨습니다.</div>
+    <p class="error-text">찾을 수 없는 페이지를 요청하셨습니다.</p>
     <router-link to="/">
-      <div class="ErrorHomeBtn">Home</div>
+      <div class="error-home-btn">Home</div>
     </router-link>
   </div>
 </template>
@@ -18,36 +18,32 @@ export default {
 };
 </script>
 <style>
-.ErrorContent {
-  width: 1920px;
-  height: 1724px;
+.error-content {
+  width: 100%;
+  height: calc(100vh - 191px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10rem;
 }
-.Image404Box {
-  position: absolute;
-  top: 131px;
-  left: 548.4px;
+.image-404-content {
   width: 822px;
   height: 411px;
 }
-.Image404 {
+.image-404 {
   width: 822px;
   height: 411px;
   object-fit: contain;
 }
-.ErrorText {
+.error-text {
   height: 32px;
   font-family: NanumBarunGothicOTF;
   font-size: 28px;
   text-align: center;
   color: #000000;
-  position: absolute;
-  top: 631px;
-  left: 740px;
+  margin: 20px 0;
 }
-.ErrorHomeBtn {
-  position: absolute;
-  top: 731px;
-  left: 740px;
+.error-home-btn {
   width: 416px;
   height: 64px;
   border-radius: 3px;
