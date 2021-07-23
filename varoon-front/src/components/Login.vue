@@ -5,14 +5,14 @@
         <div class="login-text">로그인</div>
         <div class="id-text">ID</div>
         <div class="id-input" @click.prevent="setfocus('id')">
-          <input type="text" v-model="id" placeholder="아이디(6~13자 영문 소문자, 숫자 입력)" ref="id" />
+          <input type="text" v-model="id" placeholder="6~13자 영문 소문자, 숫자 입력" ref="id" />
         </div>
         <div class="pass-text">Password</div>
         <div class="pass-input" @click.prevent="setfocus('pass')">
           <input
             type="password"
             v-model="pw"
-            placeholder="비밀번호(영문, 숫자, 특수문자 조합. 8~12자 내외)"
+            placeholder="영문, 숫자, 특수문자 조합. 8~12자 내외"
             ref="pass"
           />
         </div>
@@ -177,12 +177,12 @@ export default {
   border-radius: 3px;
   background-color: #a6a6a6;
   font-family: NanumBarunGothicOTF;
-  box-shadow: 0 3px 10px 0 rgba(94, 94, 94, 0.6);
   font-size: 20px;
   line-height: 1.6;
   outline: none;
   text-align: center;
   color: #ffffff;
+  border: none;
 }
 .can-login {
   width: 416px;
