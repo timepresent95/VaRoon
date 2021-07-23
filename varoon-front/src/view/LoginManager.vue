@@ -1,24 +1,5 @@
 <template>
   <div class="login_manager">
-    <!-- <div class="menu-bar">
-      <a
-        href
-        :class="{'bold': changeFontWeigth('login')}"
-        @click.prevent="CHANGE_LOGIN_COMPONENT('login')"
-      >로그인</a>
-      <div>/</div>
-      <a
-        href
-        :class="{'bold': changeFontWeigth('terms')}"
-        @click.prevent="CHANGE_LOGIN_COMPONENT('terms')"
-      >회원가입</a>
-      <div>/</div>
-      <a
-        href
-        :class="{'bold': changeFontWeigth('findAccount')}"
-        @click.prevent="CHANGE_LOGIN_COMPONENT('findAccount')"
-      >아이디/비밀번호 찾기</a>
-    </div>-->
     <Login v-if="loginComponent === 'login'" />
     <Terms v-else-if="loginComponent === 'terms'" />
     <Regist v-else-if="loginComponent === 'regist'" />

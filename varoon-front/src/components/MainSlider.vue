@@ -22,7 +22,6 @@
   </div>
 </template>
 <script>
-//  <div v-for="number in [currentNumber]" transition="fade" :key="number">
 export default {
   data() {
     return {
