@@ -1,7 +1,7 @@
 <template>
   <div class="ErrorContent">
     <div class="Image404Box">
-      <img class="Image404" src="../images/error-illust-img@2x.png" />
+      <img class="Image404" src="@/images/error-illust-img@2x.png" />
     </div>
     <div class="ErrorText">찾을 수 없는 페이지를 요청하셨습니다.</div>
     <router-link to="/">

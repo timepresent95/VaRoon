@@ -1,7 +1,7 @@
 <template>
   <div class="marketBox">
     <div class="marketSearchBar">
-      <img class="searchIcon" src="../images/search-icon@2x.png" />
+      <img class="searchIcon" src="@/images/search-icon@2x.png" />
       <input type="text" v-model="search" autofocus placeholder="VR 컨텐츠의 이름을 검색해보세요!" />
     </div>
     <Recommend v-if="!search" />

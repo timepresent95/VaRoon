@@ -6,7 +6,7 @@
     </div>
     <div class="patientListBox">
       <div class="patientSearchBox">
-        <img src="../images/search-icon@2x.png" />
+        <img src="@/images/search-icon@2x.png" />
         <input type="text" v-model="search" placeholder="검색" />
       </div>
       <div class="patientListText">검색 결과</div>

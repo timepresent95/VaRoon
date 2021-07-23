@@ -2,7 +2,7 @@
   <div>
     <div class="main-navi">
       <router-link class="logo" to="/">
-        <img src="../images/logo-icon@2x.png" />
+        <img src="@/images/logo-icon@2x.png" />
       </router-link>
       <div class="menu">
         <a v-if="!isAuth" class="join" @click.prevent="movePage('terms')" href>JOIN</a>

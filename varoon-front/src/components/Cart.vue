@@ -8,12 +8,12 @@
       <ul>
         <li>
           <div class="cartCheckBox" @click.prevent="first = !first">
-            <img class="cartCheckBoximg" src="../images/checkbox-checked-img@2x.png" v-if="first" />
+            <img class="cartCheckBoximg" src="@/images/checkbox-checked-img@2x.png" v-if="first" />
             <div class="cartCheckBoxNoImg" v-else></div>
           </div>
           <img
             class="liimg"
-            src="../images/50.jpg"
+            src="@/images/50.jpg"
             @click.prevent="CHANGE_MARKET_COMPONENT('game')"
           />
           <div class="cartDesBox">
@@ -28,12 +28,12 @@
         </li>
         <li>
           <div class="cartCheckBox" @click.prevent="second = !second">
-            <img class="cartCheckBoximg" src="../images/checkbox-checked-img@2x.png" v-if="second" />
+            <img class="cartCheckBoximg" src="@/images/checkbox-checked-img@2x.png" v-if="second" />
             <div class="cartCheckBoxNoImg" v-else></div>
           </div>
           <img
             class="liimg"
-            src="../images/51.jpg"
+            src="@/images/51.jpg"
             @click.prevent="CHANGE_MARKET_COMPONENT('game')"
           />
 
@@ -49,12 +49,12 @@
         </li>
         <li>
           <div class="cartCheckBox" @click.prevent="third = !third">
-            <img class="cartCheckBoximg" src="../images/checkbox-checked-img@2x.png" v-if="third" />
+            <img class="cartCheckBoximg" src="@/images/checkbox-checked-img@2x.png" v-if="third" />
             <div class="cartCheckBoxNoImg" v-else></div>
           </div>
           <img
             class="liimg"
-            src="../images/52.jpg"
+            src="@/images/52.jpg"
             @click.prevent="CHANGE_MARKET_COMPONENT('game')"
           />
 
@@ -70,12 +70,12 @@
         </li>
         <li>
           <div class="cartCheckBox" @click.prevent="fourth = !fourth">
-            <img class="cartCheckBoximg" src="../images/checkbox-checked-img@2x.png" v-if="fourth" />
+            <img class="cartCheckBoximg" src="@/images/checkbox-checked-img@2x.png" v-if="fourth" />
             <div class="cartCheckBoxNoImg" v-else></div>
           </div>
           <img
             class="liimg"
-            src="../images/53.jpg"
+            src="@/images/53.jpg"
             @click.prevent="CHANGE_MARKET_COMPONENT('game')"
           />
 
@@ -104,7 +104,7 @@
       <div class="cartLast">
         <div class="cartLastTag">결제하기</div>
         <div class="cartLastImg">
-          <img src="../images/kakaopay-btn@2x.png" />
+          <img src="@/images/kakaopay-btn@2x.png" />
         </div>
       </div>
     </div>

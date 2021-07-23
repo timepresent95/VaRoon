@@ -23,11 +23,11 @@
     <div class="moreBoxTitle">MORE</div>
 
     <router-link to="/PatientCenter" v-if="role === 'ROLE_Patient'">
-      <img class="leftLinkImg" src="../images/mediboard-btn@2x.png" />
+      <img class="leftLinkImg" src="@/images/mediboard-btn@2x.png" />
       <div class="overlay1"></div>
     </router-link>
     <router-link to="/SellerManager" v-else>
-      <img class="leftLinkImg" src="../images/home-salescenter-img@2x.png" />
+      <img class="leftLinkImg" src="@/images/home-salescenter-img@2x.png" />
       <div class="overlay1"></div>
     </router-link>
   </div>

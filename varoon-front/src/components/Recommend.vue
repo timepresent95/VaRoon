@@ -1,16 +1,16 @@
 <template>
   <div class="marketRecommend">
-    <div>
+    <div class="editor-recommend">
       <div class="recommendTitle">VaRoon 에디터 추천</div>
       <ul>
         <li>
-          <img src="../images/dif.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/dif.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
-          <img src="../images/UTube.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/UTube.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
-          <img src="../images/52.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/52.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
       </ul>
     </div>
@@ -18,13 +18,13 @@
       <div class="uploadTitle">최신 업로드</div>
       <ul>
         <li>
-          <img src="../images/53.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/53.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
-          <img src="../images/54@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/54@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
-          <img src="../images/55@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/55@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
       </ul>
     </div>
@@ -32,13 +32,13 @@
       <div class="popularTitle">최신 인기</div>
       <ul>
         <li>
-          <img src="../images/56@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/56@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
-          <img src="../images/57@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/57@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
         <li>
-          <img src="../images/58@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/58@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </li>
       </ul>
     </div>

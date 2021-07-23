@@ -9,17 +9,17 @@
         <div class="introduce">
           <div class="num">01</div>
           <div class="name">정확한 측정</div>
-          <img src="../images/22@2x.png" />
+          <img src="@/images/22@2x.png" />
         </div>
         <div class="introduce">
           <div class="num">02</div>
           <div class="name">가상 프리즘</div>
-          <img src="../images/23@2x.png" />
+          <img src="@/images/23@2x.png" />
         </div>
         <div class="introduce">
           <div class="num">03</div>
           <div class="name">차별 송출</div>
-          <img src="../images/dif.png" />
+          <img src="@/images/dif.png" />
         </div>
       </div>
     </div>

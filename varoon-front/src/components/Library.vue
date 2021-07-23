@@ -4,7 +4,7 @@
     <ul class="libraryUl">
       <li>
         <div class="libraryImg">
-          <img src="../images/50.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/50.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="libraryTag">Monster Hunt World 3</div>
         <div class="libraryTime">
@@ -14,7 +14,7 @@
       </li>
       <li>
         <div class="libraryImg">
-          <img src="../images/51.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/51.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="libraryTag">Ark Survival Evalution</div>
         <div class="libraryTime">
@@ -24,7 +24,7 @@
       </li>
       <li>
         <div class="libraryImg">
-          <img src="../images/52.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/52.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="libraryTag">Dota UnderLoads</div>
         <div class="libraryTime">
@@ -34,7 +34,7 @@
       </li>
       <li>
         <div class="libraryImg">
-          <img src="../images/54@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/54@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="libraryTag">Tekken 7</div>
         <div class="libraryTime">
@@ -44,7 +44,7 @@
       </li>
       <li>
         <div class="libraryImg">
-          <img src="../images/55@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/55@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="libraryTag">Tekken 7 Rematch Edition</div>
         <div class="libraryTime">
@@ -54,7 +54,7 @@
       </li>
       <li>
         <div class="libraryImg">
-          <img src="../images/56@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/56@2x.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="libraryTag">AceCombat Skies UnKwon</div>
         <div class="libraryTime">

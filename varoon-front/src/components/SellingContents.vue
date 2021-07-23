@@ -5,7 +5,7 @@
       <li>
         <div class="sellingConImg">
           <router-link to="/MarketManager">
-            <img src="../images/52.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
+            <img src="@/images/52.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
           </router-link>
         </div>
         <div class="sellingConMidBox">
@@ -17,7 +17,7 @@
       <li>
         <div class="sellingConImg">
           <router-link to="/MarketManager">
-            <img src="../images/51.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
+            <img src="@/images/51.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
           </router-link>
         </div>
         <div class="sellingConMidBox">
@@ -29,7 +29,7 @@
       <li>
         <div class="sellingConImg">
           <router-link to="/MarketManager">
-            <img src="../images/55@2x.png" @click="CHANGE_MARKET_COMPONENT('game')" />
+            <img src="@/images/55@2x.png" @click="CHANGE_MARKET_COMPONENT('game')" />
           </router-link>
         </div>
         <div class="sellingConMidBox">
@@ -41,7 +41,7 @@
       <li>
         <div class="sellingConImg">
           <router-link to="/MarketManager">
-            <img src="../images/54@2x.png" @click="CHANGE_MARKET_COMPONENT('game')" />
+            <img src="@/images/54@2x.png" @click="CHANGE_MARKET_COMPONENT('game')" />
           </router-link>
         </div>
         <div class="sellingConMidBox">
@@ -53,7 +53,7 @@
       <li>
         <div class="sellingConImg">
           <router-link to="/MarketManager">
-            <img src="../images/58@2x.png" @click="CHANGE_MARKET_COMPONENT('game')" />
+            <img src="@/images/58@2x.png" @click="CHANGE_MARKET_COMPONENT('game')" />
           </router-link>
         </div>
         <div class="sellingConMidBox">

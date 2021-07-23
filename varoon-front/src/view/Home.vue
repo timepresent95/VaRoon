@@ -10,15 +10,15 @@
     <div class="homeDscript2">VR 컨텐츠 또는 치료 경과를 확인해보세요</div>
     <div class="here">
       <router-link to="/MarketManager">
-        <img class="pageImg" id="first" src="../images/home-vrmarket-img@2x.png" />
+        <img class="pageImg" id="first" src="@/images/home-vrmarket-img@2x.png" />
         <div class="overlay1Home"></div>
       </router-link>
       <router-link v-if="role === 'ROLE_Patient'" to="/PatientCenter">
-        <img class="pageImg" id="second" src="../images/home-mediboard-img@2x.png" />
+        <img class="pageImg" id="second" src="@/images/home-mediboard-img@2x.png" />
         <div class="overlay2"></div>
       </router-link>
       <router-link v-else to="/SellerManager">
-        <img class="pageImg" id="second" src="../images/home-salescenter-img@2x.png" />
+        <img class="pageImg" id="second" src="@/images/home-salescenter-img@2x.png" />
         <div class="overlay2"></div>
       </router-link>
     </div>

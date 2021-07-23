@@ -23,7 +23,7 @@
     <div class="sellerMoreBox">
       <div class="sellerMoreTAG">MORE</div>
       <router-link to="/MarketManager">
-        <img class="sellerLinkImg" src="../images/home-vrmarket-img@2x.png" />
+        <img class="sellerLinkImg" src="@/images/home-vrmarket-img@2x.png" />
         <div class="sellerLinkHover"></div>
       </router-link>
     </div>

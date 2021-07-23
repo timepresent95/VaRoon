@@ -21,7 +21,7 @@
             <img
               @click="clickCheckBox('다크 소울 3')"
               class="RevenueChkedBox"
-              src="../images/checkbox-checked-img@2x.png"
+              src="@/images/checkbox-checked-img@2x.png"
               v-if="first"
             />
             <div @click="clickCheckBox('다크 소울 3')" class="RevenueChkBox" v-else></div>
@@ -31,7 +31,7 @@
             <img
               @click="clickCheckBox('Civilization 4')"
               class="RevenueChkedBox"
-              src="../images/checkbox-checked-img@2x.png"
+              src="@/images/checkbox-checked-img@2x.png"
               v-if="second"
             />
             <div @click="clickCheckBox('Civilization 4')" class="RevenueChkBox" v-else></div>
@@ -41,7 +41,7 @@
             <img
               @click="clickCheckBox('Ark Evolved')"
               class="RevenueChkedBox"
-              src="../images/checkbox-checked-img@2x.png"
+              src="@/images/checkbox-checked-img@2x.png"
               v-if="third"
             />
             <div @click="clickCheckBox('Ark Evolved')" class="RevenueChkBox" v-else></div>

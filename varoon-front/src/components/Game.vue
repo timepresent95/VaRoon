@@ -9,25 +9,25 @@
     <div class="gameImageBox">
       <ul class="ingameImages">
         <li>
-          <img class="smallInagameImage" src="../images/dif.png" />
+          <img class="smallInagameImage" src="@/images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/dif.png" />
+          <img class="smallInagameImage" src="@/images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/dif.png" />
+          <img class="smallInagameImage" src="@/images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/dif.png" />
+          <img class="smallInagameImage" src="@/images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/dif.png" />
+          <img class="smallInagameImage" src="@/images/dif.png" />
         </li>
         <li>
-          <img class="smallInagameImage" src="../images/dif.png" />
+          <img class="smallInagameImage" src="@/images/dif.png" />
         </li>
       </ul>
-      <img class="bigIngameImage" src="../images/dif.png" />
+      <img class="bigIngameImage" src="@/images/dif.png" />
     </div>
     <div class="gameDescriptBox">
       <div class="age">{{descript.useAge}}세 이용가</div>

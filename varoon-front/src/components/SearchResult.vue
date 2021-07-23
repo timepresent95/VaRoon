@@ -4,7 +4,7 @@
     <ul class="searchUl">
       <li>
         <div class="searchImg">
-          <img src="../images/50.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/50.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="searchDescript">
           <div class="searchDescriptTitle">Monster Hunt World 3</div>
@@ -20,7 +20,7 @@
       </li>
       <li>
         <div class="searchImg">
-          <img src="../images/51.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/51.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="searchDescript">
           <div class="searchDescriptTitle">Ark Survival Evolution</div>
@@ -36,7 +36,7 @@
       </li>
       <li>
         <div class="searchImg">
-          <img src="../images/52.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/52.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="searchDescript">
           <div class="searchDescriptTitle">Dota UnderLoad</div>
@@ -53,7 +53,7 @@
       </li>
       <li>
         <div class="searchImg">
-          <img src="../images/53.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="@/images/53.jpg" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
         </div>
         <div class="searchDescript">
           <div class="searchDescriptTitle">Slay The Spire</div>
