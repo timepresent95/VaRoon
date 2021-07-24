@@ -6,8 +6,8 @@
   </section>
 </template>
 <script>
-import MyPa from "@/components/MyPa.vue";
-import MyPageCheck from "@/components/MypageCheck.vue";
+import MyPa from "@/components/MypageManager/MyPa.vue";
+import MyPageCheck from "@/components/MypageManager/MypageCheck.vue";
 
 import { mapState } from "vuex";
 
