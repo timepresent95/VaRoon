@@ -1,9 +1,9 @@
 <template>
-  <div class="mypageManager">
-    <div class="mypageTitle">마이페이지</div>
+  <section class="mypage-manager">
+    <h1 class="mypage-title">마이페이지</h1>
     <MyPageCheck v-if="mypageComponent === 'check'" />
     <MyPa v-else />
-  </div>
+  </section>
 </template>
 <script>
 import MyPa from "@/components/MyPa.vue";
@@ -14,24 +14,23 @@ import { mapState } from "vuex";
 export default {
   components: {
     MyPageCheck,
-    MyPa
+    MyPa,
   },
   computed: {
-    ...mapState(["mypageComponent"])
-  }
+    ...mapState(["mypageComponent"]),
+  },
 };
 </script>
 <style>
-.mypageManager {
-  height: 998px;
+.mypage-manager {
+  min-height: calc(100vh - 191px);
+  text-align: center;
+  padding-top: 30px;
 }
-.mypageTitle {
-  width: 143px;
-  height: 37px;
+.mypage-title {
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
-  position: absolute;
-  top: 100px;
-  left: 889px;
+  font-weight: normal;
+  margin-bottom: 30px;
 }
 </style>

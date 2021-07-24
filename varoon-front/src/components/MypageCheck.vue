@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <div class="mypageCheckInputTitle">현재 비밀번호</div>
-    <input
-      class="mypageCheckInput"
-      v-model="inputPassword"
-      type="password"
-      placeholder="비밀번호를 입력해주세요"
-    />
-    <div class="mypageCheckButton" @click="checkPass">확인</div>
+  <div class="my-page-check">
+    <h2 class="mypage-check-title">현재 비밀번호</h2>
+    <p>
+      <input
+        class="mypage-check-input"
+        v-model="inputPassword"
+        type="password"
+        placeholder="비밀번호를 입력해주세요"
+      />
+    </p>
+    <button class="mypage-check-button" @click="checkPass">확인</button>
   </div>
 </template>
 <script>
@@ -15,11 +17,11 @@ import { mapActions, mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      inputPassword: null
+      inputPassword: null,
     };
   },
   computed: {
-    ...mapState(["mypageComponent", "id"])
+    ...mapState(["mypageComponent", "id"]),
   },
   methods: {
     ...mapActions(["LOGIN"]),
@@ -28,27 +30,27 @@ export default {
       const id = this.id;
       const pw = this.inputPassword;
       this.LOGIN({ id, pw })
-        .then(_ => {
+        .then((_) => {
           this.CHANGE_MY_COMPONENT("pa");
         })
-        .catch(_ => {
+        .catch((_) => {
           alert("worng password");
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
-.mypageCheckInputTitle {
-  width: 112px;
-  height: 23px;
+.my-page-check {
+  text-align: center;
+}
+.mypage-check-title {
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
-  position: absolute;
-  top: 352px;
-  left: 905px;
+  font-weight: normal;
+  margin-bottom: 30px;
 }
-.mypageCheckInput {
+.mypage-check-input {
   width: 416px;
   height: 62px;
   border-radius: 3px;
@@ -58,12 +60,9 @@ export default {
   font-size: 16px;
   font-weight: 200;
   line-height: 62px;
-  text-align: center;
-  position: absolute;
-  top: 389px;
-  left: 753px;
+  padding: 10px 20px;
 }
-.mypageCheckButton {
+.mypage-check-button {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -74,8 +73,8 @@ export default {
   line-height: 64px;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  top: 501px;
-  left: 753px;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
 }
 </style>

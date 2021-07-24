@@ -1,22 +1,26 @@
 <template>
-  <div class="mypaContext">
-    <div class="mypaName">
-      <div class="title">이름</div>
-      <div class="content">{{name}}</div>
+  <div class="mypa-content">
+    <div class="mypa-name">
+      <h3 class="title">이름</h3>
+      <p class="content">{{ name }}</p>
     </div>
-    <div class="mypaID">
-      <div class="title">아이디</div>
-      <div class="content">{{id}}</div>
+    <div class="mypa-id">
+      <h3 class="title">아이디</h3>
+      <p class="content">{{ id }}</p>
     </div>
-    <div class="mypaNewPass">
+    <div class="mypa-new-pass">
       <div class="title">새 비밀번호</div>
-      <input type="password" autofocus placeholder="영문, 숫자, 특수 문자 조합, 8-12자 내외" />
+      <input
+        type="password"
+        autofocus
+        placeholder="영문, 숫자, 특수 문자 조합, 8-12자 내외"
+      />
     </div>
-    <div class="mypaNewPassCheck">
+    <div class="mypa-new-passcheck">
       <div class="title">새 비밀번호 확인</div>
       <input type="password" placeholder="비밀번호와 일치해야 합니다" />
     </div>
-    <div class="mypaButton">확인</div>
+    <div class="mypa-button">확인</div>
   </div>
 </template>
 <script>
@@ -26,63 +30,50 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["name", "id"])
-  }
+    ...mapState(["name", "id"]),
+  },
 };
 </script>
 <style>
-.mypaContext {
-  position: relative;
-  top: 207px;
-  left: 752px;
-  width: 1920px;
+.mypa-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.mypaName {
-  width: 416px;
-  height: 23px;
+.mypa-content h3 {
+  font-family: NanumBarunGothicOTF;
+  font-size: 20px;
+  color: #a6a6a6;
+  font-weight: normal;
+  margin-right: 30px;
+}
+.mypa-name {
   margin-bottom: 32px;
+  display: flex;
 }
-.mypaName .title {
-  width: 36px;
-  float: left;
+.mypa-id {
+  margin-bottom: 40px;
+  display: flex;
 }
-.mypaID .title {
-  width: 54px;
-  float: left;
-}
-.mypaName .content {
-  width: 380px;
-  text-align: right;
-}
-.mypaID .content {
-  width: 380px;
-  text-align: right;
-}
-.mypaName div,
-.mypaID div {
+.mypa-name p,
+.mypa-id p {
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   color: #a6a6a6;
 }
-.mypaID {
-  width: 416px;
-  margin-bottom: 40px;
-  height: 23px;
-}
-.mypaNewPass,
-.mypaNewPassCheck {
-  height: 95px;
+.mypa-new-pass,
+.mypa-new-passcheck {
   margin-bottom: 32px;
 }
-.mypaNewPass .title,
-.mypaNewPassCheck .title {
-  height: 23px;
+.mypa-new-pass .title,
+.mypa-new-passcheck .title {
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   margin-bottom: 10px;
 }
-.mypaNewPass input,
-.mypaNewPassCheck input {
+.mypa-new-pass input,
+.mypa-new-passcheck input {
   width: 397px;
   height: 62px;
   border-radius: 3px;
@@ -94,7 +85,7 @@ export default {
   text-align: left;
   padding-left: 19px;
 }
-.mypaButton {
+.mypa-button {
   width: 416px;
   height: 64px;
   border-radius: 3px;
@@ -106,5 +97,6 @@ export default {
   text-align: center;
   color: #ffffff;
   margin-top: 44px;
+  cursor: pointer;
 }
 </style>
