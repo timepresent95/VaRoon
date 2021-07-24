@@ -1,13 +1,13 @@
 <template>
-  <div class="patent-center">
+  <section class="patent-center">
     <PatientLeft />
-    <div class="patient-chart">
+    <article class="patient-chart">
       <PDChart v-if="patientComponent === 'pd'" />
       <RangeChart v-else-if="patientComponent === 'range'" />
       <FocusChart v-else-if="patientComponent === 'focus'" />
       <TrainingChart v-else-if="patientComponent === 'training'" />
-    </div>
-  </div>
+    </article>
+  </section>
 </template>
 <script>
 import PatientLeft from "@/components/PatientCenter/PatientLeft.vue";
@@ -41,11 +41,7 @@ export default {
 </script>
 <style>
 .patent-center {
-  min-height: 880px;
-}
-.patient-chart {
-  position: absolute;
-  left: 380px;
-  top: 221px;
+  min-height: calc(100vh - 191px);
+  padding: 30px 10px;
 }
 </style>

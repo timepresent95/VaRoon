@@ -1,50 +1,50 @@
 <template>
-  <div>
-    <div class="currentTitle">
+  <nav class="patient-left">
+    <p class="current-title">
       <span style="font-family: NanumBarunGothicOTF">{{ name }}</span>
       <span>님의</span>
       <span>{{ pageName }}</span>
       <span>차트입니다</span>
-    </div>
-    <div class="patientNavi">
-      <div
+    </p>
+    <ul class="patient-navi">
+      <li
         :class="{
-          offBtn: patientComponent !== 'pd',
-          onBtn: patientComponent === 'pd',
+          'off-btn': patientComponent !== 'pd',
+          'on-btn': patientComponent === 'pd',
         }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('pd')"
       >
         사시각
-      </div>
-      <div
+      </li>
+      <li
         :class="{
-          offBtn: patientComponent !== 'range',
-          onBtn: patientComponent === 'range',
+          'off-btn': patientComponent !== 'range',
+          'on-btn': patientComponent === 'range',
         }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('range')"
       >
         안근능력
-      </div>
-      <div
+      </li>
+      <li
         :class="{
-          offBtn: patientComponent !== 'focus',
-          onBtn: patientComponent === 'focus',
+          'off-btn': patientComponent !== 'focus',
+          'on-btn': patientComponent === 'focus',
         }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('focus')"
       >
         경과
-      </div>
-      <div
+      </li>
+      <li
         :class="{
-          offBtn: patientComponent !== 'training',
-          onBtn: patientComponent === 'training',
+          'off-btn': patientComponent !== 'training',
+          'on-btn': patientComponent === 'training',
         }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('training')"
       >
         훈련정보
-      </div>
-    </div>
-  </div>
+      </li>
+    </ul>
+  </nav>
 </template>
 <script>
 import { mapState, mapMutations } from "vuex";
@@ -69,50 +69,37 @@ export default {
 };
 </script>
 <style>
-.currentTitle {
-  position: absolute;
-  left: 380px;
-  top: 43px;
+.current-title {
+  text-align: center;
+  margin-bottom: 20px;
 }
-.currentTitle span {
+.current-title span {
   width: 400px;
   height: 37px;
   font-size: 32px;
-  font-weight: 200;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000000;
   font-family: NanumBarunGothicUltraLightOTF;
 }
-.patientNavi {
+.patient-navi {
   height: 74px;
-  position: absolute;
-  left: 380px;
-  top: 123px;
+  display: flex;
+  justify-content: center;
 }
-.patientNavi div {
+.patient-navi li {
   width: 274px;
   height: 74px;
   border-radius: 3px;
-  float: left;
   margin-right: 21px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   line-height: 74px;
   text-align: center;
 }
-.onBtn {
+.on-btn {
   background-color: #4b74ff;
   box-shadow: 0 0 10px 0 #4b74ff;
   color: #ffffff;
 }
-.offBtn {
+.off-btn {
   background-color: #ffffff;
   color: #4b74ff;
   box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
