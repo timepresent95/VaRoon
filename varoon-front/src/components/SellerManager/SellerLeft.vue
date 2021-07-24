@@ -1,30 +1,41 @@
 <template>
-  <div class="SellerLeftBox">
-    <div class="sellerCenterBox">
-      <div class="sellerCenterTitle">판매 센터</div>
-      <div class="sellerCurSDK" v-if="sellingComponent === 'sdk'"></div>
-      <div class="sellerSDKTag" @click.prevent="CHANGE_SELLING_COMPONENT('sdk')">
-        <div :class="{'sellerBlue' : sellingComponent === 'sdk'}">SDK 다운</div>
-      </div>
-      <div class="sellerCurResist" v-if="sellingComponent === 'resist'"></div>
-      <div class="sellerResistTag" @click.prevent="CHANGE_SELLING_COMPONENT('resist')">
-        <div :class="{'sellerBlue' : sellingComponent === 'resist'}">컨텐츠 업로드</div>
-      </div>
-      <div class="sellerCurContents" v-if="sellingComponent === 'contents'"></div>
-      <div class="sellerContentsTag" @click.prevent="CHANGE_SELLING_COMPONENT('contents')">
-        <div :class="{'sellerBlue' : sellingComponent === 'contents'}">컨텐츠 관리</div>
-      </div>
-      <div class="sellerCurRevenue" v-if="sellingComponent === 'revenue'"></div>
-      <div class="sellerRevenueTag" @click.prevent="CHANGE_SELLING_COMPONENT('revenue')">
-        <div :class="{'sellerBlue' : sellingComponent === 'revenue'}">Revenue</div>
-      </div>
-    </div>
-    <div class="sellerLine"></div>
-    <div class="sellerMoreBox">
-      <div class="sellerMoreTAG">MORE</div>
-      <router-link to="/MarketManager">
-        <img class="sellerLinkImg" src="@/images/home-vrmarket-img@2x.png" />
-        <div class="sellerLinkHover"></div>
+  <div class="seller-left">
+    <h3 class="seller-center-title">판매 센터</h3>
+    <ul>
+      <li
+        class="seller-sdk-tag"
+        @click.prevent="CHANGE_SELLING_COMPONENT('sdk')"
+        :class="{ 'seller-selected': sellingComponent === 'sdk' }"
+      >
+        SDK 다운
+      </li>
+      <li
+        class="seller-resist-tag"
+        @click.prevent="CHANGE_SELLING_COMPONENT('resist')"
+        :class="{ 'seller-selected': sellingComponent === 'resist' }"
+      >
+        컨텐츠 업로드
+      </li>
+      <li
+        class="seller-contents-tag"
+        @click.prevent="CHANGE_SELLING_COMPONENT('contents')"
+        :class="{ 'seller-selected': sellingComponent === 'contents' }"
+      >
+        컨텐츠 관리
+      </li>
+      <li
+        class="seller-revenue-tag"
+        @click.prevent="CHANGE_SELLING_COMPONENT('revenue')"
+        :class="{ 'seller-selected': sellingComponent === 'revenue' }"
+      >
+        Revenue
+      </li>
+    </ul>
+    <div class="seller-line"></div>
+    <div class="seller-more-box">
+      <div class="seller-more-tag">MORE</div>
+      <router-link class="left-link" to="/MarketManager">
+        <img class="seller-link-img" src="@/images/home-vrmarket-img@2x.png" />
       </router-link>
     </div>
   </div>
@@ -35,148 +46,110 @@ import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      link: "VR마켓"
+      link: "VR마켓",
     };
   },
   computed: {
-    ...mapState(["sellingComponent"])
+    ...mapState(["sellingComponent"]),
   },
   methods: {
-    ...mapMutations(["CHANGE_SELLING_COMPONENT"])
-  }
+    ...mapMutations(["CHANGE_SELLING_COMPONENT"]),
+  },
 };
 </script>
 <style>
-.SellerLeftBox {
-  width: 301px;
-  height: 1080px;
+.seller-left {
   background-color: #fcfcfc;
-  float: left;
+  min-width: 271.89px;
+  margin-right: 30px;
 }
-.sellerCenterBox {
-  width: 301px;
-  height: 360px;
+.seller-left {
+  padding: 40px 10px;
 }
-.sellerCenterTitle {
-  width: 76px;
-  height: 23px;
+.seller-left ul {
+  padding-bottom: 10px;
+}
+.seller-left li {
+  padding-left: 4px;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+.seller-center-title {
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   color: #bcbcbc;
-  position: absolute;
-  top: 66px;
-  left: 40px;
+  font-weight: normal;
+  margin-bottom: 30px;
 }
-.sellerCurSDK {
-  width: 0;
-  height: 28.5px;
-  border: solid 4px #4b74ff;
-  position: absolute;
-  top: 120px;
-}
-.sellerCurResist {
-  width: 0;
-  height: 28.5px;
-  border: solid 4px #4b74ff;
-  position: absolute;
-  top: 167px;
-}
-.sellerCurContents {
-  width: 0;
-  height: 28.5px;
-  border: solid 4px #4b74ff;
-  position: absolute;
-  top: 215px;
-}
-.sellerCurRevenue {
-  width: 0;
-  height: 28.5px;
-  border: solid 4px #4b74ff;
-  position: absolute;
-  top: 260px;
-}
-.sellerSDKTag {
-  width: 103px;
-  height: 20px;
+.seller-sdk-tag {
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
-  position: absolute;
-  top: 127px;
-  left: 40px;
 }
-.sellerResistTag {
-  height: 20px;
+.seller-resist-tag {
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
   font-weight: 200;
-  position: absolute;
-  top: 171px;
-  left: 40px;
 }
-.sellerContentsTag {
-  width: 100px;
-  height: 20px;
+.seller-contents-tag {
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
   font-weight: 200;
-  position: absolute;
-  top: 219px;
-  left: 40px;
 }
-.sellerRevenueTag {
-  width: 100px;
-  height: 20px;
+.seller-revenue-tag {
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 18px;
   font-weight: 200;
-  position: absolute;
-  top: 267px;
-  left: 40px;
 }
-.sellerBlue {
+.seller-selected {
   color: #4b74ff;
+  position: relative;
 }
-.sellerLine {
-  width: 251.9px;
+.seller-selected::before {
+  content: "";
+  float: right;
+  display: block;
+  width: 4px;
+  height: 30px;
+  background-color: #4b74ff;
+  margin-right: 4px;
+}
+.seller-line {
+  width: 100%;
   height: 0;
   border: solid 0.5px #a3a3a3;
-  position: absolute;
-  left: 21.9px;
 }
-.sellerMoreBox {
-  position: absolute;
-  top: 360px;
-  width: 301px;
-  height: 400px;
-}
-.sellerMoreTAG {
+
+.seller-more-tag {
+  margin: 10px 0;
   width: 70px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   color: #bcbcbc;
-  position: absolute;
-  left: 40px;
-  top: 41px;
 }
-.sellerLinkImg {
+.seller-link-img {
   width: 220px;
   height: 220px;
-  position: absolute;
-  left: 40px;
-  top: 98px;
 }
-.sellerLinkHover {
+.left-link {
   width: 220px;
-  height: 220px;
-  transition: all 1s;
-  background: rgba(75, 116, 255, 0);
-  z-index: 2;
-  position: absolute;
-  left: 40px;
-  top: 98px;
+  height: 220.8px;
+  display: block;
+  margin: 0;
+  position: relative;
+  z-index: 0;
 }
-.sellerLinkHover:hover {
+.left-link:hover::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 220.8px;
   background: rgba(75, 116, 255, 0.25);
+  z-index: 2;
+  visibility: visible;
 }
 </style>

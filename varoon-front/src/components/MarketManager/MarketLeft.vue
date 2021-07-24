@@ -5,7 +5,7 @@
       <li
         class="left-marker"
         @click.prevent="CHANGE_MARKET_COMPONENT('market')"
-        :class="{'market-select' : marketComponent ==='market'}"
+        :class="{ 'market-select': marketComponent === 'market' }"
       >
         VR 마켓
       </li>
@@ -14,26 +14,34 @@
     <h3 class="my-box-title">MY</h3>
     <ul>
       <li
-      class="left-cart"
-      :class="{'market-select' : marketComponent ==='cart'}"
-      @click.prevent="CHANGE_MARKET_COMPONENT('cart')"
+        class="left-cart"
+        :class="{ 'market-select': marketComponent === 'cart' }"
+        @click.prevent="CHANGE_MARKET_COMPONENT('cart')"
       >
         장바구니
       </li>
       <li
         class="left-library"
         @click.prevent="CHANGE_MARKET_COMPONENT('library')"
-        :class="{'market-select' : marketComponent ==='library'}"
+        :class="{ 'market-select': marketComponent === 'library' }"
       >
         구매내역
       </li>
-      <div class="left-client" @click.prevent="CHANGE_MARKET_COMPONENT('client')">
-        <div :class="{'market-select' : marketComponent ==='client'}">클라이언트 다운로드</div>
-      </div>
+      <li
+        class="left-client"
+        @click.prevent="CHANGE_MARKET_COMPONENT('client')"
+        :class="{ 'market-select': marketComponent === 'client' }"
+      >
+        클라이언트 다운로드
+      </li>
     </ul>
     <div class="left-line2"></div>
     <h3 class="more-box-title">MORE</h3>
-    <router-link class="left-link" to="/PatientCenter" v-if="role === 'ROLE_Patient'">
+    <router-link
+      class="left-link"
+      to="/PatientCenter"
+      v-if="role === 'ROLE_Patient'"
+    >
       <img class="left-link-img" src="@/images/mediboard-btn@2x.png" />
     </router-link>
     <router-link class="left-link" to="/SellerManager" v-else>
@@ -47,18 +55,18 @@ import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      link: "판매자 센터 or 메디보드"
+      link: "판매자 센터 or 메디보드",
     };
   },
   computed: {
-    ...mapState(["marketComponent", "role"])
+    ...mapState(["marketComponent", "role"]),
   },
   methods: {
     ...mapMutations(["CHANGE_MARKET_COMPONENT"]),
     changeFontWeigth(index) {
       if (this.marketComponent === index) return true;
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
@@ -68,33 +76,18 @@ export default {
   top: 82px;
   left: 0;
   background-color: inherit;
-  padding: 0 10px;
+  padding: 40px 10px;
 }
-.market-left li{
+.market-left li {
   padding-left: 4px;
   height: 30px;
   line-height: 30px;
 }
-.market-left ul{
+.market-left ul {
   padding-bottom: 10px;
 }
-.left-current-box {
-  width: 0;
-  height: 30px;
-  border: solid 4px #4b74ff;
-}
-.left-current-library {
-  width: 0;
-  height: 30px;
-  border: solid 4px #4b74ff;
-}
-.left-current-client {
-  width: 0;
-  height: 30px;
-  border: solid 4px #4b74ff;
-}
 .vr-box-title {
-  margin: 10px 0;
+  margin-bottom: 20px;
   width: 29px;
   height: 23px;
   font-family: NanumBarunGothicOTF;
@@ -117,12 +110,12 @@ export default {
   position: relative;
 }
 .market-select::before {
-  content: '';
+  content: "";
   float: right;
   display: block;
   width: 4px;
   height: 30px;
-  background-color:#4b74ff;
+  background-color: #4b74ff;
   margin-right: 4px;
 }
 .marketUnSelect {
@@ -194,7 +187,7 @@ export default {
   object-fit: cover;
 }
 .left-link:hover::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   left: 0;

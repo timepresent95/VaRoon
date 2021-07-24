@@ -40,5 +40,6 @@ export default {
 <style>
 .seller-manager {
   min-height: calc(100vh - 191px);
+  display: flex;
 }
 </style>

@@ -1,65 +1,55 @@
 <template>
-  <div class="sellingRevenueContent">
-    <div class="RevenueTitle">Revenue</div>
-    <div class="RevenueTotalCost">
+  <div class="selling-revenue-content">
+    <h1 class="revenue-title">Revenue</h1>
+    <p class="revenue-total-cost">
       총 수익
-      <span class="RevenueBlue">{{totalCost}}</span> 원
-    </div>
-    <div class="RevenueChartBox">
-      <div class="RevenueChart">
-        <VueApexCharts
-          ref="revenueChart"
-          class="RevenueLineChart"
-          type="line"
-          width="770"
-          height="477"
-          :options="chartOptions"
-          :series="series"
-        ></VueApexCharts>
-        <div class="RevenueCheck">
-          <div @click="first = !first" class="RevenueChk1">
+      <span class="revenue-cost">{{ totalCost }}</span> 원
+    </p>
+    <div class="revenue-chart">
+      <VueApexCharts
+        ref="revenueChart"
+        class="revenue-line-chart"
+        type="line"
+        width="770"
+        height="477"
+        :options="chartOptions"
+        :series="series"
+      ></VueApexCharts>
+      <div class="revenue-check">
+        <div @click="first = !first" class="RevenueChk1">
+          <div @click="clickCheckBox('다크 소울 3')" class="revenue-chk-box">
             <img
               @click="clickCheckBox('다크 소울 3')"
-              class="RevenueChkedBox"
+              class="revenue-chked-box"
               src="@/images/checkbox-checked-img@2x.png"
               v-if="first"
             />
-            <div @click="clickCheckBox('다크 소울 3')" class="RevenueChkBox" v-else></div>
-            <div class="RevenueChkTag">다크 소울 3</div>
           </div>
-          <div @click="second = !second" class="RevenueChk1">
+          <p class="revenue-chk-tag">다크 소울 3</p>
+        </div>
+        <div @click="second = !second" class="RevenueChk1">
+          <div @click="clickCheckBox('Civilization 4')" class="revenue-chk-box">
             <img
-              @click="clickCheckBox('Civilization 4')"
-              class="RevenueChkedBox"
+              @click="clickCheckBox('다크 소울 3')"
+              class="revenue-chked-box"
               src="@/images/checkbox-checked-img@2x.png"
               v-if="second"
             />
-            <div @click="clickCheckBox('Civilization 4')" class="RevenueChkBox" v-else></div>
-            <div class="RevenueChkTag">Civilization 4</div>
           </div>
-          <div @click="third = !third" class="RevenueChk1">
+          <p class="revenue-chk-tag">Civilization 4</p>
+        </div>
+        <div @click="third = !third" class="RevenueChk1">
+          <div @click="clickCheckBox('Ark Evolved')" class="revenue-chk-box">
             <img
-              @click="clickCheckBox('Ark Evolved')"
-              class="RevenueChkedBox"
+              @click="clickCheckBox('다크 소울 3')"
+              class="revenue-chked-box"
               src="@/images/checkbox-checked-img@2x.png"
               v-if="third"
             />
-            <div @click="clickCheckBox('Ark Evolved')" class="RevenueChkBox" v-else></div>
-            <div class="RevenueChkTag">Ark Evolved</div>
           </div>
+          <p class="revenue-chk-tag">Ark Evolved</p>
         </div>
       </div>
-      <!-- <div class="RevenueDayBar">
-        <div class="startBar">
-          <div class="startTag">시작 일</div>
-          <div></div>
-        </div>
-        <div class="RevenueDayLine"></div>
-        <div class="endBar">
-          <div class="endTag">끝 일</div>
-          <div></div>
-        </div>
-      </div>-->
     </div>
   </div>
 </template>
@@ -68,7 +58,7 @@ import VueApexCharts from "vue-apexcharts";
 
 export default {
   components: {
-    VueApexCharts
+    VueApexCharts,
   },
   data() {
     return {
@@ -81,166 +71,98 @@ export default {
           bar: {
             horizontal: false,
             dataLabels: {
-              position: "top"
-            }
-          }
+              position: "top",
+            },
+          },
         },
         xaxis: {
           categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
           title: {
-            text: "Month"
-          }
+            text: "Month",
+          },
         },
         markers: {
-          size: 6
-        }
+          size: 6,
+        },
       },
       series: [
         {
           name: "다크 소울 3",
-          data: [8, 10, 23, 36, 32, 32, 33]
+          data: [8, 10, 23, 36, 32, 32, 33],
         },
         {
           name: "Civilization 4",
-          data: [12, 11, 14, 18, 17, 21, 13]
+          data: [12, 11, 14, 18, 17, 21, 13],
         },
         {
           name: "Ark Evolved",
-          data: [30, 21, 24, 28, 17, 11, 23]
-        }
-      ]
+          data: [30, 21, 24, 28, 17, 11, 23],
+        },
+      ],
     };
   },
   methods: {
     clickCheckBox(idx) {
       this.$refs.revenueChart.toggleSeries(idx);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
-.sellingRevenueContent {
-  width: 1620px;
+.selling-revenue-content {
   position: relative;
   left: 308px;
   background-color: #ffffff;
-  height: 1080px;
+  min-height: calc(100% - 191px);
+  padding: 30px;
 }
-.RevenueTitle {
-  width: 127px;
-  height: 37px;
+.revenue-title {
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
-  position: absolute;
-  top: 64px;
-  left: 75px;
+  font-weight: normal;
 }
-.RevenueTotalCost {
-  width: 290px;
-  height: 42px;
+.revenue-total-cost {
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 36px;
-  position: absolute;
-  top: 154px;
-  left: 75px;
+  margin: 10px 0;
 }
-.RevenueBlue {
+.revenue-cost {
   color: #4b74ff;
   font-weight: bold;
 }
-.RevenueChartBox {
-  width: 1320px;
-  height: 830px;
-  position: absolute;
-  top: 232px;
-  left: 79px;
-}
-.RevenueChart {
-  width: 920px;
-  height: 593px;
+.revenue-chart {
+  width: 770px;
+  height: 477px;
   border-radius: 3px;
   box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
   background-color: #ffffff;
 }
-.RevenueLineChart {
-  position: absolute;
-  left: 64px;
-  top: 60px;
-}
-.RevenueDayBar {
-  width: 1159.5px;
-  height: 100px;
-  border-radius: 3px;
-  box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
-  background-color: #ffffff;
-  margin-top: 24px;
-}
-.startBar {
-  width: 604px;
-  height: 100px;
-  float: left;
-}
-.startTag {
-  width: 47px;
-  height: 19px;
-  font-family: NanumBarunGothicOTF;
-  font-size: 16px;
-  position: relative;
-  top: 41px;
-  left: 106.3px;
-}
-.RevenueDayLine {
-  width: 0;
-  height: 49px;
-  border: solid 0.5px #a6a6a6;
-  position: relative;
-  top: 25.5px;
-  float: left;
-}
-.endBar {
-  width: 550px;
-  height: 100px;
-  float: left;
-}
-.endTag {
-  width: 33px;
-  height: 19px;
-  font-family: NanumBarunGothicOTF;
-  font-size: 16px;
-  position: relative;
-  top: 41px;
-  left: 106.3px;
-}
-.RevenueCheck {
-  width: 250px;
-  height: 593px;
-  position: relative;
-  left: 920px;
+.revenue-check {
+  display: flex;
 }
 .RevenueChk1 {
-  position: relative;
-  top: 37px;
   margin-top: 37px;
   margin-left: 40px;
+  display: flex;
+  align-items: center;
 }
-.RevenueChkBox {
+.revenue-chk-box {
   width: 28px;
   height: 28px;
   border: solid 0.5px rgba(217, 217, 217, 1);
-  float: left;
+  overflow: hidden;
 }
-.RevenueChkedBox {
-  width: 28px;
-  height: 28px;
-  float: left;
+.revenue-chked-box {
+  width: 27px;
+  height: 27px;
   object-fit: contain;
+  transform: translate(-0.5px, -0.5px);
 }
-.RevenueChkTag {
+.revenue-chk-tag {
   height: 28px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
-  font-weight: 300;
   line-height: 28px;
-  margin-left: 50px;
+  margin-left: 10px;
 }
 </style>

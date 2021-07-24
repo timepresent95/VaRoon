@@ -1,38 +1,42 @@
 <template>
-  <div class="uploadContents">
-    <div class="uploadTitle">컨텐츠 업로드</div>
-    <div class="uploadTable">
-      <div class="uploadTableTag">
-        <div class="uploadNo">번호</div>
-        <div class="uploadTableTitle">제목</div>
-        <div class="uploadDate">업로드 일시</div>
-        <div class="uploadResult">결과 일시</div>
-        <div class="uploadSize">용량</div>
-        <div class="uploadDown">다운로드</div>
-      </div>
-      <div
-        class="uploadTableContent"
+  <div class="upload-contents">
+    <div class="upload-title">컨텐츠 업로드</div>
+    <table class="upload-table">
+      <thead>
+        <tr>
+          <th class="upload-no">번호</th>
+          <th class="upload-table-title">제목</th>
+          <th class="upload-date">업로드 일시</th>
+          <th class="upload-result">결과 일시</th>
+          <th class="upload-size">용량</th>
+          <th class="upload-down">다운로드</th>
+        </tr>
+      </thead>
+      <tr
+        class="upload-table-content"
         v-for="(item, index) in filteredUploadList"
         :key="index"
       >
-        <div class="uploadNo">{{ numbering(index) }}</div>
-        <div class="uploadTableTitle">{{ uploadList[index][0] }}</div>
-        <div class="uploadDate">{{ uploadList[index][1] }}</div>
-        <div class="uploadResult">{{ uploadList[index][2] }}</div>
-        <div class="uploadSize">{{ uploadList[index][3] }}</div>
-        <div class="uploadDown">{{ uploadList[index][4] }}</div>
-      </div>
-      <div class="uploadlistNumber">
-        <span
-          :class="{ uploadBlue: listNo === index }"
-          @click.prevent="chgLiNo(index)"
-          v-for="index in listCnter"
-          :key="index"
-          >{{ index }}</span
-        >
-      </div>
-      <div class="uploadChangeBtn">변환 희망 파일 업로드</div>
-      <div class="uploadBtn">SDK로 개발된 파일 업로드</div>
+        <td class="upload-no">{{ numbering(index) }}</td>
+        <td class="upload-table-title">{{ uploadList[index][0] }}</td>
+        <td class="upload-date">{{ uploadList[index][1] }}</td>
+        <td class="upload-result">{{ uploadList[index][2] }}</td>
+        <td class="upload-size">{{ uploadList[index][3] }}</td>
+        <td class="upload-down">{{ uploadList[index][4] }}</td>
+      </tr>
+    </table>
+    <div class="uploadlist-number">
+      <span
+        :class="{ 'upload-blue': listNo === index }"
+        @click.prevent="chgLiNo(index)"
+        v-for="index in listCnter"
+        :key="index"
+        >{{ index }}</span
+      >
+    </div>
+    <div class="upload-btn-box">
+      <button class="upload-change-btn">변환 희망 파일 업로드</button>
+      <button class="upload-btn">SDK로 개발된 파일 업로드</button>
     </div>
   </div>
 </template>
@@ -103,102 +107,83 @@ export default {
 };
 </script>
 <style>
-.uploadContents {
-  width: 1620px;
-  position: relative;
-  left: 308px;
+.upload-contents {
   background-color: #ffffff;
-  height: 1080px;
+  min-height: calc(100% - 191px);
+  padding: 30px;
 }
-.uploadTitle {
-  width: 179px;
-  height: 37px;
+.upload-title {
   font-family: NanumBarunGothicOTF;
   font-size: 32px;
-  position: absolute;
-  left: 75px;
-  top: 64px;
 }
-.uploadTable {
-  width: 1164px;
-  border-top: solid 0.5px #d9d9d9;
-  border-left: solid 0.5px #d9d9d9;
-  border-right: solid 0.5px #d9d9d9;
-  position: absolute;
-  left: 75px;
-  top: 143px;
+.upload-table {
+  border: solid 0.5px #d9d9d9;
+  border-collapse: collapse;
 }
-.uploadTableTag {
-  width: 1164px;
-  height: 50px;
+.upload-contents th {
   background-color: rgba(226, 226, 226, 0.24);
   border-bottom: solid 0.5px #d9d9d9;
 }
-.uploadTableContent {
-  width: 1164px;
+.upload-table-content {
   height: 50px;
   border-bottom: solid 0.5px #d9d9d9;
 }
-.uploadNo {
+.upload-no {
+  height: 50px;
   width: 85.1px;
-  height: 50px;
   border-right: solid 0.5px #d9d9d9;
   z-index: 2;
-  float: left;
   line-height: 50px;
   text-align: center;
   color: #000000;
 }
-.uploadTableTitle {
+.upload-table-title {
+  height: 50px;
   width: 195.3px;
-  height: 50px;
   border-right: solid 0.5px #d9d9d9;
   z-index: 2;
-  float: left;
   text-align: center;
   color: #000000;
   line-height: 50px;
 }
-.uploadDate {
+.upload-date {
+  height: 50px;
+  width: 232.8px;
+  border-right: solid 0.5px #d9d9d9;
+  z-index: 2;
+  text-align: center;
+  color: #000000;
+  line-height: 50px;
+}
+.upload-result {
   width: 232.8px;
   height: 50px;
   border-right: solid 0.5px #d9d9d9;
   z-index: 2;
-  float: left;
   text-align: center;
   color: #000000;
   line-height: 50px;
 }
-.uploadResult {
-  width: 232.8px;
-  height: 50px;
-  border-right: solid 0.5px #d9d9d9;
-  z-index: 2;
-  float: left;
-  text-align: center;
-  color: #000000;
-  line-height: 50px;
-}
-.uploadSize {
+.upload-size {
   width: 234.4px;
   height: 50px;
   border-right: solid 0.5px #d9d9d9;
   z-index: 2;
-  float: left;
   text-align: center;
   color: #000000;
   line-height: 50px;
 }
-.uploadDown {
+.upload-down {
   width: 177px;
   height: 50px;
   z-index: 2;
-  float: left;
   text-align: center;
   color: #000000;
   line-height: 50px;
+  text-decoration: underline;
+  cursor: pointer;
 }
-.uploadChangeBtn {
+.upload-change-btn {
   width: 320px;
   height: 64px;
   border-radius: 3px;
@@ -209,11 +194,8 @@ export default {
   line-height: 64px;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  top: 750px;
-  left: 270px;
 }
-.uploadBtn {
+.upload-btn {
   width: 320px;
   height: 64px;
   border-radius: 3px;
@@ -224,25 +206,28 @@ export default {
   line-height: 64px;
   text-align: center;
   color: #ffffff;
-  position: absolute;
-  top: 750px;
-  left: 650px;
 }
-.uploadlistNumber {
-  width: 158px;
+.upload-btn-box {
+  width: 650px;
+  margin: 30px auto;
+}
+.upload-btn-box button {
+  border: none;
+  cursor: pointer;
+}
+.uploadlist-number {
   height: 23px;
   font-family: NanumBarunGothicOTF;
   font-size: 20px;
   font-weight: 300;
-  position: absolute;
   text-align: center;
-  top: 637px;
-  left: 550px;
+  margin-top: 30px;
 }
-.uploadlistNumber span {
+.uploadlist-number span {
   margin-right: 10px;
+  cursor: pointer;
 }
-.uploadBlue {
+.upload-blue {
   font-weight: bold;
   color: rgba(75, 116, 255, 1);
 }
