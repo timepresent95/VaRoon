@@ -12,24 +12,24 @@
       </div>
       <div
         class="uploadTableContent"
-        v-for="(item, index) in uploadList"
+        v-for="(item, index) in filteredUploadList"
         :key="index"
-        v-if="(index) < listNo * 10 && (index) >= (listNo - 1) * 10"
       >
-        <div class="uploadNo">{{numbering(index)}}</div>
-        <div class="uploadTableTitle">{{uploadList[index][0]}}</div>
-        <div class="uploadDate">{{uploadList[index][1]}}</div>
-        <div class="uploadResult">{{uploadList[index][2]}}</div>
-        <div class="uploadSize">{{uploadList[index][3]}}</div>
-        <div class="uploadDown">{{uploadList[index][4]}}</div>
+        <div class="uploadNo">{{ numbering(index) }}</div>
+        <div class="uploadTableTitle">{{ uploadList[index][0] }}</div>
+        <div class="uploadDate">{{ uploadList[index][1] }}</div>
+        <div class="uploadResult">{{ uploadList[index][2] }}</div>
+        <div class="uploadSize">{{ uploadList[index][3] }}</div>
+        <div class="uploadDown">{{ uploadList[index][4] }}</div>
       </div>
       <div class="uploadlistNumber">
         <span
-          :class="{'uploadBlue' : listNo === index}"
+          :class="{ uploadBlue: listNo === index }"
           @click.prevent="chgLiNo(index)"
           v-for="index in listCnter"
           :key="index"
-        >{{index}}</span>
+          >{{ index }}</span
+        >
       </div>
       <div class="uploadChangeBtn">변환 희망 파일 업로드</div>
       <div class="uploadBtn">SDK로 개발된 파일 업로드</div>
@@ -41,7 +41,13 @@ export default {
   computed: {
     listCnter() {
       return Math.ceil(this.uploadList.length / 10);
-    }
+    },
+    filteredUploadList() {
+      return this.uploadList.filter(
+        (val, index) =>
+          index < this.listNo * 10 && index >= (this.listNo - 1) * 10
+      );
+    },
   },
   data() {
     return {
@@ -54,7 +60,7 @@ export default {
           "2014 . 01 . 11",
           "2019 . 02 . 13",
           "1.3 G",
-          "Download"
+          "Download",
         ],
         ["Civilization 5", "2019 . 02 . 21", "변환 중", "-", "-"],
         ["Civilization 5", "2012 . 02 . 12", "반려", "-", "-"],
@@ -63,7 +69,7 @@ export default {
           "2019 . 04 . 13",
           "2019 . 02 . 13",
           "2.3 G",
-          "Download"
+          "Download",
         ],
         ["Civilization 5", "2019 . 06 . 13", "변환 중", "-", "-"],
         [
@@ -71,18 +77,18 @@ export default {
           "2019 . 04 . 13",
           "2019 . 02 . 13",
           "1.4 G",
-          "Download"
+          "Download",
         ],
         [
           "naruto oline",
           "2019 . 08 . 13",
           "2019 . 02 . 13",
           "1.1 G",
-          "Download"
+          "Download",
         ],
         ["naruto oline", "2019 . 01 . 13", "변환 중", "-", "-"],
-        ["naruto oline", "2019 . 11 . 13", "반려", "-", "-"]
-      ]
+        ["naruto oline", "2019 . 11 . 13", "반려", "-", "-"],
+      ],
     };
   },
   methods: {
@@ -92,8 +98,8 @@ export default {
     },
     chgLiNo(idx) {
       this.listNo = idx;
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

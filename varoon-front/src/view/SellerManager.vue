@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="seller-manager">
     <SellerLeft />
     <SDKDownload v-if="sellingComponent === 'sdk'" />
     <ResistContents v-else-if="sellingComponent === 'resist'" />
@@ -8,11 +8,11 @@
   </div>
 </template>
 <script>
-import SellerLeft from "@/components/SellerLeft.vue";
-import SDKDownload from "@/components/SDKDownload.vue";
-import ResistContents from "@/components/ResistContents.vue";
-import SellingContents from "@/components/SellingContents.vue";
-import Revenue from "@/components/Revenue.vue";
+import SellerLeft from "@/components/SellerManager/SellerLeft.vue";
+import SDKDownload from "@/components/SellerManager/SDKDownload.vue";
+import ResistContents from "@/components/SellerManager/ResistContents.vue";
+import SellingContents from "@/components/SellerManager/SellingContents.vue";
+import Revenue from "@/components/SellerManager/Revenue.vue";
 
 import { mapState, mapMutations } from "vuex";
 
@@ -22,20 +22,23 @@ export default {
     SDKDownload,
     ResistContents,
     SellingContents,
-    Revenue
+    Revenue,
   },
   data() {
     return {
-      name: ""
+      name: "",
     };
   },
   computed: {
-    ...mapState(["sellingComponent"])
+    ...mapState(["sellingComponent"]),
   },
   methods: {
-    ...mapMutations(["CHANGE_SELLING_COMPONENT"])
-  }
+    ...mapMutations(["CHANGE_SELLING_COMPONENT"]),
+  },
 };
 </script>
 <style>
+.seller-manager {
+  min-height: calc(100vh - 191px);
+}
 </style>
