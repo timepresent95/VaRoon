@@ -89,11 +89,11 @@
   </section>
 </template>
 <script>
-import PatientRegister from "@/components/PatientRegister";
-import DoctorPDChart from "@/components/DoctorPDChart.vue";
-import DoctorRangeChart from "@/components/DoctorRangeChart.vue";
-import DoctorFocusChart from "@/components/DoctorFocusChart.vue";
-import DoctorTrainingChart from "@/components/DoctorTrainingChart.vue";
+import PatientRegister from "@/components/DoctorCenter/PatientRegister";
+import DoctorPDChart from "@/components/DoctorCenter/DoctorPDChart.vue";
+import DoctorRangeChart from "@/components/DoctorCenter/DoctorRangeChart.vue";
+import DoctorFocusChart from "@/components/DoctorCenter/DoctorFocusChart.vue";
+import DoctorTrainingChart from "@/components/DoctorCenter/DoctorTrainingChart.vue";
 import { mapActions, mapMutations, mapState } from "vuex";
 
 export default {
