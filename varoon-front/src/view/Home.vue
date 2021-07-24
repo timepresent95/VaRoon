@@ -1,158 +1,134 @@
 <template>
-  <div>
-    <div class="author">{{author}}</div>
-    <div class="homeDscript">
-      <div>원하는</div>
-      <div id="emphasis">카테고리</div>
-      <div>를</div>
-      <div>선택해주세요</div>
-    </div>
-    <div class="homeDscript2">VR 컨텐츠 또는 치료 경과를 확인해보세요</div>
+  <section class="home">
+    <div class="author">{{ author }}</div>
+    <p class="home-dscript">
+      원하는
+      <span id="emphasis">카테고리</span> <br />
+      를 선택해주세요
+    </p>
+    <div class="home-descript2">VR 컨텐츠 또는 치료 경과를 확인해보세요</div>
     <div class="here">
-      <router-link to="/MarketManager">
-        <img class="pageImg" id="first" src="@/images/home-vrmarket-img@2x.png" />
-        <div class="overlay1Home"></div>
+      <router-link class="pageimg-anchor" to="/MarketManager">
+        <img
+          class="pageimg"
+          id="first"
+          src="@/images/home-vrmarket-img@2x.png"
+        />
       </router-link>
-      <router-link v-if="role === 'ROLE_Patient'" to="/PatientCenter">
-        <img class="pageImg" id="second" src="@/images/home-mediboard-img@2x.png" />
-        <div class="overlay2"></div>
+      <router-link
+        class="pageimg-anchor"
+        v-if="role === 'ROLE_Patient'"
+        to="/PatientCenter"
+      >
+        <img
+          class="pageimg"
+          id="second"
+          src="@/images/home-mediboard-img@2x.png"
+        />
       </router-link>
-      <router-link v-else to="/SellerManager">
-        <img class="pageImg" id="second" src="@/images/home-salescenter-img@2x.png" />
-        <div class="overlay2"></div>
+      <router-link class="pageimg-anchor" v-else to="/SellerManager">
+        <img
+          class="pageimg"
+          id="second"
+          src="@/images/home-salescenter-img@2x.png"
+        />
       </router-link>
     </div>
-  </div>
+  </section>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      author: "For User"
+      author: "For User",
     };
   },
   computed: {
-    ...mapState(["role"])
+    ...mapState(["role"]),
   },
   methods: {
     refresh() {
       location.reload();
-    }
+    },
   },
   mounted() {
     if (this.role === "ROLE_Doctor") this.$router.push("/DoctorCenter");
-  }
+  },
 };
 </script>
 <style>
+.home {
+  width: 950.2px;
+  margin: 0 auto;
+  padding: 30px;
+  height: calc(100vh - 191px);
+}
 .author {
-  top: 52px;
-  left: 380px;
   width: 300px;
-  position: relative;
   height: 19px;
   font-family: NanumBarunGothicBoldOTF;
   font-size: 16px;
   font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  text-align: left;
   color: #4b74ff;
+  margin-left: 4px;
 }
 
-.homeDscript {
-  top: 70px;
-  left: 380px;
-  position: relative;
-  width: 236px;
-  height: 82px;
-  font-size: 0px;
-}
-
-.homeDscript div {
-  display: inline-block;
+.home-dscript {
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 32px;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   text-align: left;
   color: #000000;
 }
-.homeDscript #emphasis {
+.home-dscript #emphasis {
   color: #4b74ff;
   display: inline-block;
   font-family: NanumBarunGothicOTF;
-  font-weight: 400;
   font-size: 32px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   text-align: left;
 }
 
-.homeDscript2 {
-  position: relative;
-  top: 82px;
+.home-descript2 {
   width: 600px;
-  left: 380px;
   height: 19px;
   font-family: NanumBarunGothicUltraLightOTF;
   font-size: 16px;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   text-align: left;
   color: #bdbdbd;
 }
 
-.pageImg {
-  margin-top: 123px;
-  margin-bottom: 96px;
+.here {
+  display: flex;
+}
+
+.pageimg {
+  margin-top: 23px;
   width: 454px;
   height: 637.1px;
   opacity: 0.48;
   border-radius: 3px;
   background-color: #ffffff;
 }
-
-.overlay1Home {
+.pageimg-anchor {
+  position: relative;
+}
+.pageimg-anchor::after {
   width: 454px;
   height: 637.1px;
-  background: rgba(75, 116, 255, 0);
-  overflow: hidden;
-  z-index: 2;
   position: absolute;
-  top: 243px;
-  left: 376px;
-  border-radius: 3px;
-  transition: all 1s;
-}
-.overlay1Home:hover,
-.overlay2:hover {
+  right: 0;
+  bottom: 0;
+  content: "";
   background: rgba(75, 116, 255, 0.25);
-}
-.overlay2 {
-  width: 454px;
-  height: 637.1px;
-  background: rgba(75, 116, 255, 0);
-  overflow: hidden;
-  z-index: 2;
-  position: absolute;
-  top: 243px;
-  left: 875px;
-  border-radius: 3px;
+  z-index: 3;
+  opacity: 0;
   transition: all 1s;
 }
-
-.pageImg#first {
-  margin-left: 376px;
+.pageimg-anchor:hover::after {
+  opacity: 1;
 }
 
-.pageImg#second {
+.pageimg#second {
   margin-left: 42.2px;
 }
 </style>
