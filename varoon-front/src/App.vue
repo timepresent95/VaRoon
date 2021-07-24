@@ -79,6 +79,11 @@ body,
   width: 100%;
   margin: 0px;
 }
+ul, li, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 ::-webkit-scrollbar {
       display: none;
 }
