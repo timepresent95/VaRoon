@@ -1,28 +1,48 @@
 <template>
   <div>
     <div class="currentTitle">
-      <span style="font-family: NanumBarunGothicOTF;">{{name}}</span>
+      <span style="font-family: NanumBarunGothicOTF">{{ name }}</span>
       <span>님의</span>
-      <span>{{pageName}}</span>
+      <span>{{ pageName }}</span>
       <span>차트입니다</span>
     </div>
     <div class="patientNavi">
       <div
-        :class="{'offBtn': patientComponent !== 'pd','onBtn' : patientComponent === 'pd'}"
+        :class="{
+          offBtn: patientComponent !== 'pd',
+          onBtn: patientComponent === 'pd',
+        }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('pd')"
-      >사시각</div>
+      >
+        사시각
+      </div>
       <div
-        :class="{'offBtn': patientComponent !== 'range','onBtn' : patientComponent === 'range'}"
+        :class="{
+          offBtn: patientComponent !== 'range',
+          onBtn: patientComponent === 'range',
+        }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('range')"
-      >안근능력</div>
+      >
+        안근능력
+      </div>
       <div
-        :class="{'offBtn': patientComponent !== 'focus','onBtn' : patientComponent === 'focus'}"
+        :class="{
+          offBtn: patientComponent !== 'focus',
+          onBtn: patientComponent === 'focus',
+        }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('focus')"
-      >경과</div>
+      >
+        경과
+      </div>
       <div
-        :class="{'offBtn': patientComponent !== 'training','onBtn' : patientComponent === 'training'}"
+        :class="{
+          offBtn: patientComponent !== 'training',
+          onBtn: patientComponent === 'training',
+        }"
         @click.prevent="CHANGE_PATIENT_COMPONENT('training')"
-      >훈련정보</div>
+      >
+        훈련정보
+      </div>
     </div>
   </div>
 </template>
@@ -31,7 +51,7 @@ import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      patientName: "가나다"
+      patientName: "가나다",
     };
   },
   computed: {
@@ -41,11 +61,11 @@ export default {
       else if (this.patientComponent === "range") return "안근능력";
       else if (this.patientComponent === "focus") return "집중도";
       else if (this.patientComponent === "training") return "훈련정보";
-    }
+    },
   },
   methods: {
-    ...mapMutations(["CHANGE_PATIENT_COMPONENT"])
-  }
+    ...mapMutations(["CHANGE_PATIENT_COMPONENT"]),
+  },
 };
 </script>
 <style>

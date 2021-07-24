@@ -1,7 +1,7 @@
 <template>
-  <div class="patentCenter">
+  <div class="patent-center">
     <PatientLeft />
-    <div class="patientChart">
+    <div class="patient-chart">
       <PDChart v-if="patientComponent === 'pd'" />
       <RangeChart v-else-if="patientComponent === 'range'" />
       <FocusChart v-else-if="patientComponent === 'focus'" />
@@ -10,11 +10,11 @@
   </div>
 </template>
 <script>
-import PatientLeft from "@/components/PatientLeft.vue";
-import PDChart from "@/components/PDChart.vue";
-import RangeChart from "@/components/RangeChart.vue";
-import FocusChart from "@/components/FocusChart.vue";
-import TrainingChart from "@/components/TrainingChart.vue";
+import PatientLeft from "@/components/PatientCenter/PatientLeft.vue";
+import PDChart from "@/components/PatientCenter/PDChart.vue";
+import RangeChart from "@/components/PatientCenter/RangeChart.vue";
+import FocusChart from "@/components/PatientCenter/FocusChart.vue";
+import TrainingChart from "@/components/PatientCenter/TrainingChart.vue";
 
 import { mapState, mapMutations } from "vuex";
 
@@ -24,26 +24,26 @@ export default {
     PDChart,
     RangeChart,
     FocusChart,
-    TrainingChart
+    TrainingChart,
   },
   data() {
     return {
-      name: ""
+      name: "",
     };
   },
   computed: {
-    ...mapState(["patientComponent"])
+    ...mapState(["patientComponent"]),
   },
   methods: {
-    ...mapMutations(["CHANGE_PATIENT_COMPONENT"])
-  }
+    ...mapMutations(["CHANGE_PATIENT_COMPONENT"]),
+  },
 };
 </script>
 <style>
-.patentCenter {
+.patent-center {
   min-height: 880px;
 }
-.patientChart {
+.patient-chart {
   position: absolute;
   left: 380px;
   top: 221px;
