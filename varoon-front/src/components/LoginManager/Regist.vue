@@ -14,39 +14,77 @@
           placeholder="이름을 입력해주세요"
           maxlength="20"
         />
-        <p class="error_box">{{nameCheck}}</p>
+        <p class="error_box">{{ nameCheck }}</p>
       </div>
       <div class="regist-category">
         <h2 class="category-title">생년월일</h2>
-        <input class="yearInput" type="text" v-model="year" placeholder="YYYY" />
-        <input class="monthInput" type="text" v-model="month" placeholder="MM" />
+        <input
+          class="yearInput"
+          type="text"
+          v-model="year"
+          placeholder="YYYY"
+        />
+        <input
+          class="monthInput"
+          type="text"
+          v-model="month"
+          placeholder="MM"
+        />
         <input class="dayInput" type="text" v-model="date" placeholder="DD" />
-        <p class="error_box">{{birthCheck}}</p>
+        <p class="error_box">{{ birthCheck }}</p>
       </div>
       <div class="regist-category">
         <h2 class="category-title">성별</h2>
         <button
-          :class="{'sexBox': gender !== 'male', 'selectedSexBox': gender === 'male'}"
+          :class="{
+            sexBox: gender !== 'male',
+            selectedSexBox: gender === 'male',
+          }"
           @click.prevent="selectSex('male')"
-        >남성</button>
+        >
+          남성
+        </button>
         <button
-          :class="{'sexBox' : gender !== 'female', 'selectedSexBox' : gender === 'female'}"
+          :class="{
+            sexBox: gender !== 'female',
+            selectedSexBox: gender === 'female',
+          }"
           @click.prevent="selectSex('female')"
-        >여성</button>
-        <p class="error_box">{{genderCheck}}</p>
+        >
+          여성
+        </button>
+        <p class="error_box">{{ genderCheck }}</p>
       </div>
       <div class="regist-category">
         <h2 class="category-title">E-mail</h2>
-        <input class="category-input" type="text" v-model="email" placeholder="soma@soma.com" />
-        <p class="error_box">{{mailCheck}}</p>
+        <input
+          class="category-input"
+          type="text"
+          v-model="email"
+          placeholder="soma@soma.com"
+        />
+        <p class="error_box">{{ mailCheck }}</p>
       </div>
       <div class="regist-category">
         <h2 class="category-title">아이디</h2>
-        <input class="category-input" type="text" v-model="id" placeholder="soma" />
-        <p class="error_box">{{idCheck}}</p>
-        <button v-if="this.checkId === null" class="check-duplicate" @click.prevent="checkDuplicate">아이디 중복 확인</button>
+        <input
+          class="category-input"
+          type="text"
+          v-model="id"
+          placeholder="soma"
+        />
+        <p class="error_box">{{ idCheck }}</p>
+        <button
+          v-if="this.checkId === null"
+          class="check-duplicate"
+          @click.prevent="checkDuplicate"
+        >
+          아이디 중복 확인
+        </button>
         <p v-if="checkId" class="can-use-id">* 사용 가능한 ID 입니다</p>
-        <p v-else-if="checkId === false" class="cant-use-id">* 사용 불가능한 ID 입니다</p>
+        <p v-else-if="checkId === false" class="cant-use-id">
+          * 사용 불가능한 ID 입니다
+        </p>
       </div>
       <div class="regist-category">
         <h2 class="category-title">비밀번호</h2>
@@ -57,7 +95,7 @@
           placeholder="soma123"
           maxlength="16"
         />
-        <p class="error_box">{{passwordCheck2}}</p>
+        <p class="error_box">{{ passwordCheck2 }}</p>
       </div>
       <div class="regist-category">
         <h2 class="category-title">비밀번호 확인</h2>
@@ -68,31 +106,50 @@
           placeholder="soma123"
           maxlength="16"
         />
-        <p class="error_box" :class="{success_box: !passwordCheckCheck}">{{passwordCheckCheck}}</p>
+        <p class="error_box" :class="{ success_box: !passwordCheckCheck }">
+          {{ passwordCheckCheck }}
+        </p>
       </div>
       <div class="regist-category">
         <h2 class="category-title">직업 선택</h2>
         <button
-          :class="{'role-box' : role !== 'ROLE_Seller', 'selected-role-box' : role === 'ROLE_Seller'}"
+          :class="{
+            'role-box': role !== 'ROLE_Seller',
+            'selected-role-box': role === 'ROLE_Seller',
+          }"
           @click.prevent="selectRole('ROLE_Seller')"
-        >판매자</button>
+        >
+          판매자
+        </button>
         <button
-          :class="{'role-box' : role !== 'ROLE_Patien', 'selected-role-box' : role === 'ROLE_Patien'}"
+          :class="{
+            'role-box': role !== 'ROLE_Patien',
+            'selected-role-box': role === 'ROLE_Patien',
+          }"
           @click.prevent="selectRole('ROLE_Patien')"
-        >환자</button>
+        >
+          환자
+        </button>
         <button
-          :class="{'role-box' : role !== 'ROLE_Doctor', 'selected-role-box' : role === 'ROLE_Doctor'}"
+          :class="{
+            'role-box': role !== 'ROLE_Doctor',
+            'selected-role-box': role === 'ROLE_Doctor',
+          }"
           @click.prevent="selectRole('ROLE_Doctor')"
-        >의사</button>
-        <p class="error_box">{{roleCheck}}</p>
+        >
+          의사
+        </button>
+        <p class="error_box">{{ roleCheck }}</p>
       </div>
     </div>
     <button
       class="regist-btn"
       @click.prevent="regist"
-      :class="{'regist-btn-success': !invalidForm}"
+      :class="{ 'regist-btn-success': !invalidForm }"
       :disabled="invalidForm"
-    >가입하기</button>
+    >
+      가입하기
+    </button>
   </article>
 </template>
 <script>
@@ -111,7 +168,7 @@ export default {
       checkId: null,
       password: "",
       passwordCheck: "",
-      role: ""
+      role: "",
     };
   },
   computed: {
@@ -193,13 +250,13 @@ export default {
         this.passwordCheckCheck ||
         this.roleCheck
       );
-    }
+    },
   },
   methods: {
     ...mapMutations(["CHANGE_LOGIN_COMPONENT"]),
     ...mapActions(["CHECK_DUPLICATE", "REGIST_FUNC"]),
     checkDuplicate() {
-      this.CHECK_DUPLICATE(this.id).then(data => {
+      this.CHECK_DUPLICATE(this.id).then((data) => {
         if (data.result === false) this.checkId = true;
         else this.checkId = false;
       });
@@ -212,8 +269,8 @@ export default {
         id: this.id,
         name: this.name,
         pw: this.pw,
-        role: this.role
-      }).then(data => {
+        role: this.role,
+      }).then((data) => {
         if (data.result === false) alert("회원가입 실패");
         else if (data.result === true) this.CHANGE_LOGIN_COMPONENT("welcome");
       });
@@ -223,12 +280,12 @@ export default {
     },
     selectRole(input) {
       this.role = input;
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
-.regist{
+.regist {
   min-height: calc(100vh - 191px);
   display: flex;
   flex-direction: column;
@@ -332,8 +389,6 @@ h2 {
   border-radius: 3px;
   border: solid 1px #e2e2e2;
   background-color: #ffffff;
-}
-.regist-category div {
 }
 .check-duplicate {
   height: 19px;
