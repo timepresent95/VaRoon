@@ -35,7 +35,7 @@
   </div>
 </template>
 <script>
-import { GChart } from "vue-google-charts";
+import { GChart } from "vue-google-charts/legacy";
 
 import { mapActions, mapState } from "vuex";
 

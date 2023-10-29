@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import AWS from "aws-sdk";
+// import AWS from "aws-sdk";
 export default {
   data() {
     return {
@@ -17,18 +17,18 @@ export default {
     };
   },
   methods: {
-    fileDown() {
-      const s3 = new AWS.s3();
-      AWS.config.update({ accessKeyId: "", secretAccessKey: "" });
-      const myBucket = "varoon";
-      const myKey = "";
-      const signedUrlExpireSeconds = 60 * 5; // your expiry time in seconds.
-      const url = s3.getSignedUrl("getObject", {
-        Bucket: myBucket,
-        Key: myKey,
-        Expires: signedUrlExpireSeconds,
-      });
-    },
+    // fileDown() {
+    //   const s3 = new AWS.s3();
+    //   AWS.config.update({ accessKeyId: "", secretAccessKey: "" });
+    //   const myBucket = "varoon";
+    //   const myKey = "";
+    //   const signedUrlExpireSeconds = 60 * 5; // your expiry time in seconds.
+    //   const url = s3.getSignedUrl("getObject", {
+    //     Bucket: myBucket,
+    //     Key: myKey,
+    //     Expires: signedUrlExpireSeconds,
+    //   });
+    // },
   },
 };
 </script>
