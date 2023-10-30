@@ -1,14 +1,18 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import path from 'path';
-import { createVuePlugin } from 'vite-plugin-vue2';
+import vue from '@vitejs/plugin-vue'
 import envCompatible from 'vite-plugin-env-compatible';
-import { createHtmlPlugin } from 'vite-plugin-html';
-import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
+import {createHtmlPlugin} from 'vite-plugin-html';
+import {viteCommonjs} from '@originjs/vite-plugin-commonjs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: [
+      {
+        find: 'vue',
+        replacement: '@vue/compat'
+      },
       {
         find: /^~/,
         replacement: ''
@@ -29,7 +33,15 @@ export default defineConfig({
     ]
   },
   plugins: [
-    createVuePlugin({ jsx: true }),
+    vue({
+      template: {
+        compilerOptions: {
+          compatConfig: {
+            MODE: 2
+          }
+        }
+      }
+    }),
     viteCommonjs(),
     envCompatible(),
     createHtmlPlugin({

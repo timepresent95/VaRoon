@@ -1,11 +1,6 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import router from './router'
 import App from './App.vue'
 import store from './store'
 
-new Vue({
-    el: '#app',
-    router,
-    store,
-    render: h => h(App)
-})
+createApp(App).use(store).use(router).mount('#app')
