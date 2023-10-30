@@ -83,7 +83,7 @@
     </article>
     <PatientRegister
       @modal-close="patientRegist = false"
-      v-if="patientRegist"
+      :show="patientRegist"
       @regist="RegistFunc"
     />
   </section>

@@ -1,6 +1,6 @@
 <template>
-  <transition name="modal">
-    <div class="modal-mask">
+  <transition>
+    <div v-if="show" class="modal">
       <div class="modal-container">
         <button @click="$emit('modal-close')" class="madal-close">
           &times;
@@ -12,10 +12,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['show']
+};
 </script>
 <style>
-.modal-mask {
+.modal {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -48,15 +50,19 @@ export default {};
   margin-left: auto;
   cursor: pointer;
 }
-.modal-enter {
-  opacity: 0;
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.5s;
 }
-.modal-leave-active {
-  opacity: 0;
-}
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
+
+.v-enter-from, .v-leave-to {
   transform: scale(1.1);
+  opacity: 0;
+}
+
+.v-enter-to, .v-leave-from {
+  transform: scale(1.0);
+  opacity: 1;
 }
 </style>

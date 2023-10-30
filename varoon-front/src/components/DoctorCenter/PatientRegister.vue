@@ -1,5 +1,5 @@
 <template>
-  <Modal @modal-close="$emit('modal-close')">
+  <Modal :show="show" @modal-close="$emit('modal-close')">
     <p class="patient-register-description">
       <strong>추가할 환자</strong>정보를 입력하세요
     </p>
@@ -27,6 +27,7 @@ export default {
   components: {
     Modal,
   },
+  props: ['show'],
   data() {
     return {
       id: "",
