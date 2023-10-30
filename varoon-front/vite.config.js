@@ -2,7 +2,6 @@ import {defineConfig} from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue'
 import envCompatible from 'vite-plugin-env-compatible';
-import {createHtmlPlugin} from 'vite-plugin-html';
 import {viteCommonjs} from '@originjs/vite-plugin-commonjs';
 
 // https://vitejs.dev/config/
@@ -37,20 +36,13 @@ export default defineConfig({
       template: {
         compilerOptions: {
           compatConfig: {
-            MODE: 2
+            MODE: 3,
           }
         }
       }
     }),
     viteCommonjs(),
     envCompatible(),
-    createHtmlPlugin({
-      inject: {
-        data: {
-          title: 'varoon-front'
-        }
-      }
-    })
   ],
   build: {}
 })

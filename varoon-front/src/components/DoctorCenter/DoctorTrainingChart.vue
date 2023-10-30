@@ -20,13 +20,13 @@
             <div class="sliderDescript">수평 프리즘</div>
             <div class="sliderContain">{{horizontalPrizm[0]}}</div>
             <div class="sliderContain">
-              <vue-slider
-                :min="-20"
-                :max="20"
-                :width="380.5"
-                :enable-cross="false"
-                v-model="horizontalPrizm"
-              ></vue-slider>
+<!--              <vue-slider-->
+<!--                :min="-20"-->
+<!--                :max="20"-->
+<!--                :width="380.5"-->
+<!--                :enable-cross="false"-->
+<!--                v-model="horizontalPrizm"-->
+<!--              ></vue-slider>-->
             </div>
             <div class="sliderContain">{{horizontalPrizm[1]}}</div>
             <div class="unit1">(PD)</div>
@@ -61,7 +61,7 @@
             <div class="sliderDescript">흐림 정도</div>
             <div class="sliderContain">{{blur[0]}}</div>
             <div class="sliderContain">
-              <vue-slider :width="380.5" :enable-cross="false" v-model="blur"></vue-slider>
+<!--              <vue-slider :width="380.5" :enable-cross="false" v-model="blur"></vue-slider>-->
             </div>
             <div class="sliderContain">{{blur[1]}}</div>
             <div class="unit4">(%)</div>
@@ -72,15 +72,15 @@
   </div>
 </template>
 <script>
-import VueSlider from "vue-slider-component";
+// import VueSlider from "vue-slider-component";
 import { mapActions, mapState, mapMutations } from "vuex";
 
-import "vue-slider-component/theme/default.css";
+// import "vue-slider-component/theme/default.css";
 
 export default {
-  components: {
-    VueSlider
-  },
+  // components: {
+  //   VueSlider
+  // },
   watch: {
     mainEye() {
       this.prescription.mainEye = this.mainEye;

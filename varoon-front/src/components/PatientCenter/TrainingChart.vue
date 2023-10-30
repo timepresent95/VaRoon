@@ -25,14 +25,14 @@
           <div class="slider-descript">수평 프리즘</div>
           <div class="slider-contain">{{ horizontalPrizm[0] }}</div>
           <div class="slider-contain">
-            <vue-slider
-              :width="380.5"
-              :min="-20"
-              :max="20"
-              :enable-cross="false"
-              v-model="horizontalPrizm"
-              :disabled="true"
-            ></vue-slider>
+<!--            <vue-slider-->
+<!--              :width="380.5"-->
+<!--              :min="-20"-->
+<!--              :max="20"-->
+<!--              :enable-cross="false"-->
+<!--              v-model="horizontalPrizm"-->
+<!--              :disabled="true"-->
+<!--            ></vue-slider>-->
           </div>
           <div class="slider-contain">{{ horizontalPrizm[1] }}</div>
         </div>
@@ -40,14 +40,14 @@
           <div class="slider-descript">수직 프리즘</div>
           <div class="slider-contain">{{ verticalPrizm[0] }}</div>
           <div class="slider-contain">
-            <vue-slider
-              :min="-20"
-              :max="20"
-              :width="380.5"
-              :enable-cross="false"
-              v-model="verticalPrizm"
-              :disabled="true"
-            ></vue-slider>
+<!--            <vue-slider-->
+<!--              :min="-20"-->
+<!--              :max="20"-->
+<!--              :width="380.5"-->
+<!--              :enable-cross="false"-->
+<!--              v-model="verticalPrizm"-->
+<!--              :disabled="true"-->
+<!--            ></vue-slider>-->
           </div>
           <span class="slider-contain">{{ verticalPrizm[1] }}</span>
         </div>
@@ -58,12 +58,12 @@
           <div class="slider-descript">흐림 정도</div>
           <span class="slider-contain">{{ blur[0] }}</span>
           <div class="slider-contain">
-            <vue-slider
-              :width="380.5"
-              :enable-cross="false"
-              v-model="blur"
-              :disabled="true"
-            ></vue-slider>
+<!--            <vue-slider-->
+<!--              :width="380.5"-->
+<!--              :enable-cross="false"-->
+<!--              v-model="blur"-->
+<!--              :disabled="true"-->
+<!--            ></vue-slider>-->
           </div>
           <span class="slider-contain">{{ blur[1] }}</span>
         </div>
@@ -72,15 +72,15 @@
   </article>
 </template>
 <script>
-import VueSlider from "vue-slider-component";
+// import VueSlider from "vue-slider-component";
 import { mapActions } from "vuex";
 
-import "vue-slider-component/theme/default.css";
+// import "vue-slider-component/theme/default.css";
 
 export default {
-  components: {
-    VueSlider,
-  },
+  // components: {
+  //   VueSlider,
+  // },
   computed: {
     horizontalPrizm() {
       return [
