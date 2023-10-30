@@ -9,10 +9,6 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: 'vue',
-        replacement: '@vue/compat'
-      },
-      {
         find: /^~/,
         replacement: ''
       },
@@ -32,15 +28,7 @@ export default defineConfig({
     ]
   },
   plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          compatConfig: {
-            MODE: 3,
-          }
-        }
-      }
-    }),
+    vue(),
     viteCommonjs(),
     envCompatible(),
   ],

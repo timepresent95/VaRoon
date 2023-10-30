@@ -11,7 +11,6 @@
     "preview-vite": "vite preview"
   },
   "dependencies": {
-    "@vue/compat": "^3.3.7",
     "apexcharts": "^3.8.6",
     "axios": "^0.19.0",
     "vue": "^3.3.7",
