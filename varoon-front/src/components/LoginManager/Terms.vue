@@ -59,16 +59,16 @@ export default {
       return !this.first || !this.second;
     },
     checkSelectImg() {
-      if (!this.checks) return require("@/images/round-check@2x.png");
-      else return require("@/images/round-check-selected@2x.png");
+      if (!this.checks) return `${this.$imageURI}/round-check@2x.png`
+      else return `${this.$imageURI}/round-check-selected@2x.png`
     },
     firstSelectImg() {
-      if (!this.first) return require("@/images/round-check@2x.png");
-      else return require("@/images/round-check-selected@2x.png");
+      if (!this.first) return `${this.$imageURI}/round-check@2x.png`
+      else return `${this.$imageURI}/round-check-selected@2x.png`
     },
     secondSelectImg() {
-      if (!this.second) return require("@/images/round-check@2x.png");
-      else return require("@/images/round-check-selected@2x.png");
+      if (!this.second) return `${this.$imageURI}/round-check@2x.png`
+      else return `${this.$imageURI}/round-check-selected@2x.png`
     }
   },
   methods: {

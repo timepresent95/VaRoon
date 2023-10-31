@@ -27,10 +27,10 @@ export default {
       currentNumber: 0,
       timer: null,
       images: [
-        require("@/images/main-vr-man-img@2x.png"),
-        "http://placehold.it/1920x722",
-        require("@/images/main-vr-man-img@2x.png"),
-        "http://placehold.it/1920x722",
+        `${this.$imageURI}/main-vr-man-img@2x.png`,
+        "https://placehold.it/1920x722",
+        `${this.$imageURI}/main-vr-man-img@2x.png`,
+        "https://placehold.it/1920x722",
       ]
     };
   },
