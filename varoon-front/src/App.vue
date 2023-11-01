@@ -21,30 +21,33 @@ export default {
   }
 };
 </script>
-<style>
-* {
-  margin: 0px;
-  padding: 0px;
+<style lang="scss">
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-body,
-#app {
+
+body{
   width: 100%;
-  margin: 0px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
 ul, li, ol {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-::-webkit-scrollbar {
-      display: none;
-}
-.container {
-  position: relative;
-}
+
 a {
   text-decoration: none;
+  color: inherit;
 }
-
+</style>
+<style scoped>
+.container {
+  flex: 1;
+}
 </style>
