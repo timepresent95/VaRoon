@@ -1,18 +1,18 @@
 <template>
-    <TopNavi/>
+    <TopNavigation/>
     <router-view class="container"></router-view>
     <Footer/>
 </template>
 
 <script>
 import Footer from "./components/Footer.vue";
-import TopNavi from "./components/TopNavi.vue";
+import TopNavigation from "./components/TopNavigation.vue";
 
 export default {
   name: "app",
   components: {
     Footer,
-    TopNavi
+    TopNavigation
   },
   data() {
     return {};
@@ -27,10 +27,11 @@ export default {
 }
 
 body{
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  @extend .font-regular;
 }
 
 ul, li, ol {
@@ -43,6 +44,13 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
 </style>
 <style scoped>
 .container {
