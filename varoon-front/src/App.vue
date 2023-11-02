@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <TopNavi />
+    <TopNavi/>
     <router-view class="container"></router-view>
-    <Footer />
-  </div>
+    <Footer/>
 </template>
 
 <script>
