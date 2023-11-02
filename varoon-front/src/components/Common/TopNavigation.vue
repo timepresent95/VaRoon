@@ -1,7 +1,7 @@
 <template>
   <header class="top-navigation mbox">
     <router-link class="logo" to="/">
-      <img src="@/images/logo-icon.png" alt="logo"/>
+      <img src="../../images/logo-icon.png" alt="logo"/>
     </router-link>
     <nav class="text-body1">
       <router-link v-if="isAuth" to="/MypageManager">MY PAGE</router-link>
