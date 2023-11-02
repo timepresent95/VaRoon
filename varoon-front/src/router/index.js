@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Main from "@/view/Main.vue";
 import LoginManager from "@/view/LoginManager.vue";
-import Home from '@/view/Home.vue';
+import Home from '@/view/Services.vue';
 import MarketManager from '@/view/MarketManager.vue';
 import SellerManager from '@/view/SellerManager.vue';
 import PatientCenter from '@/view/PatientCenter.vue';

@@ -45,7 +45,7 @@
       <img class="left-link-img" src="@/images/mediboard-btn@2x.png" />
     </router-link>
     <router-link class="left-link" to="/SellerManager" v-else>
-      <img class="left-link-img" src="@/images/home-salescenter-img@2x.png" />
+      <img class="left-link-img" src="../../images/services/sales-center.png" />
     </router-link>
   </div>
 </template>

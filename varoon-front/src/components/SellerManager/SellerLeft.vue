@@ -35,7 +35,7 @@
     <div class="seller-more-box">
       <div class="seller-more-tag">MORE</div>
       <router-link class="left-link" to="/MarketManager">
-        <img class="seller-link-img" src="@/images/home-vrmarket-img@2x.png" />
+        <img class="seller-link-img" src="../../images/services/vr-market.png" />
       </router-link>
     </div>
   </div>
