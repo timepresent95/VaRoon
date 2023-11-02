@@ -1,106 +1,70 @@
 <template>
-  <div>
-    <div class="slider">
-      <MainSlider />
-    </div>
-    <div class="main-bottom">
-      <h3 class="about-varoon">About VaRoon</h3>
-      <div class="core">
-        <div class="introduce">
-          <div class="num">01</div>
-          <div class="name">정확한 측정</div>
-          <img src="@/images/22@2x.png" />
-        </div>
-        <div class="introduce">
-          <div class="num">02</div>
-          <div class="name">가상 프리즘</div>
-          <img src="@/images/23@2x.png" />
-        </div>
-        <div class="introduce">
-          <div class="num">03</div>
-          <div class="name">차별 송출</div>
-          <img src="@/images/dif.png" />
-        </div>
+  <main class="main">
+    <Carousel :images="images"/>
+    <!--    <MainSlider/>-->
+    <h1 class="text-h1 text-center mt-40">About VaRoon</h1>
+    <div class="core-services mbox mt-40 px-12">
+      <div class="service-card">
+        <h4 class="text-h4 text-center">
+          <span class="text-p1">01</span><br/>
+          정확한 측정
+        </h4>
+        <img src="../images/main/measurement.png" alt="precise measurement"/>
+      </div>
+      <div class="service-card">
+        <h4 class="text-h4 text-center">
+          <span class="text-p1">02</span><br/>
+          가상 프리즘
+        </h4>
+        <img src="../images/main/virtual-prism.png" alt="virtual prism"/>
+      </div>
+      <div class="service-card">
+        <h4 class="text-h4 text-center">
+          <span class="text-p1">03</span><br/>
+          시기능 훈련
+        </h4>
+        <img src="../images/main/visual-function-training.png" alt="visual function training"/>
       </div>
     </div>
-  </div>
+  </main>
 </template>
-<script>
-import MainSlider from "@/components/MainSlider";
+<script setup>
+import Carousel from "@/components/Common/Carousel.vue";
 
-export default {
-  components: {
-    MainSlider
-  }
-};
+const imageUri = import.meta.env.VITE_APP_IMAGE_URI
+
+const images = [
+  {src: `${imageUri}/main-vr-man-img@2x.png`, alt: 'introduce service'},
+  {src: `${imageUri}/main-vr-man-img@2x.png`, alt: 'introduce service'},
+  {src: `${imageUri}/main-vr-man-img@2x.png`, alt: 'introduce service'},
+  {src: `${imageUri}/main-vr-man-img@2x.png`, alt: 'introduce service'},
+]
+
 </script>
-<style>
-.main-bottom {
-  width:100%;
-  height: 691px;
-  text-align: center;
-}
-.about-varoon {
-  height: 42px;
-  margin-top: 68.6px;
-  font-family: NanumBarunGothicLightOTF;
-  font-size: 36px;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  display: inline-block;
-  font-weight: normal;
-  color: #000000;
-}
-.core {
-  margin-top: 33.4px;
-  background-color: #fcfcfc;
-  height: auto;
-  display: flex;
-  justify-content: center;
-}
-.core .introduce {
-  width: 357px;
-  height: 458px;
-  border-radius: 3px;
-  box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
-  background-color: #ffffff;
-}
+<style scoped lang="scss">
+.main {
+  width: 100%;
+  .core-services {
+    background-color: $w1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
 
-.core .introduce:not(:last-child) {
-  margin-right: 44px;
-}
+    .service-card {
+      box-shadow: 0 0 10px 0 rgba(217, 217, 217, 0.43);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 16px;
 
-.introduce .num {
-  margin-top: 46px;
-  margin-left: 163px;
-  width: 32px;
-  height: 32px;
-  font-family: NanumBarunGothicUltraLightOTF;
-  font-size: 28px;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #4b74ff;
-}
-
-.introduce .name {
-  margin-top: 17px;
-  height: 27px;
-  font-family: NanumBarunGothicUltraLightOTF;
-  font-size: 24px;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000000;
-}
-
-.introduce img {
-  margin-top: 39px;
-  width: 357px;
-  height: 297px;
-  object-fit: cover;
+      img {
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
+  }
 }
 </style>

@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Footer from "./components/Footer.vue";
-import TopNavigation from "./components/TopNavigation.vue";
+import Footer from "./components/Common/Footer.vue";
+import TopNavigation from "./components/Common/TopNavigation.vue";
 
 export default {
   name: "app",
@@ -27,8 +27,8 @@ export default {
 }
 
 body{
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   @extend .font-regular;

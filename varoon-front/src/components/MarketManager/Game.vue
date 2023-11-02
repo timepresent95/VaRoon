@@ -11,25 +11,25 @@
         <div class="game-image-box">
           <ul class="ingame-images">
             <li>
-              <img class="small-ingame-image" src="@/images/dif.png" />
+              <img class="small-ingame-image" src="../../images/main/visual-function-training.png" />
             </li>
             <li>
-              <img class="small-ingame-image" src="@/images/dif.png" />
+              <img class="small-ingame-image" src="../../images/main/visual-function-training.png" />
             </li>
             <li>
-              <img class="small-ingame-image" src="@/images/dif.png" />
+              <img class="small-ingame-image" src="../../images/main/visual-function-training.png" />
             </li>
             <li>
-              <img class="small-ingame-image" src="@/images/dif.png" />
+              <img class="small-ingame-image" src="../../images/main/visual-function-training.png" />
             </li>
             <li>
-              <img class="small-ingame-image" src="@/images/dif.png" />
+              <img class="small-ingame-image" src="../../images/main/visual-function-training.png" />
             </li>
             <li>
-              <img class="small-ingame-image" src="@/images/dif.png" />
+              <img class="small-ingame-image" src="../../images/main/visual-function-training.png" />
             </li>
           </ul>
-          <img class="big-ingame-image" src="@/images/dif.png" />
+          <img class="big-ingame-image" src="../../images/main/visual-function-training.png" />
         </div>
       </div>
       <div class="game-descript-box">

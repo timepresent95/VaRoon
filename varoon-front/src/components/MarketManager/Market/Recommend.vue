@@ -3,7 +3,7 @@
     <h3 class="recommend-title">VaRoon 에디터 추천</h3>
     <ul class="editor-recommend">
       <li>
-        <img src="@/images/dif.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
+        <img src="../../../images/main/visual-function-training.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />
       </li>
       <li>
         <img src="@/images/UTube.png" @click.prevent="CHANGE_MARKET_COMPONENT('game')" />

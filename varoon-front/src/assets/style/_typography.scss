@@ -83,6 +83,26 @@ $font-sizes: [ 40, 32, 28, 24, 20, 18, 16, 14];
   @extend .text-h2;
 }
 
+.text-h3 {
+  @extend .font-regular;
+  @extend .font-size-20;
+}
+
+.text-h3b {
+  @extend .font-bold;
+  @extend .text-h3;
+}
+
+.text-h4 {
+  @extend .font-regular;
+  @extend .font-size-18;
+}
+
+.text-h4b {
+  @extend .font-bold;
+  @extend .text-h4;
+}
+
 .text-body1 {
   @extend .font-regular;
   @extend .font-size-16;
