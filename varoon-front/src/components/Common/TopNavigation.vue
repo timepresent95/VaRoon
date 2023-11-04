@@ -1,14 +1,16 @@
 <template>
-  <header class="top-navigation mbox">
-    <router-link class="logo" to="/">
-      <img src="../../images/logo-icon.png" alt="logo"/>
-    </router-link>
-    <nav class="text-body1">
-      <router-link v-if="isAuth" to="/MypageManager">MY PAGE</router-link>
-      <router-link v-else to="/loginManager">JOIN</router-link>
-      <button v-if="isAuth" @click="logout">SIGN OUT</button>
-      <router-link v-else to="/loginManager">SIGN IN</router-link>
-    </nav>
+  <header class="top-navigation">
+    <div class="content mbox px-12 py-8">
+      <router-link class="logo" to="/">
+        <img src="../../images/logo-icon.png" alt="logo"/>
+      </router-link>
+      <nav class="text-body1">
+        <router-link v-if="isAuth" to="/MypageManager">MY PAGE</router-link>
+        <router-link v-else to="/loginManager">JOIN</router-link>
+        <button v-if="isAuth" @click="logout">SIGN OUT</button>
+        <router-link v-else to="/loginManager">SIGN IN</router-link>
+      </nav>
+    </div>
   </header>
 </template>
 <script>
@@ -40,12 +42,12 @@ export default {
 </script>
 <style scoped lang="scss">
 .top-navigation {
-  width: 100%;
-  border-bottom: solid 1px $g1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px;
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   .logo img {
     width: 154px;
