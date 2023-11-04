@@ -1,0 +1,14 @@
+@use "variable";
+
+// grade
+.grade-all {
+  color: variable.$g4;
+}
+
+.grade-15 {
+  color: variable.$p1;
+}
+
+.grade-18 {
+  color: variable.$r1;
+}

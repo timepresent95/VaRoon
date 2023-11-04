@@ -4,7 +4,7 @@
     <ul>
       <li>
         <router-link class="selling-con-img" to="/MarketManager">
-          <img src="@/images/52.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="../../images/mock/cover9.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
         </router-link>
         <div class="selling-con-mid-box">
           <div class="selling-con-age">15세 이상 가능 / 사시, 복시</div>
@@ -14,7 +14,7 @@
       </li>
       <li>
         <router-link class="selling-con-img" to="/MarketManager">
-          <img src="@/images/51.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
+          <img src="../../images/mock/cover8.jpg" @click="CHANGE_MARKET_COMPONENT('game')" />
         </router-link>
         <div class="selling-con-mid-box">
           <div class="selling-con-age">15세 이상 가능 / 사시, 복시</div>
@@ -25,7 +25,7 @@
       <li>
         <router-link class="selling-con-img" to="/MarketManager">
           <img
-            src="@/images/55@2x.png"
+            src="../../images/mock/cover3.png"
             @click="CHANGE_MARKET_COMPONENT('game')"
           />
         </router-link>
@@ -38,7 +38,7 @@
       <li>
         <router-link class="selling-con-img" to="/MarketManager">
           <img
-            src="@/images/54@2x.png"
+            src="../../images/mock/cover2.png"
             @click="CHANGE_MARKET_COMPONENT('game')"
           />
         </router-link>
@@ -51,7 +51,7 @@
       <li>
         <router-link class="selling-con-img" to="/MarketManager">
           <img
-            src="@/images/58@2x.png"
+            src="../../images/mock/cover6.png"
             @click="CHANGE_MARKET_COMPONENT('game')"
           />
         </router-link>

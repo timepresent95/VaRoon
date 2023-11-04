@@ -49,6 +49,11 @@ button {
   background-color: transparent;
   outline: none;
   border: none;
+  cursor: pointer;
+}
+
+hr {
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 </style>

@@ -16,7 +16,7 @@
 }
 
 // Size
-$font-sizes: [ 40, 32, 28, 24, 20, 18, 16, 14];
+$font-sizes: [ 40, 32, 28, 24, 20, 18, 16, 14, 12];
 
 @each $size in $font-sizes {
   .font-size-#{$size} {
@@ -47,6 +47,14 @@ $font-sizes: [ 40, 32, 28, 24, 20, 18, 16, 14];
 
 .text-g4 {
   color: variable.$g4;
+}
+
+.text-r1 {
+  color: variable.$r1;
+}
+
+.text-r2 {
+  color: variable.$r2;
 }
 
 // Align
@@ -111,4 +119,24 @@ $font-sizes: [ 40, 32, 28, 24, 20, 18, 16, 14];
 .text-body1b {
   @extend .font-bold;
   @extend .text-body1;
+}
+
+.text-body2 {
+  @extend .font-regular;
+  @extend .font-size-14;
+}
+
+.text-body2b {
+  @extend .font-bold;
+  @extend .text-body2;
+}
+
+.text-body3 {
+  @extend .font-regular;
+  @extend .font-size-12;
+}
+
+.text-body3b {
+  @extend .font-bold;
+  @extend .text-body3;
 }

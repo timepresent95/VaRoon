@@ -21,7 +21,7 @@
             <img
               @click="clickCheckBox('다크 소울 3')"
               class="revenue-chked-box"
-              src="@/images/checkbox-checked-img@2x.png"
+              src="../../images/common/checkbox-checked.png"
               v-if="first"
             />
           </div>
@@ -32,7 +32,7 @@
             <img
               @click="clickCheckBox('다크 소울 3')"
               class="revenue-chked-box"
-              src="@/images/checkbox-checked-img@2x.png"
+              src="../../images/common/checkbox-checked.png"
               v-if="second"
             />
           </div>
@@ -43,7 +43,7 @@
             <img
               @click="clickCheckBox('다크 소울 3')"
               class="revenue-chked-box"
-              src="@/images/checkbox-checked-img@2x.png"
+              src="../../images/common/checkbox-checked.png"
               v-if="third"
             />
           </div>

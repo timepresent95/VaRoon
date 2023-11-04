@@ -1,8 +1,14 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Main from "@/view/Main.vue";
+import SignIn from "@/view/SignIn";
 import LoginManager from "@/view/LoginManager.vue";
-import Home from '@/view/Services.vue';
-import MarketManager from '@/view/MarketManager.vue';
+import Service from '@/view/Services.vue';
+import VRMarket from '@/view/VRMarket';
+import VRMarketSearch from '@/view/VRMarket/Search.vue';
+import VRMarketCart from '@/view/VRMarket/Cart';
+import VRMarketLibrary from '@/view/VRMarket/Library';
+import VRMarketClientDownload from '@/view/VRMarket/ClientDownload';
+import VRMarketGame from '@/view/VRMarket/Game';
 import SellerManager from '@/view/SellerManager.vue';
 import PatientCenter from '@/view/PatientCenter.vue';
 import DoctorCenter from '@/view/DoctorCenter.vue';
@@ -23,22 +29,55 @@ const mainHome = (to, from, next) => {
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{
-    path: "/main",
-    component: Main
-  },
+  routes: [
+    {
+      path: "/",
+      component: Main
+    },
     {
       path: "/loginManager",
       component: LoginManager
     },
     {
-      path: "/",
-      component: Home,
+      path: "/service",
+      component: Service,
       beforeEnter: mainHome
     },
     {
-      path: "/MarketManager",
-      component: MarketManager
+      path: "/sign-in",
+      component: SignIn
+    },
+    {
+      path: "/vr-market",
+      component: VRMarket,
+      name: 'vr-market',
+      children: [
+        {
+          path: '',
+          component: VRMarketSearch,
+          name: 'vr-market-search',
+        },
+        {
+          path: 'cart',
+          component: VRMarketCart,
+          name: 'vr-market-cart',
+        },
+        {
+          path: 'library',
+          component: VRMarketLibrary,
+          name: 'vr-market-library'
+        },
+        {
+          path: 'client-download',
+          component: VRMarketClientDownload,
+          name: 'vr-market-client-download'
+        },
+        {
+          path: 'game/:id',
+          component: VRMarketGame,
+          name: 'vr-market-game'
+        }
+      ]
     },
     {
       path: "/SellerManager",
@@ -62,6 +101,7 @@ const router = createRouter({
     },
     {
       path: "/:pathMatch(.*)*",
+      name: 'error',
       component: Error404
     },
     {
