@@ -29,6 +29,13 @@ const mainHome = (to, from, next) => {
 
 const router = createRouter({
   history: createWebHistory(),
+  scrollBehavior: (to, from, savedPosition) => {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return {top: 0, behavior: "smooth"}
+    }
+  },
   routes: [
     {
       path: "/",
