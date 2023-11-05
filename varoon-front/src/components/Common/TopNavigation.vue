@@ -6,9 +6,9 @@
       </router-link>
       <nav class="text-body1">
         <router-link v-if="isAuth" to="/MypageManager">MY PAGE</router-link>
-        <router-link v-else to="/loginManager">JOIN</router-link>
+        <router-link v-else :to="{name: 'join-terms'}">JOIN</router-link>
         <button v-if="isAuth" @click="logout">SIGN OUT</button>
-        <router-link v-else to="/loginManager">SIGN IN</router-link>
+        <router-link v-else :to="{name: 'sign-in'}">SIGN IN</router-link>
       </nav>
     </div>
   </header>

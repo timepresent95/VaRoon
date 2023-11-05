@@ -1,24 +1,24 @@
 <template>
-  <section class="sign-in mbox pt-40">
-    <h1 class="text-h1">로그인</h1>
-    <form class="mt-40">
-      <label>
-        ID
-        <input class="text-body1 px-16 py-12 mt-4" type="text" v-model="id" placeholder="아이디를 입력해주세요"/>
+  <section class="sign-in mbox px-16 pt-20">
+    <h1 class="text-h1b text-center">로그인</h1>
+    <form class="mt-20">
+      <label class="text-h4">
+        아이디
+        <input type="text" class="text-body1 mt-12 py-8 px-12" v-model="id" placeholder="아이디를 입력해주세요"/>
       </label>
-      <label class="mt-12">
-        Password
-        <input class="text-body1 px-16 py-12 mt-4" type="password" v-model="password" placeholder="비밀번호를 입력해주세요."/>
+      <label class="text-h4 mt-20">
+        비밀번호
+        <input type="password" class="text-body1 mt-12 py-8 px-12" v-model="password" placeholder="비밀번호를 입력해주세요."/>
       </label>
-      <button
-        class="text-body1 px-16 py-12 mt-40"
-        type="submit"
-        :disabled="invalidForm"
-      >
-        로그인
-      </button>
     </form>
-    <router-link class="find-link text-g3 mt-12" to="/">아이디 / 비밀번호 찾기</router-link>
+    <button
+      class="sign-in-button text-body1 text-w1 py-8 px-12 mt-40"
+      :class="{'sign-in-button-active': id.trim() !== '' && password.trim() !== ''}"
+      @click="onclickSignIn"
+    >
+      로그인
+    </button>
+    <router-link class="find-link text-body1 text-p1 text-center mt-8 mx-auto" to="/find">아이디 / 비밀번호 찾기</router-link>
   </section>
 </template>
 
@@ -27,6 +27,10 @@ import {ref} from 'vue';
 
 const id = ref("");
 const password = ref("");
+
+function onclickSignIn() {
+  //TODO: 작업 필요
+}
 </script>
 
 <style scoped lang="scss">
@@ -38,7 +42,7 @@ const password = ref("");
 
   form {
     width: 100%;
-    max-width: 420px;
+    max-width: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,18 +53,25 @@ const password = ref("");
       flex-direction: column;
 
       input {
-        border: solid 1px $g2;
+        border: solid 1px $g4;
         border-radius: 4px;
+        width: 100%;
       }
     }
+  }
 
-    button {
-      width: 100%;
-      background-color: $g2;
-      border-radius: 4px;
-      outline: none;
-      border: none;
-      color: $w1;
+  .sign-in-button {
+    width: 100%;
+    max-width: 380px;
+    background-color: $g3;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    cursor: initial;
+
+    &-active {
+      background-color: $p1;
+      cursor: pointer;
     }
   }
 
