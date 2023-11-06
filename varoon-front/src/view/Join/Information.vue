@@ -49,15 +49,15 @@
         <div class="use-wrapper text-h4 mt-20">
           <h4 class="text-h4">가입 목적</h4>
           <div class="use mt-12" @change="onclickUse">
-            <input type="radio" name="use" value="doctor" id="doctor" :checked="information.use === 'doctor'"/>
+            <input type="radio" name="use" value="doctor" id="doctor" :checked="information.type === 'doctor'"/>
             <label class="text-body1 text-center px-12 py-8" for="doctor">
               의사
             </label>
-            <input type="radio" name="use" value="patient" id="patient" :checked="information.use === 'patient'"/>
+            <input type="radio" name="use" value="patient" id="patient" :checked="information.type === 'patient'"/>
             <label class="text-body1 text-center px-12 py-8" for="patient">
               환자
             </label>
-            <input type="radio" name="use" value="seller" id="seller" :checked="information.use === 'seller'"/>
+            <input type="radio" name="use" value="seller" id="seller" :checked="information.type === 'seller'"/>
             <label class="text-body1 text-center px-12 py-8" for="seller">
               판매자
             </label>
@@ -94,7 +94,7 @@ const information = reactive({
   email: '',
   password: '',
   passwordConfirm: '',
-  use: ''
+  type: ''
 });
 
 const isFilled = computed(() => information.password === information.passwordConfirm &&
@@ -116,13 +116,13 @@ function onclickGender(e) {
 function onclickUse(e) {
   switch (e.target.value) {
     case 'doctor':
-      information.use = 'doctor';
+      information.type = 'doctor';
       break;
     case 'patient':
-      information.use = 'patient';
+      information.type = 'patient';
       break;
     case 'seller':
-      information.use = 'seller';
+      information.type = 'seller';
       break;
     default:
       return;
@@ -245,6 +245,7 @@ onMounted(() => {
       &-active {
         background-color: $p1;
         cursor: pointer;
+        box-shadow: 0 3px 10px 0 rgba($p1, 0.6);
       }
     }
   }

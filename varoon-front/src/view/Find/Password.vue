@@ -100,6 +100,7 @@ const showCertification = computed(() => account.value.trim() !== '' && name.val
     &-active {
       cursor: pointer;
       background-color: $p1;
+      box-shadow: 0 3px 10px 0 rgba($p1, 0.6);
     }
   }
 

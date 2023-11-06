@@ -52,6 +52,7 @@ onMounted(() => {
     border-radius: 4px;
     background-color: $p1;
     cursor: pointer;
+    box-shadow: 0 3px 10px 0 rgba($p1, 0.6);
   }
 }
 </style>

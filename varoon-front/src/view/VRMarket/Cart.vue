@@ -190,6 +190,7 @@ onMounted(() => {
       .pay-button {
         background-color: $p1;
         border-radius: 8px;
+        box-shadow: 0 3px 10px 0 rgba($p1, 0.6);
       }
     }
   }

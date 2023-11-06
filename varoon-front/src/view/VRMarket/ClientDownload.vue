@@ -28,6 +28,7 @@ function onclickDownload() {
       background-color: $p1;
       border-radius: 4px;
       color: $w1;
+      box-shadow: 0 3px 10px 0 rgba($p1, 0.6);
     }
   }
 }
