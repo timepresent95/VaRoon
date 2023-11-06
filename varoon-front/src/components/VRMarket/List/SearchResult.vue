@@ -3,7 +3,7 @@
     <h2 class="text-h2 mt-20">"{{ searchInput }}" 검색 결과</h2>
     <p class="text-h2 text-center py-40" v-if="results.length === 0">일치하는 컨텐츠가 없습니다</p>
     <ul class="mt-40" v-else>
-      <router-link :to="{name: 'vr-market-game', params: {id}}" custom v-slot="{navigate}" v-for="({id, image, info}) in results" :key="info.title">
+      <router-link :to="{name: 'vr-market-game', params: {id}}" custom v-slot="{navigate}" v-for="({id, image, info}) in results" :key="id">
         <li @click="navigate">
           <img :src="image.url" :alt="image.alt" class="mr-20"/>
           <div class="description text-body1 mr-20">

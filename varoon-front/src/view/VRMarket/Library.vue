@@ -7,7 +7,7 @@
         <h4 class="py-8 px-12">플레이 시간</h4>
       </li>
       <router-link :to="{name: 'vr-market-game', params: {id}}" custom v-slot="{navigate}"
-                   v-for="({id, image, info, playTime}, index) in items" :key="info.title">
+                   v-for="({id, image, info, playTime}, index) in items" :key="id">
         <li class="item" @click="navigate">
           <img
             class="cover py-8 px-12"

@@ -9,7 +9,7 @@
           <h4 class="py-8 px-12">게임 정보</h4>
         </li>
         <router-link :to="{name: 'vr-market-game', params: {id}}" custom v-slot="{navigate}"
-                     v-for="({id, image, info, selected}, index) in items" :key="info.title">
+                     v-for="({id, image, info, selected}, index) in items" :key="id">
           <li class="item" @click="navigate">
             <div class="select-button px-12">
               <button v-if="selected" @click.stop="selectItem(index)">
