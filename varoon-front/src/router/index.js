@@ -1,24 +1,11 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Main from "@/view/Main.vue";
 import SignIn from "@/view/SignIn";
-import Find from "@/view/Find";
-import FindAccount from "@/view/Find/Account";
-import FindPassword from "@/view/Find/Password";
-import Join from "@/view/Join";
-import JoinTerms from "@/view/Join/Terms";
-import JoinInformation from "@/view/Join/Information";
-import JoinComplete from "@/view/Join/Complete";
+import Join from "@/router/join"
+import Find from "@/router/find"
+import SalesCenter from "@/router/salesCenter"
+import VrMarket from "@/router/vrMarket"
 import Services from '@/view/Services';
-import VRMarket from '@/view/VRMarket';
-import VRMarketSearch from '@/view/VRMarket/Search.vue';
-import VRMarketCart from '@/view/VRMarket/Cart';
-import VRMarketLibrary from '@/view/VRMarket/Library';
-import VRMarketClientDownload from '@/view/VRMarket/ClientDownload';
-import VRMarketGame from '@/view/VRMarket/Game';
-import SalesCenter from "@/view/SalesCenter";
-import SalesCenterMy from "@/view/SalesCenter/My";
-import SalesCenterRegistration from "@/view/SalesCenter/Registration";
-import SalesCenterRevenue from "@/view/SalesCenter/Revenue";
 import PatientCenter from '@/view/PatientCenter.vue';
 import DoctorCenter from '@/view/DoctorCenter.vue';
 import Manager from '@/view/Manager.vue';
@@ -54,45 +41,6 @@ const router = createRouter({
       name: 'main'
     },
     {
-      path: '/join',
-      component: Join,
-      redirect: {name: 'join-terms'},
-      children: [
-        {
-          path: 'terms',
-          component: JoinTerms,
-          name: 'join-terms',
-        },
-        {
-          path: 'information',
-          component: JoinInformation,
-          name: 'join-information',
-        },
-        {
-          path: 'complete',
-          component: JoinComplete,
-          name: 'join-complete',
-        }
-      ]
-    },
-    {
-      path: "/find",
-      component: Find,
-      redirect: {name: 'find-account'},
-      children: [
-        {
-          path: 'account',
-          component: FindAccount,
-          name: 'find-account',
-        },
-        {
-          path: 'password',
-          component: FindPassword,
-          name: 'find-password',
-        }
-      ]
-    },
-    {
       path: "/services",
       component: Services,
       // beforeEnter: mainHome
@@ -101,58 +49,6 @@ const router = createRouter({
       path: "/sign-in",
       component: SignIn,
       name: 'sign-in'
-    },
-    {
-      path: "/vr-market",
-      component: VRMarket,
-      children: [
-        {
-          path: '',
-          component: VRMarketSearch,
-          name: 'vr-market-search',
-        },
-        {
-          path: 'cart',
-          component: VRMarketCart,
-          name: 'vr-market-cart',
-        },
-        {
-          path: 'library',
-          component: VRMarketLibrary,
-          name: 'vr-market-library'
-        },
-        {
-          path: 'client-download',
-          component: VRMarketClientDownload,
-          name: 'vr-market-client-download'
-        },
-        {
-          path: 'game/:id',
-          component: VRMarketGame,
-          name: 'vr-market-game'
-        }
-      ]
-    },
-    {
-      path: "/sales-center",
-      component: SalesCenter,
-      children: [
-        {
-          path: '',
-          component: SalesCenterMy,
-          name: 'sales-center-my'
-        },
-        {
-          path: 'revenue',
-          component: SalesCenterRevenue,
-          name: 'sales-center-revenue'
-        },
-        {
-          path: 'registration',
-          component: SalesCenterRegistration,
-          name: 'sales-center-registration'
-        },
-      ]
     },
     {
       path: "/PatientCenter",
@@ -178,7 +74,11 @@ const router = createRouter({
     {
       path: "/:pathMatch(.*)",
       component: Error404
-    }
+    },
+    Join,
+    Find,
+    SalesCenter,
+    VrMarket,
   ]
 });
 

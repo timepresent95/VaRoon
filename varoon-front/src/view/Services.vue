@@ -9,7 +9,7 @@
       <router-link class="link" to="/vr-market">
         <img src="../images/services/vr-market.png" alt="vr market"/>
       </router-link>
-      <router-link v-if="role === 'ROLE_Patient'" class="link" to="/PatientCenter">
+      <router-link v-if="uerType === 'ROLE_Patient'" class="link" to="/PatientCenter">
         <img src="../images/services/medical-board.png" alt="medical board"/>
       </router-link>
       <router-link class="link" v-else to="/sales-center">
