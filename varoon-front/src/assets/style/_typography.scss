@@ -6,6 +6,7 @@
   "Microsoft Sans Serif", sans-serif;
   font-weight: 400;
   line-height: 1.4;
+  @extend .text-b80;
 }
 
 .font-bold {
@@ -13,6 +14,7 @@
   "Microsoft Sans Serif", sans-serif;
   font-weight: 700;
   line-height: 1.4;
+  @extend .text-b80;
 }
 
 // Size
@@ -25,6 +27,54 @@ $font-sizes: [ 40, 32, 28, 24, 20, 18, 16, 14, 12];
 }
 
 // Color
+.text-b100 {
+  color: variable.$b100;
+}
+
+.text-b90 {
+  color: variable.$b90;
+}
+
+.text-b80 {
+  color: variable.$b80;
+}
+
+.text-b70 {
+  color: variable.$b70;
+}
+
+.text-b50 {
+  color: variable.$b50;
+}
+
+.text-b35 {
+  color: variable.$b35;
+}
+
+.text-b20 {
+  color: variable.$b20;
+}
+
+.text-b15 {
+  color: variable.$b15;
+}
+
+.text-b10 {
+  color: variable.$b10;
+}
+
+.text-b5 {
+  color: variable.$b5;
+}
+
+.text-b3 {
+  color: variable.$b3;
+}
+
+.text-b2 {
+  color: variable.$b2;
+}
+
 .text-p1 {
   color: variable.$p1;
 }

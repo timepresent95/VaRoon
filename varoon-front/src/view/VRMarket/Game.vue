@@ -45,7 +45,6 @@ import {useRoute, useRouter} from 'vue-router'
 
 import MockGames from "@/assets/mock/games";
 import {gradeToString} from "@/utils/grade";
-import {createRandomNumber} from "@/utils/number";
 
 const route = useRoute()
 const router = useRouter()
@@ -125,7 +124,7 @@ onMounted(() => {
       max-height: 360px;
       aspect-ratio: 1/1;
       object-fit: contain;
-      background-color: black;
+      background-color: $b100;
       box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
     }
 

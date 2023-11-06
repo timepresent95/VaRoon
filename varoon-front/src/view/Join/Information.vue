@@ -231,7 +231,7 @@ onMounted(() => {
 
     .prev-button {
       width: 200px;
-      border: solid 1px black;
+      border: solid 1px $b80;
       border-radius: 4px;
     }
 
