@@ -42,7 +42,7 @@
   </article>
 </template>
 <script>
-import VueApexCharts from "vue-apexcharts";
+import VueApexCharts from "vue3-apexcharts";
 
 import { mapActions } from "vuex";
 

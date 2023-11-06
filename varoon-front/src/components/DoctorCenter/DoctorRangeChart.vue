@@ -43,7 +43,7 @@ TODO:
 
 
 */
-import VueApexCharts from "vue-apexcharts";
+import VueApexCharts from "vue3-apexcharts";
 
 import { mapActions, mapState } from "vuex";
 

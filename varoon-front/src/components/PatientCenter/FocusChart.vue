@@ -27,7 +27,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
-import VueApexCharts from "vue-apexcharts";
+import VueApexCharts from "vue3-apexcharts";
 
 export default {
   components: {

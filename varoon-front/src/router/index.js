@@ -8,14 +8,17 @@ import Join from "@/view/Join";
 import JoinTerms from "@/view/Join/Terms";
 import JoinInformation from "@/view/Join/Information";
 import JoinComplete from "@/view/Join/Complete";
-import Service from '@/view/Services.vue';
+import Services from '@/view/Services';
 import VRMarket from '@/view/VRMarket';
 import VRMarketSearch from '@/view/VRMarket/Search.vue';
 import VRMarketCart from '@/view/VRMarket/Cart';
 import VRMarketLibrary from '@/view/VRMarket/Library';
 import VRMarketClientDownload from '@/view/VRMarket/ClientDownload';
 import VRMarketGame from '@/view/VRMarket/Game';
-import SellerManager from '@/view/SellerManager.vue';
+import SalesCenter from "@/view/SalesCenter";
+import SalesCenterMy from "@/view/SalesCenter/My";
+import SalesCenterRegistration from "@/view/SalesCenter/Registration";
+import SalesCenterRevenue from "@/view/SalesCenter/Revenue";
 import PatientCenter from '@/view/PatientCenter.vue';
 import DoctorCenter from '@/view/DoctorCenter.vue';
 import Manager from '@/view/Manager.vue';
@@ -90,9 +93,9 @@ const router = createRouter({
       ]
     },
     {
-      path: "/service",
-      component: Service,
-      beforeEnter: mainHome
+      path: "/services",
+      component: Services,
+      // beforeEnter: mainHome
     },
     {
       path: "/sign-in",
@@ -102,7 +105,6 @@ const router = createRouter({
     {
       path: "/vr-market",
       component: VRMarket,
-      name: 'vr-market',
       children: [
         {
           path: '',
@@ -132,8 +134,25 @@ const router = createRouter({
       ]
     },
     {
-      path: "/SellerManager",
-      component: SellerManager
+      path: "/sales-center",
+      component: SalesCenter,
+      children: [
+        {
+          path: '',
+          component: SalesCenterMy,
+          name: 'sales-center-my'
+        },
+        {
+          path: 'revenue',
+          component: SalesCenterRevenue,
+          name: 'sales-center-revenue'
+        },
+        {
+          path: 'registration',
+          component: SalesCenterRegistration,
+          name: 'sales-center-registration'
+        },
+      ]
     },
     {
       path: "/PatientCenter",
