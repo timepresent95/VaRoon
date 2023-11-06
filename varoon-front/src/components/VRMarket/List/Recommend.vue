@@ -15,8 +15,6 @@
   </section>
 </template>
 <script setup>
-import {defineProps, onMounted} from 'vue'
-
 defineProps({recommends: {type: Array, required: true}})
 
 </script>

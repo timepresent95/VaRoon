@@ -13,7 +13,7 @@
   </section>
 </template>
 <script setup>
-import {defineEmits, defineProps, onMounted} from "vue";
+import {onMounted} from "vue";
 import {useRoute, useRouter} from "vue-router";
 
 const props = defineProps({step: {type: String, required: true}})

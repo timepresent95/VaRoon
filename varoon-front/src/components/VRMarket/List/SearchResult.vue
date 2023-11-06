@@ -20,7 +20,6 @@
   </section>
 </template>
 <script setup>
-import {defineProps} from "vue";
 import {formatWon} from '@/utils/format'
 import {gradeToString} from '@/utils/grade'
 

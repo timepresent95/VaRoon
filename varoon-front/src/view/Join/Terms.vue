@@ -52,7 +52,7 @@
   </div>
 </template>
 <script setup>
-import {defineEmits, computed, ref} from 'vue'
+import {computed, ref} from 'vue'
 import {useRoute} from "vue-router";
 
 const emit = defineEmits(['setStep'])

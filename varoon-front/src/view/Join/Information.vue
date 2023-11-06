@@ -79,7 +79,7 @@
   </section>
 </template>
 <script setup>
-import {defineProps, defineEmits, reactive, computed, onMounted} from 'vue'
+import {reactive, computed, onMounted} from 'vue'
 import {useRouter, useRoute} from 'vue-router'
 
 const props = defineProps({step: {type: String, required: true}})
