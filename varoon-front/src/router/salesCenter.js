@@ -1,7 +1,7 @@
-import SalesCenter from "@/view/SalesCenter/index.vue";
-import SalesCenterMy from "@/view/SalesCenter/My.vue";
-import SalesCenterRevenue from "@/view/SalesCenter/Revenue.vue";
-import SalesCenterRegistration from "@/view/SalesCenter/Registration.vue";
+import SalesCenter from "@/view/SalesCenter/index";
+import SalesCenterMy from "@/view/SalesCenter/My";
+import SalesCenterRevenue from "@/view/SalesCenter/Revenue";
+import SalesCenterRegistration from "@/view/SalesCenter/Registration";
 
 export default {
   path: "/sales-center",

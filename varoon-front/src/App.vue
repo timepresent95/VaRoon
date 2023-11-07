@@ -5,8 +5,8 @@
 </template>
 
 <script setup>
-import Footer from "./components/Common/Footer.vue";
-import TopNavigation from "./components/Common/TopNavigation.vue";
+import Footer from "./components/Common/Footer";
+import TopNavigation from "./components/Common/TopNavigation";
 
 </script>
 <style lang="scss">

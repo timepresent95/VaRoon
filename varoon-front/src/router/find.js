@@ -1,6 +1,6 @@
 import Find from "@/view/Find";
-import FindAccount from "@/view/Find/Account.vue";
-import FindPassword from "@/view/Find/Password.vue";
+import FindAccount from "@/view/Find/Account";
+import FindPassword from "@/view/Find/Password";
 
 
 export default {

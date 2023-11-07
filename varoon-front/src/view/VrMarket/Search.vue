@@ -16,8 +16,8 @@
 
 <script setup>
 import {onMounted, ref, watch} from 'vue'
-import Recommend from "@/components/VRMarket/List/Recommend.vue";
-import SearchResult from "@/components/VRMarket/List/SearchResult.vue";
+import Recommend from "@/components/VRMarket/List/Recommend";
+import SearchResult from "@/components/VRMarket/List/SearchResult";
 
 //TODO: 서버를 통해 데이터를 받아오는 로직으로 변경 필요. suspense 사용
 import MockGames from "@/assets/mock/games";

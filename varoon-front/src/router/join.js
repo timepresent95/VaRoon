@@ -1,7 +1,7 @@
-import Join from "@/view/Join/index.vue";
-import JoinTerms from "@/view/Join/Terms.vue";
-import JoinInformation from "@/view/Join/Information.vue";
-import JoinComplete from "@/view/Join/Complete.vue";
+import Join from "@/view/Join/index";
+import JoinTerms from "@/view/Join/Terms";
+import JoinInformation from "@/view/Join/Information";
+import JoinComplete from "@/view/Join/Complete";
 
 export default {
   path: '/join',

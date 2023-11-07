@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
-import Main from "@/view/Main.vue";
+import Main from "@/view/Main";
 import SignIn from "@/view/SignIn";
 import Join from "@/router/join"
 import Find from "@/router/find"
@@ -9,8 +9,8 @@ import Services from '@/view/Services';
 import PatientCenter from '@/view/PatientCenter.vue';
 import DoctorCenter from '@/view/DoctorCenter.vue';
 import Manager from '@/view/Manager.vue';
-import MypageManager from '@/view/MypageManager.vue';
-import Error404 from '@/view/Error404.vue';
+import MyPage from '@/router/myPage';
+import Error404 from '@/view/Error404';
 import {inject} from "vue";
 
 const router = createRouter({
@@ -62,10 +62,6 @@ const router = createRouter({
       component: Manager
     },
     {
-      path: "/MypageManager",
-      component: MypageManager
-    },
-    {
       path: "/:pathMatch(.*)*",
       name: 'error',
       component: Error404
@@ -78,6 +74,7 @@ const router = createRouter({
     Find,
     SalesCenter,
     VrMarket,
+    MyPage,
   ]
 });
 

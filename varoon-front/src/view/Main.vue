@@ -29,7 +29,7 @@
   </main>
 </template>
 <script setup>
-import Carousel from "@/components/Common/Carousel.vue";
+import Carousel from "@/components/Common/Carousel";
 
 const imageUri = import.meta.env.VITE_APP_IMAGE_URI
 
