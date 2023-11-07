@@ -2,7 +2,7 @@
   <header class="top-navigation">
     <div class="content mbox px-12 py-8">
       <router-link class="logo" to="/">
-        <img src="@/images/logo-icon.png" alt="varoon logo"/>
+        <img src="/images/logo-icon.png" alt="varoon logo"/>
       </router-link>
       <nav class="text-body1">
         <router-link v-if="auth === null" :to="{name: 'join-terms'}">JOIN</router-link>

@@ -14,7 +14,7 @@
             <div class="select-button px-12">
               <button v-if="selected" @click.stop="selectItem(index)">
                 <img
-                  src="@/images/common/checkbox-checked.png"
+                  src="/images/common/checkbox-checked.png"
                   alt="active check box"
                 />
               </button>

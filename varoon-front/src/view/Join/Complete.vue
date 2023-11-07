@@ -1,8 +1,8 @@
 <template>
   <section class="complete mx-auto">
     <h1 class="text-h1 text-center">회원 가입</h1>
-    <img class="load-map mt-40" src="@/images/join/join-step-three.png" alt="join step three"/>
-    <img class="welcome mt-40" src="@/images/join-illust-img@2x.png" alt="welcome"/>
+    <img class="load-map mt-40" src="/images/join/join-step-three.png" alt="join step three"/>
+    <img class="welcome mt-40" src="/images/join-illust-img@2x.png" alt="welcome"/>
     <p class="text-body1b mt-20">환영합니다.</p>
     <p class="text-body2 mt-4">회원가입이 완료되었습니다</p>
     <router-link :to="{name: 'main'}" custom v-slot="{navigate}">

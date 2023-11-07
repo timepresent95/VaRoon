@@ -1,7 +1,7 @@
 <template>
   <div class="terms">
     <h1 class="text-h1 text-center">회원 가입</h1>
-    <img class="load-map mt-40" src="@/images/join/join-step-one.png" alt="join step one"/>
+    <img class="load-map mt-40" src="/images/join/join-step-one.png" alt="join step one"/>
     <div class="content mt-20">
       <div class="all-accept checkbox-wrapper pb-12">
         <img class="checkbox mr-12" alt="checkbox" :src="getCheckImageUrl(isAllAgreed)" @click="onclickCheckAll"/>
@@ -63,7 +63,7 @@ const isAgreeInformationGathering = ref(false);
 const isAllAgreed = computed(() => isAgreeTerms.value && isAgreeInformationGathering.value)
 
 function getCheckImageUrl(flag) {
-  return flag ? new URL('@/images/common/round-check-selected.png', import.meta.url) : new URL("@/images/common/round-check.png", import.meta.url)
+  return flag ? new URL('/images/common/round-check-selected.png', import.meta.url) : new URL("/images/common/round-check.png", import.meta.url)
 }
 
 function onclickCheckAll() {
@@ -74,7 +74,6 @@ function onclickCheckAll() {
 
 function onclickGoNext(navigate) {
   if (isAllAgreed.value) {
-    console.log(route.name)
     emit('setStep', route.name)
     sessionStorage.setItem('varoon-join-step', route.name);
     navigate()

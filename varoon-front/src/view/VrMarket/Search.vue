@@ -1,7 +1,7 @@
 <template>
   <section class="market-search">
     <div class="search-bar-wrapper mt-20 ">
-      <img class="mr-16" src="@/images/market/search-icon.png" alt="search icon"/>
+      <img class="mr-16" src="/images/market/search-icon.png" alt="search icon"/>
       <input
         class="search-bar text-body1"
         type="text"

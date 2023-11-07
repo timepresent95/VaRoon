@@ -3,10 +3,10 @@ import {createRandomNumber} from "@/utils/number";
 const games = [
   {
     id: 0,
-    image: {url: new URL("@/images/mock/cover1.jpg", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover1.jpg", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover1.jpg", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover1.jpg", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover1.jpg", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover1.jpg", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["약시", "모험"],
@@ -20,9 +20,9 @@ const games = [
   },
   {
     id: 1,
-    image: {url: new URL("@/images/mock/cover2.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover2.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover2.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover2.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "약시", "격투", "액션"],
@@ -36,13 +36,13 @@ const games = [
   },
   {
     id: 2,
-    image: {url: new URL("@/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover3.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "격투", "액션"],
@@ -56,12 +56,12 @@ const games = [
   },
   {
     id: 3,
-    image: {url: new URL("@/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover4.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "격투", "액션", "스토리"],
@@ -75,13 +75,13 @@ const games = [
   },
   {
     id: 4,
-    image: {url: new URL("@/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover5.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "약시", "액션", "스토리"],
@@ -95,10 +95,10 @@ const games = [
   },
   {
     id: 5,
-    image: {url: new URL("@/images/mock/cover6.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover6.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover6.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover6.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover6.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover6.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "약시", "스토리"],
@@ -112,9 +112,9 @@ const games = [
   },
   {
     id: 6,
-    image: {url: new URL("@/images/mock/cover7.jpg", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover7.jpg", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover7.jpg", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover7.jpg", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "약시", "오픈월드"],
@@ -128,9 +128,9 @@ const games = [
   },
   {
     id: 7,
-    image: {url: new URL("@/images/mock/cover8.jpg", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover8.jpg", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover8.jpg", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover8.jpg", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "약시", "mmorpg"],
@@ -145,9 +145,9 @@ const games = [
   },
   {
     id: 8,
-    image: {url: new URL("@/images/mock/cover9.jpg", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover9.jpg", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover9.jpg", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover9.jpg", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "약시", "전략 시뮬레이션"],
@@ -161,11 +161,11 @@ const games = [
   },
   {
     id: 9,
-    image: {url: new URL("@/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover10.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "약시", "시뮬레이션"],
@@ -179,12 +179,12 @@ const games = [
   },
   {
     id: 10,
-    image: {url: new URL("@/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover11.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "스포츠", "시뮬레이션"],
@@ -198,13 +198,13 @@ const games = [
   },
   {
     id: 11,
-    image: {url: new URL("@/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
+    image: {url: new URL("/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
     thumbnails: [
-      {url: new URL("@/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
-      {url: new URL("@/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
+      {url: new URL("/images/mock/cover12.png", import.meta.url), alt: "mock cover image"},
     ],
     info: {
       tags: ["사시", "스포츠", "공포"],

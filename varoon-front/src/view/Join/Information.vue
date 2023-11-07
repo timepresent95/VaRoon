@@ -1,7 +1,7 @@
 <template>
   <section class="information mx-auto">
     <h1 class="text-h1 text-center">회원 가입</h1>
-    <img class="load-map mt-40" src="@/images/join/join-step-two.png" alt="join step two"/>
+    <img class="load-map mt-40" src="/images/join/join-step-two.png" alt="join step two"/>
     <div class="content">
       <form>
         <div class="name-wrapper text-h4 mt-20">

@@ -7,13 +7,13 @@
     <p class="text-body1 text-g4 mt-4">VR 컨텐츠 구매 또는 치료 경과를 확인해보세요</p>
     <div class="link-container mt-20">
       <router-link class="link" to="/vr-market">
-        <img src="../images/services/vr-market.png" alt="vr market"/>
+        <img src="/images/services/vr-market.png" alt="vr market"/>
       </router-link>
       <router-link v-if="uerType === 'ROLE_Patient'" class="link" to="/PatientCenter">
-        <img src="../images/services/medical-board.png" alt="medical board"/>
+        <img src="/images/services/medical-board.png" alt="medical board"/>
       </router-link>
       <router-link class="link" v-else to="/sales-center">
-        <img src="../images/services/sales-center.png" alt="sales center"/>
+        <img src="/images/services/sales-center.png" alt="sales center"/>
       </router-link>
     </div>
   </section>
