@@ -11,6 +11,10 @@ async function signOut() {
   return 'success';
 }
 
-const authAPI = {signIn, signOut};
+async function changePassword() {
+  return 'success'
+}
+
+const authAPI = {signIn, signOut, changePassword};
 
 export default authAPI;

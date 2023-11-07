@@ -17,19 +17,29 @@
     </div>
     <router-link :to="{name: 'my-page-password-change-completed'}" custom v-slot="{navigate}">
       <button class="change-button text-body1 mt-40 py-8 px-12" :class="{'change-button-active': isFilled}"
-              @click="navigate">
+              @click="onclickChangeButton(navigate)">
         변경하기
       </button>
     </router-link>
   </section>
 </template>
 <script setup>
-import {computed, ref} from "vue";
+import {computed, inject, ref} from "vue";
+
+const {changePassword} = inject('auth')
 
 const prevPassword = ref('');
 const newPassword = ref('');
 const newPasswordConfirm = ref('');
 const isFilled = computed(() => prevPassword.value !== '' && newPassword.value !== '' && newPasswordConfirm.value !== '')
+
+function onclickChangeButton(navigate) {
+  if(!isFilled.value) {
+    return;
+  }
+  changePassword();
+  navigate();
+}
 </script>
 <style scoped lang="scss">
 .password-change {

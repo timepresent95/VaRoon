@@ -17,5 +17,9 @@ export const useAuth = () => {
     await router.push('/');
   }
 
-  return {auth, signIn, signOut}
+  async function changePassword() {
+    await authAPI.changePassword();
+  }
+
+  return {auth, signIn, signOut, changePassword}
 }

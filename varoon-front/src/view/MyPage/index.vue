@@ -1,11 +1,13 @@
 <template>
   <section class="my-page mbox px-16 pt-20">
-    <inner-top-navigation :paths="paths" class="pb-12"/>
+    <inner-top-navigation v-if="route.name !== 'my-page-password-change-completed'" :paths="paths" class="pb-12"/>
     <router-view/>
   </section>
 </template>
 <script setup>
 import InnerTopNavigation from '@/components/Common/InnerTopNavigation';
+import {useRoute} from 'vue-router';
+const route = useRoute();
 
 const paths = [
   {name: 'my-page-information', title: '내 정보'},
