@@ -34,7 +34,7 @@ const isFilled = computed(() => id.value.trim() !== '' && password.value.trim() 
 const {signIn} = inject('auth');
 
 function onclickSignIn() {
-  if (!isFilled) {
+  if (!isFilled.value) {
     return;
   }
   signIn(id, password);
