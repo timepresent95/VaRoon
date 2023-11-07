@@ -1,6 +1,8 @@
 <template>
   <section class="sign-in mbox px-16 pt-20">
     <h1 class="text-h1b text-center">로그인</h1>
+    <p class="my-20 text-body1 text-g3 text-center" v-if="$env === 'development'">테스트 환경을 사용중입니다.<br/> 아무 값이나 입력후 로그인
+      버튼을 누르면 로그인이 진행됩니다.</p>
     <form class="mt-20">
       <label class="text-h4">
         아이디
@@ -13,7 +15,7 @@
     </form>
     <button
       class="sign-in-button text-body1 text-w1 py-8 px-12 mt-40"
-      :class="{'sign-in-button-active': id.trim() !== '' && password.trim() !== ''}"
+      :class="{'sign-in-button-active': isFilled}"
       @click="onclickSignIn"
     >
       로그인
@@ -23,13 +25,19 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {computed, inject, ref} from 'vue';
+
 
 const id = ref("");
 const password = ref("");
+const isFilled = computed(() => id.value.trim() !== '' && password.value.trim() !== '')
+const {signIn} = inject('auth');
 
 function onclickSignIn() {
-  //TODO: 작업 필요
+  if (!isFilled) {
+    return;
+  }
+  signIn(id, password);
 }
 </script>
 

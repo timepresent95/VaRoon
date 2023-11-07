@@ -1,13 +1,14 @@
-import VrMarket from "@/view/VrMarket/index.vue";
-import VrMarketSearch from "@/view/VrMarket/Search.vue";
-import VrMarketCart from "@/view/VrMarket/Cart.vue";
-import VrMarketLibrary from "@/view/VrMarket/Library.vue";
-import VrMarketClientDownload from "@/view/VrMarket/ClientDownload.vue";
-import VrMarketGame from "@/view/VrMarket/Game.vue";
+import VrMarket from "@/view/VrMarket";
+import VrMarketSearch from "@/view/VrMarket/Search";
+import VrMarketCart from "@/view/VrMarket/Cart";
+import VrMarketLibrary from "@/view/VrMarket/Library";
+import VrMarketClientDownload from "@/view/VrMarket/ClientDownload";
+import VrMarketGame from "@/view/VrMarket/Game";
 
 export default {
   path: "/vr-market",
   component: VrMarket,
+  meta: {requireAuth: true},
   children: [
     {
       path: '',

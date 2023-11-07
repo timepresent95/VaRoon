@@ -1,23 +1,13 @@
 <template>
-    <TopNavigation/>
-    <router-view class="container"></router-view>
-    <Footer/>
+  <TopNavigation/>
+  <router-view class="container"></router-view>
+  <Footer/>
 </template>
 
-<script>
+<script setup>
 import Footer from "./components/Common/Footer.vue";
 import TopNavigation from "./components/Common/TopNavigation.vue";
 
-export default {
-  name: "app",
-  components: {
-    Footer,
-    TopNavigation
-  },
-  data() {
-    return {};
-  }
-};
 </script>
 <style lang="scss">
 *, *:before, *:after {
@@ -26,7 +16,7 @@ export default {
   box-sizing: border-box;
 }
 
-body{
+body {
   width: 100%;
   min-height: 100vh;
   display: flex;

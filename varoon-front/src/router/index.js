@@ -11,19 +11,7 @@ import DoctorCenter from '@/view/DoctorCenter.vue';
 import Manager from '@/view/Manager.vue';
 import MypageManager from '@/view/MypageManager.vue';
 import Error404 from '@/view/Error404.vue';
-
-import store from '../store'
-
-const requireAuth = (to, from, next) => {
-  // const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`; //이전 페이지가 어딘지 기억
-  // store.getters.isAuth ? next() : next(loginPath);
-  next();
-};
-
-const mainHome = (to, from, next) => {
-  // store.getters.isAuth ? next() : next('/main')
-  next();
-}
+import {inject} from "vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -38,12 +26,21 @@ const router = createRouter({
     {
       path: "/",
       component: Main,
-      name: 'main'
+      name: 'main',
+      beforeEnter: (to, from, next) => {
+        const {auth} = inject('auth')
+        if (auth.value === null) {
+          next()
+        } else {
+          next({name: 'services', replace: true})
+        }
+      }
     },
     {
       path: "/services",
       component: Services,
-      // beforeEnter: mainHome
+      name: 'services',
+      meta: {requireAuth: true}
     },
     {
       path: "/sign-in",
@@ -52,11 +49,13 @@ const router = createRouter({
     },
     {
       path: "/PatientCenter",
-      component: PatientCenter
+      component: PatientCenter,
+      meta: {requireAuth: true}
     },
     {
       path: "/DoctorCenter",
-      component: DoctorCenter
+      component: DoctorCenter,
+      meta: {requireAuth: true}
     },
     {
       path: "/Manager",
@@ -81,5 +80,14 @@ const router = createRouter({
     VrMarket,
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  const {auth} = inject('auth')
+  if (auth.value === null && to.meta.requireAuth) {
+    next({name: 'sign-in', query: {redirect: to.fullPath}})
+  } else {
+    next();
+  }
+})
 
 export default router;

@@ -6,6 +6,7 @@ import SalesCenterRegistration from "@/view/SalesCenter/Registration.vue";
 export default {
   path: "/sales-center",
   component: SalesCenter,
+  meta: {requireAuth: true},
   children: [
     {
       path: '',
