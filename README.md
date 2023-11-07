@@ -1,18 +1,15 @@
-# VaRoon_Web
+# VaRoon
 
-본 프로젝트는 Software Maestro 10기 연수 중 진행한 VR을 활용한 사시 환자 치료 플랫폼 서비스 VaRoon 프로젝트 중 웹 프론트 서비스 코드입니다.
+[테스트 페이지 주소](https://web-varoon-3yl7k2blooc2jfh.sel5.cloudtype.app/)
 
-##Description
+### 사용 기술
+<img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white" alt="vue badge"> 
 
-웹 플렛폼 회원가입시 사용자를 의사 / 환자 / 판매자로 구분하여 등록시켜 로그인 이후 사용자 역할별로 각기 다른 페이지를 보여주도록 구현하였습니다.
+### 소개
+**VR 기반 사시 환자들을 위한 시기능 훈련 플랫폼**이라는 주제로
 
-의사에게는 환자들을 관리할 수 있는 환자 관리 페이지가 제공됩니다.
+2019년 Software Maestro 연수 기간중 진행한 프로젝트 입니다.
 
-환자에게는 자신의 치료 상태 및 어떤 훈련을 받게 될 지 여부를 보여주는 메디보드 페이지와 치료에 사용되는 VR게임을 다운로드 받을 수 있는 마켓 페이지가 제공됩니다.
+2023년 12월 31일을 기점으로 Vue2가 EOL 된다는 공식 발표에 따라
 
-판매자에게는 자신의 컨텐츠를 관리할 수 있는 페이지와, 마켓 페이지가 제공됩니다.
-
-사용 기술: Vue2
-
-[테스트 주소](https://chichchic.github.io/VaRoon_Web/)
-
+Vue3로 마이그레이션 진행 및 유지보수를 진행하였습니다. (23.10.28 ~ ing)
